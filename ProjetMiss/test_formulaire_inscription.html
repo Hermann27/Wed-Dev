@@ -1,0 +1,111 @@
+<html>
+<head>
+<title>formulaire</title>
+
+<script language="javascript">
+ function controler(){
+ var motif="^[0-9].*@[^0-9]";
+ var exp=new RegExp(motif);
+	var nom =window.document.f.nom.value;
+	var prenom =window.document.f.prenom.value;
+	var classe =window.document.f.classe.value;
+	var email =window.document.f.email.value;
+	var passe =window.document.f.passe.value;
+	var cofpasse =window.document.f.cofpasse.value;
+	var datee =window.document.f.datee.value;
+	var telephone=window.document.f.telep.value;
+	var rechercher=email.indexOf("@");
+ if((nom=="")||(isNaN(nom)==false)){
+          window.alert("Donner Votre Nom");
+          window.document.f.nom.focus();
+		}else if((prenom=="")||(isNaN(prenom)==false)){
+		
+			window.alert("Donner Votre Prenom");
+			window.document.f.prenom.focus();
+		
+		
+		}else if((email=="")||(rechercher==-1)||exp.test(motif)){
+		    window.alert("Donner Votre Email");
+			window.document.f.email.focus();
+			
+		
+		}else if((telephone=="")||(isNaN(telephone)==true)){
+			window.alert("Donner Votre numero de telephone");
+			window.document.f.telep.focus();
+		
+		}else if((classe=="")||(isNaN(classe)==false)){
+		
+			window.alert("Donner Votre classe SVP");
+			window.document.f.classe.focus();
+		
+		
+		}else if((datee=="")||(isNaN(datee)==false)){
+		
+			window.alert("Donner Votre Date de Naissance SVP");
+			window.document.f.datee.focus();
+		}else if((passe=="")||(isNaN(passe)==false)){
+		
+			window.alert("Donner Votre Mot de passe SVP");
+			window.document.f.passe.focus();
+		}else if((cofpasse=="")||(isNaN(cofpasse)==false)){
+		
+			window.alert("Confirmer Votre Mot de passe SVP");
+			window.document.f.cofpasse.focus();
+		}else{
+		window.alert("FELICITATION VOTRE FORMULAIRE A ETE BIEN REMPLIR");}
+ 
+ }
+</script>
+<style>
+#p{
+    width:500;
+	height:600 ;
+	border-radius:25px;
+	box-shadow:6px 6px 6px black;
+	background-color:#33ffcc ; 
+}
+#btn{border-radius:30px;}
+	
+
+</style>
+</head>
+<body>
+<center>
+<fieldset id="p" >
+<legend><font color="#000000"><b>INSCRIPTION AUCLUB TIC</b></font></legend>
+<form name="f">
+<label>Nom:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="nom" name="nom" size=40></input>
+</label>
+</br></br></br>
+<label>Prenom:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="prenom" name="prenom" size=40></input>
+</label></br></br></br>
+<label>Classe:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="classe" name="classe" size=40 ></input>
+</label></br></br></br>
+<label>Date(Optionnel):
+&nbsp;&nbsp;&nbsp;<input type="text" id="datee" name="datee" size=40 ></input>
+</label></br></br></br>
+<label>Telephone:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="ra" name="telep" size=40></input>
+</label></br></br></br>
+<label>Email:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="email" name="email" size=40></input>
+</label></br></br></br>
+<label>Mot de Passe:
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="password" id="pass" name="passe" size=40></input>
+</label></br></br></br>
+<label>Confirmer Mot de Passe:
+&nbsp;<input type="password" id="pass" name="cofpasse" size=33></input>
+</label></br></br></br>
+<label>Departement Sollicite:
+&nbsp;<input type="text" id="deprt"size=37 ></input>
+</label></br></br></br>
+<label>
+<center><input   type="button" id="btn" value="inscription" size=20 onClick="controler();"></input></center>
+</label></br></br></br>
+</fieldset>
+</center>
+</body>
+</html>

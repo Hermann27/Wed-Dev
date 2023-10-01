@@ -1,0 +1,116 @@
+﻿
+<html>
+<head>
+<script language="javascript">
+function verification(){
+var login =document.getElementById('log').value;
+var pass =document.getElementById('Pass').value;
+if(login=="" && pass==""){
+	alert("Veillez vous authentifier avant de commence toute transaction");
+}else{alert("Veillez vous authentifier avant de commence toute transaction");}
+}
+</script>
+<link href="images/p.gif" rel="shortcut icon" />
+<script language="javascript"  src="js/Scpt.js"></script>
+<script language="javascript"  src="modifier2.js"></script>
+<script language="javascript"  src="testajax.js"></script>
+<script language="javascript" src="jquery.js">
+</script>
+<title>PHARMACIE DE GARDE</title>
+<link rel="stylesheet" href="css/cssP.css" type="text/css">
+
+</head>
+
+<body id="bg" onLoad="mafonctionAjax2();">
+ 
+
+<div id="entete">
+  &nbsp;&nbsp;&nbsp;<center>
+  <div id="logo"> <img src="images/ProIsidore.gif" width="100" height="100" /></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img id="rong" name="periodique" src="images/1.JPG" height="155" width="907"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div id="logo1"><img src="images/croix.gif" width="100" height="100" /></br>
+  <center> <table border="0"><tr><th><font color="#00CCFF">Date:</font></th><th> <font color="#00CCFF"><?php echo date("d-m-y");?></font></th></tr></table></center></div>
+  
+</center>
+</div>
+<div class="menu1">
+		<ul id="menu1">
+				<li><a href="#" onClick="init();">ACCUEIL</a>			</li>
+			<li><a href="#" onClick="boutique();">PHARMACIES</a> 
+                    <ul>
+                        <li><a href="#" onClick="boutique();">LISTE </a> </li>
+                        <li><a href="#" onClick="boutique();">RECHERCHER</a> </li>
+                        <li><a href="#" onClick="boutique();">AJOUTER</a> </li>
+                        <li><a href="#" onClick="boutique();">MODIFIER</a> </li>
+                        <li><a href="#" onClick="boutique();">SUPPRIMER</a> </li>
+                     </ul>		
+			</li>
+			<li><a href="#">MEDICAMENTS</a>
+				<ul>
+                        <li><a href="#" onClick="boutique();">LISTE </a> </li>
+                        <li><a href="#" onClick="Recherche();">RECHERCHER</a> </li>
+                        <li><a href="#" onClick="ajouter();">AJOUTER</a> </li>
+                        <li><a href="#" onClick="boutique();">MODIFIER</a> </li>
+                        <li><a href="#" onClick="boutique();">SUPPRIMER</a> </li>
+                     </ul>	
+			</li>
+			<li><a href="#" onClick="travail1();">NOS SERVICES</a>			</li>
+			<li><a href="#">CONTACT</a>			</li>
+		</ul>
+	</div>
+    
+<div id="contenu" style="background-image:url(images/a.jpg)">
+ <div id="droite">
+ <center>
+ <form>
+		<fieldset id="fil">
+        <legend>AUTHENTIFICATION</legend>
+	<p id="login">
+		<label for="username">
+			Identifiant<br>
+			<input name="Login" id="username" alt="username" size="18" type="text">
+		</label>
+	</p>
+	<p id="password">
+		<label for="passwd">Mot de passe<br>
+			<input name="pass" id="passwd"  size="18" alt="password" type="password">
+		</label>
+	</p>
+		<p id="Tremember">
+		<label for="remember">
+					<input name="remember" id="remember" value="yes" alt="Remember Me" type="checkbox">Se souvenir de moi		</label>
+	</p>
+		<<input type="button"  value="connect" onClick="connexion(),direction();" name="connect"/></br><a href="#">Créer un compte</a>
+	</fieldset>
+</form>
+</center>
+</div>
+ <div id="gauche">
+ <center>
+ <form>
+		<fieldset id="filG">
+	<legend>SONDAGE_ONLINE</legend>
+<b>Trouvez-vous ce site exemple pertinent ?</b>
+<pre>
+</br>
+<input type="radio" id="r1">Tout à fait</input></br>
+<input type="radio" id="r2">Moyennement</input></br>
+ <input type="radio" id="r3">Pas du tout </input>
+</pre></br>
+ <input type="submit" id="vote" value="Vote"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Resultat</a>
+ 	</fieldset>
+</form>
+</center>
+</div>
+
+<div id="form">
+                    
+                      <center>
+               <h1> PRESENTATATION DES PHARMACIES DE GARDE</h1>
+             </center>
+ </div>
+ </div>
+</div>
+</div>
+<div id="pied">
+</div>
+</body>
+</html>

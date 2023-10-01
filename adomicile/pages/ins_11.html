@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="../css/style.css" /><script language="javascript" src="../js/js.js"></script>
+<script language="javascript">
+	function charge(){
+		ajx2('prestataire', 'get', 'valeur=NOMS', document.getElementById('nom'));
+		ajx2('prestataire', 'get', 'valeur=PRENOMS', document.getElementById('prenom'));
+		ajx2('prestataire', 'get', 'valeur=EMAIL', document.getElementById('email'));
+		ajx2('prestataire', 'get', 'valeur=motPasse', document.getElementById('motDePasse'));
+		ajx2('prestataire', 'get', 'valeur=motPasse', document.getElementById('confirmer'));
+		ajx2('prestataire', 'get', 'valeur=TEL', document.getElementById('telephone'));
+	}
+</script>
+<title>Untitled Document</title>
+</head>
+
+<body onload="charge()">
+<form id="form1" name="form1" method="post" ><table width="0" border="0" cellspacing="2" cellpadding="2" align="center">
+<tr>
+    <td colspan="3" align="center">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right">Nom: </td>
+    <td align="left">
+      <input type="text" name="nom" id="nom" maxlength="50" />
+      *
+    </td>
+    <td align="left">&nbsp;</td>
+  </tr>
+   <tr>
+    <td align="right">Prénom: </td>
+    <td align="left"><input type="text" name="prenom" id="prenom" maxlength="50" />
+    *</td>
+    <td align="left">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right">E-Mail: </td>
+    <td align="left"><input type="text" name="email" id="email" maxlength="50" />
+    *</td>
+    <td align="left">&nbsp;</td>
+  </tr>
+   <tr>
+    <td align="right">Mot de Passe: </td>
+    <td align="left"><input type="password" name="motDePasse" id="motDePasse" maxlength="20" />
+    *</td>
+    <td align="left">&nbsp;</td>
+  </tr>
+   <tr>
+    <td align="right">Confirmer: </td>
+    <td align="left"><input type="password" name="confirmer" id="confirmer" maxlength="20" />
+    *</td>
+    <td align="left">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right">Téléphone: </td>
+    <td align="left"><input type="text" name="telephone" id="telephone" maxlength="20" />
+    *</td>
+    <td align="left">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right">Quartier:</td>
+    <td align="left">
+      <select name="quartier" id="quartier">
+      <option value=""></option>
+      <option value="Deido">Deido</option>
+      <option value="Akwa">Akwa</option>
+      <option value="Bonandjo">Bonandjo</option>
+      <option value="Bonapriso">Bonapriso</option>
+      <option value="Bonamoussadi">Bonamoussadi</option>
+      <option value="Makepe">Maképé</option>
+      </select>
+      *</td>
+    <td align="left">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right">&nbsp;</td>
+    <td align="right"><input value="Valider" type="button" onclick="ajx('client','add', 'nom='+document.getElementById('nom').value+'&prenom='+document.getElementById('prenom').value+'&email='+document.getElementById('email').value+'&motDePasse='+document.getElementById('motDePasse').value+'&confirmer='+document.getElementById('confirmer').value+'&telephone='+document.getElementById('telephone').value+'&quartier='+document.getElementById('quartier').value, 'rep',this)" /></td>
+    <td align="left"><div id="rep"></div></td>
+  </tr>
+</table></form>
+</body>
+</html>

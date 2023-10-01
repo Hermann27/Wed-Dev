@@ -1,0 +1,17 @@
+body, html {padding: 0px; margin: 0px;}
+#global {padding:0px; margin:0px; min-width:990px; }
+.ln {clear:both; padding:0; margin:0}
+.cl {float:left;}
+.clear {clear:both;}
+
+/* modele */
+#ln_1 {}
+#ln_0 {margin-bottom:15px;}
+#ln_2 {margin-top:15px;}
+#cl_0_0 {margin:0px; padding:0px; width:100%;float:none;}
+
+#cl_1_0,#cl_1_2 {margin:0px; width:18%;}
+#cl_1_1	{margin:0px 1%; width:59%; padding:0 0.5% 0 0.5%;}
+#cl_2_0 {width:100%;}
+.box {width:99%; overflow:hidden;}
+

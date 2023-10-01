@@ -1,0 +1,688 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link href="images/p.gif" rel="shortcut icon" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Lection_MissIUC</title>
+	<script language="javascript" src="jquery.js">
+	</script>
+  <script language="javascript"> 
+  //---------------testChamp------------------------------------------------
+  function testmail(){
+	var s1=document.getElementById("email").value;
+	var exp=new RegExp('^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$', 'i');
+	if(s1==""||isNaN(s1)==false||exp.test(s1)==false){
+			chaine="Incorrect ";
+			var  e=document.createTextNode(chaine);
+			var p=document.getElementById("vemail");
+			p.removeChild(p.childNodes[0]);
+			p.appendChild(e);
+			p.normalize();
+	}else{
+				 chaine="Correct ";
+				 var  e=document.createTextNode(chaine);
+				 var p=document.getElementById("vemail");
+			  	 p.removeChild(p.childNodes[0]);
+			  	 p.appendChild(e);
+			 	 p.normalize();
+				//document.getElementById('vemail').style.text-decoration="none";
+	 }
+}
+//----------------------------------------------------
+function controlerNom(){
+	var nom =window.document.getElementById('nom').value;
+	if((nom=="")||(isNaN(nom)==false)){
+		    chaine="Incorrect ";
+			var  e=document.createTextNode(chaine);
+			var p=document.getElementById("vnom");
+			p.removeChild(p.childNodes[0]);
+			p.appendChild(e);
+			p.normalize();
+		}else{
+		    chaine="Correct ";
+			var  e=document.createTextNode(chaine);
+			var p=document.getElementById("vnom");
+			   p.removeChild(p.childNodes[0]);
+			   p.appendChild(e);
+			  p.normalize();
+		
+		
+		}
+	}
+//------------------------------------------------------
+	function controlerPrenom(){
+	var prenom =window.document.getElementById('prenom').value;
+	if((prenom=="")||(isNaN(prenom)==false)){
+				chaine="Incorrect ";
+			var  e=document.createTextNode(chaine);
+			var p=document.getElementById("vprenom");
+			p.removeChild(p.childNodes[0]);
+			p.appendChild(e);
+			p.normalize();
+		}else{
+				 chaine="Correct ";
+				var  e=document.createTextNode(chaine);
+				var p=document.getElementById("vprenom");
+			   p.removeChild(p.childNodes[0]);
+			   p.appendChild(e);
+			  p.normalize();
+		
+		}
+	}
+//-------------------------------------------------------------
+	function controlerDateNaiss(){
+	var dateNaiss =window.getElementById('datenaiss').value;
+	if((datee=="")||(isNaN(datee)==false)){
+			window.alert("Donner Votre Date de Naissance SVP");
+			window.document.getElementById('datee').focus();
+		}
+	}
+//------------------------------------------------------------------
+	function controlerFiliere(){
+	var filiere =window.getElementById('filiere').value;
+	if((classe=="")||(isNaN(classe)==false)){
+			window.alert("Donner Votre Filiere SVP");
+			window.document.getElementById('filiere').focus();
+	}
+	}
+	//----------------------------------------------------------------
+	function controlerSexe(){
+	var Sexe =window.document.getElementById('sexe').value;
+	if((classe=="")||(isNaN(classe)==false)){
+			window.alert("Quelle est Votre Sexe SVP");
+			window.document.getElementById('sexe').focus();
+	}
+	}
+//------------------------------------------------------------------
+	function controlerPoids(){
+	var poid1 =window.document.getElementById('poidskg').value;
+	if((poid1=="")||(isNaN(poid1)==true)){
+			window.alert("Quelle set votre poids SVP");
+			window.document.getElementById('poidskg').focus();
+	}
+	}
+//--------------------------------------------------------------------
+	function controlerPoidTaille(){
+	var poid2 =window.document.getElementById('taille').value;
+	if((poid2=="")||(isNaN(poid2)==true)){
+			window.alert("Quelle set votre Taille SVP");
+			window.document.getElementById('taille').focus();
+	}
+	}
+//----------------------------------------------------------------------
+	function controlerPoidTrein(){
+	var poid3 =window.document.getElementById('Trein').value;
+	if((poid3=="")||(isNaN(poid3)==true)){
+			window.alert("Quelle set votre Tour de rein SVP");
+			window.document.getElementById('Trein').focus();
+	}
+	}
+//-----------------------------------------------------------------------
+	function controlerPcaracter(){
+	var Pcaractere =window.document.getElementById('Pcaractere').value;
+		if((Pcaractere=="")||(isNaN(Pcaractere)==true)){
+			window.alert("Quelle est votre Principal caractere SVP");
+			window.document.getElementById('Pcaractere').focus();
+	}
+	}
+//-------------------------------------------------------------------------
+	function controleVpassion(){
+	var Vpassion=window.document.getElementById('Vpassion').value;
+	if((Vpassion=="")||(isNaN(Vpassion)==true)){
+			window.alert("Quelle est votre passion SVP");
+			window.document.getElementById('Vpassion').focus();
+	}
+	}
+//-----------------------------------------------------------------------------
+  //----------------------ouvrir une nouvelle fenetre-----------------------
+  function ouvrir(){
+var v=document.getElementById('log').value;
+var v2=document.getElementById('Pass').value;
+/*var v3=document.getElementById('nom').value;
+var v4=document.getElementById('prenom').value;
+var v5=document.getElementById('datenaiss').value;
+var v6=document.getElementById('email').value;
+var v7=document.getElementById('filiere').value;
+var v8=document.getElementById('sexe').value;
+var v9=document.getElementById('poids').value;
+var v10=document.getElementById('taille').value;
+var v11=document.getElementById('Trein').value;
+var v12=document.getElementById('principe').value;
+var v12=document.getElementById('passion').value;*/
+var w=window.open("","","width=600,heigth=250");
+codeHtml="<html><head><link href='p.gif' rel='shortcut icon'/><title>InformationMissInscription</title></head><body background=images/d.jpg><b> Nom :<font color=#33ff00> "+v+"</br>Password :"+v2+"</font></b></br>je suis etudiant a l'istdi logbessou tel 99-76-99-82</body></html>";
+with (w.document){open();write(codeHtml);close();}
+//window.alert("FELICITATION VOTRE FORMULAIRE A ETE BIEN REMPLIR");
+}
+  //---------------------------------photo2-------------------------------
+  function readerHandle(e2) 
+	{ 
+		var store = document.getElementById('storage2');
+		store.innerHTML=e2.target.result; 
+	}
+	function readfil(e1)
+	{
+		var filename = e1.target.files[0]; 
+		var fr = new FileReader();
+    	fr.onload = readerHandle;  
+		fr.readAsText(filename); 
+	}
+
+	function imageHandle(e2) 
+	{ 
+		var store = document.getElementById('imgstore2');
+		alert(store);
+		store.innerHTML='<img width= 253 height=250 src="' + e2.target.result +'">';
+	}
+	function loadimag(e1)
+	{
+		var filename = e1.target.files[0]; 
+		
+		var fr = new FileReader();
+    	fr.onload = imageHandle;  
+    	fr.readAsDataURL(filename); 
+	}
+	window.onchange=function()
+	{
+		var x = document.getElementById("getimage2");
+		x.addEventListener('change', readfil, false);
+		var y = document.getElementById("getimage2");
+		y.addEventListener('change', loadimag, false);
+	} 
+  //-----------------------------------------------------------------------
+	function readerHandler(e2) 
+	{ 
+		var store = document.getElementById('storage');
+		store.innerHTML=e2.target.result; 
+	}
+	function readfile(e1)
+	{
+		var filename = e1.target.files[0]; 
+		var fr = new FileReader();
+    	fr.onload = readerHandler;  
+		fr.readAsText(filename); 
+	}
+
+	function imageHandler(e2) 
+	{ 
+		var store = document.getElementById('imgstore');
+		alert(store);
+		store.innerHTML='<img width= 253 height=250 src="' + e2.target.result +'">';
+	}
+	function loadimage(e1)
+	{
+		var filename = e1.target.files[0]; 
+		var fr = new FileReader();
+    	fr.onload = imageHandler;  
+    	fr.readAsDataURL(filename); 
+	}
+	window.onload=function()
+	{
+		var x = document.getElementById("getimage");
+		x.addEventListener('change', readfile, false);
+		var y = document.getElementById("getimage");
+		y.addEventListener('change', loadimage, false);
+	}
+ </script> 
+<SCRIPT language="javascript">     
+	
+	
+			var tabb=new Array("images/1.JPG ","images/2.JPG ","images/3.JPG"," images/4.JPG","images/5.JPG","images/6.JPG","images/7.JPG","images/8.JPG","images/9.JPG","images/10.JPG","images/15.JPG","images/16.JPG","images/17.JPG","images/18.JPG","images/19.JPG");
+			var indiceb=0;
+			setInterval("if (++indiceb == tabb.length) indiceb=0;"+"document.images['periodique'].src=tabb[indiceb];", 1500);
+			
+			var tab=new Array("img/1.JPG ","img/2.JPG ","img/3.JPG"," img/4.JPG","img/5.JPG","img/6.JPG","img/7.JPG","img/8.JPG","img/9.JPG");
+			var indice=0;
+			setInterval("if (++indice == tab.length) indice=0;"+"document.images['periodique1'].src=tab[indice];", 5000);
+			
+			/*var tab=new Array("images/a.JPG ","images/b.JPG ","images/c.JPG"," images/d.JPG","images/e.JPG","images/f.JPG","images/g.JPG","images/h.JPG","images/i.JPG","images/k.JPG","images/l.JPG","images/m.JPG","images/n.JPG","images/o.JPG","images/p.JPG","images/q.JPG","images/r.JPG","images/w.JPG","images/z.JPG");
+			var indice=0;
+			setInterval("if (++indice == tab.length) indice=0;"+"document.images['periodique1'].src=tab[indice];", 1500);*/
+			
+ </SCRIPT>
+
+<style>
+div.menu{
+	text-align: left;
+	font-size: 11;
+	font-family: Arial;
+	z-index: 100;
+	position: relative;
+	margin: -8 0 0 -8;
+	width: 101%;
+	padding: 0 0 0 0;
+	background: black;
+	line-height: 100%;
+	border-radius:20px;
+	text-align :center;
+	box-shadow: 0 1px 3px red;
+}
+
+#menu {
+	margin: 0;
+	padding: 4px 0 0 0;
+	
+}
+
+#menu li {
+	margin: 0 5px;
+	padding: 0 0 8px;
+	float: left;
+	position: relative;
+	list-style: none;
+}
+
+#menu a {
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: none;
+	display: block;
+	padding:  8px 20px;
+	margin: 0;
+}
+#menu a:hover {
+	background: #000;
+	color: #fff;
+}
+
+#menu .current a, #menu li:hover  a {
+	background: gray;
+}
+ 
+#menu ul li:hover a, #menu li:hover li a {
+	background: none;
+	border-color:#DDDDDD;
+	border-width:1px;
+	border-bottom-style: solid;
+}
+#menu ul a:hover {
+	background: gray !important;
+	color: #fff !important;
+	text-shadow: none;
+}
+
+#menu li:hover > ul {
+	display: block;
+}
+
+#menu ul {
+	display: none;
+	margin: 0;
+	padding: 0;
+	width: 185px;
+	position: absolute;
+	top: 35px;
+	left: 0;
+	background: white;
+	border: solid 1px #b4b4b4;
+	-moz-box-shadow: 1px 1px 12px #555;  
+	-webkit-box-shadow: 1px 1px 12px #555;
+	box-shadow: 1px 1px 12px #555;
+}
+#menu ul li {
+	float: none;
+	margin: 0;
+	padding: 0;
+}
+
+#menu ul a {
+	font-weight: normal;
+	color: black;
+	text-shadow: none;
+}
+
+#menu ul ul {
+	left: 181px;
+	top: -3px;
+}
+
+#menu:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+#bor{
+	border-radius:13px;
+	text-align :center;
+	box-shadow:6px 6px 6px red;
+}
+#banner{
+	width :100%;
+	border-radius:20px;
+	height:200px;
+	background-image:url(images/b.jpg);
+	box-shadow:6px 6px 6px red;
+}
+
+#conteneur{
+	display:block;
+	border-radius:20px;
+	position:relative;
+	width :100%;
+	height:660px; 
+	background-image:url(images/d.jpg);
+	box-shadow:6px 6px 6px red;
+}
+
+#droite{
+float:left;
+width :150px;
+height:150px;
+<!--background-color:black;--> 
+}
+#vem1il{text-decoration:blink;}
+#4imgstore{width:2px; height:2px;}
+#gauche{
+float:right;
+width :200px;
+height:150px;
+<!--background-color:green;--> 
+}
+
+#search{
+text-align :center;
+font-size:18px;
+box-shadow:6px 6px 6px red;
+}
+
+#rong{border-radius:20px;
+}
+#imgstore{ border-radius:30%;}
+#imgstore2{border-radius:20$;
+}
+#pied{
+	clear:left;
+	width :100%;
+	height:110px;
+	box-shadow:6px 6px 6px red;
+	border-radius:20px;
+	background-color:black;
+}
+#fil{
+box-shadow:6px 6px 6px red;
+border-radius:20px;
+height:250% ;width:150%;
+}
+#rt{
+box-shadow:6px 6px 6px red;
+border-radius:20px;
+height:380px; ;width:170px;
+}
+</style>
+</head>
+
+<body>
+<div id="banner">
+<center><input type="text" size="50" id="search" placeholder="Search" />
+<input type="submit" value="GO" size="50"/>
+</center>		
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<center><IMG id="rong" NAME="periodique" SRC="1.JPG" height="250px" width="950px">
+	</center>
+</div>
+<div class="menu">
+		<ul id="menu">
+				<li><a href="#">Accueil</a>
+				<ul>
+					<li><a href="#">ISTDI</a></li>
+					<li><a href="#">3IAC</a></li>
+					<li><a href="#">3Il</a></li>		
+				</ul>
+			</li>
+			<li><a href="#">Forum</a> 
+				<ul>
+					<li><a >Echange</a></li>
+					<li><a >Discution</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Astuces</a>
+				<ul>
+					<li><a >Rang Miss</a></li>
+					<li><a >Rang Dofine</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Actualités</a>
+				<ul>
+					<li><a >Information</a></li>
+					<li><a >Participer</a></li>
+				</ul>
+			</li>
+			<li><a href="#">Selection des Miss</a>
+				<ul>
+					<li><a >Categorie (I)</a></li>
+					<li><a >Categorie (II)</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+<div id="conteneur">
+<div id="gauche">
+	<fieldset id="rt"  ><legend ><font color="#FF0000">IMAGES_MISS</font></legend>
+	<IMG  id="rong" NAME="periodique11" SRC="img/1.JPG" height="360px" width="170px"/>
+	</fieldset>
+</div>
+
+<div id="droite">
+<center>
+<fieldset id="fil" ><legend ><font color="#FF0000">AUTHENTICATION</font></legend>
+<form name="f">
+<label><font color="#FF0000">Login</font>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="Login" id="log" placeholder="Login" /></br>
+</label>
+</br>
+<label>
+<font color="#FF0000">Password</font>:
+<input type="text" id="Pass" placeholder="saisir Password">
+</label>
+</br></br>
+<input type="button"  value="connect" onClick="goto();"/>
+<input type="button" name="bouton" value="Disconnect"/></br>
+<input type="checkbox" ><font color="#FF0000"><u>SaveInfos</u></font></input></br>
+<a href="test_formulaire_inscription.html" target="_blank"><font color="#FF0000">creer compte</font></a>
+</form>
+</fieldset><h5><center><font color="red">TOP MODEL MISS-MASTER IUC 2012</font></center></h5>
+<IMG  id="rong" NAME="periodique1" SRC="img/1.JPG" height="350" width="250"/>
+<!--<img src="img/1.jpg" width="250" height="350"/>-->
+</center>
+</div>
+<table align = "center" bgcolor="#9999FF" id="bor">
+<tr>
+    <td height = 100 id="anil" align = "center">
+        <font color = "white">
+        <font size = 4><font style = "Castellar"><h2>INSCRIPTION A L'ELECTION MISS-MASTER-ISTDI-2012 </h2></font>
+        </font>
+        </font>
+    </td>
+</tr>
+<tr>
+<td><table align = "center">
+<tr>
+<td align = "center" colspan = 2>
+<table>
+<tr>
+<td width="134">
+<font size = 4>
+<font color = "white"> Nom </font></font></td>
+<td colspan = 5 >
+<input type = "text"  id="nom" size = 65 align = "righ" onBlur="controlerNom(this.form);"/>&nbsp;&nbsp;<label id="vnom" style="color:#FF0066;text-decoration:blink;"><font color="red"></font></label>
+</td>
+</tr>
+<tr><td><font size = 4><font color = "white">Pr&eacute;nom</font></font></td>
+<td colspan = 5><input type = "text" id="prenom" size = 65 onBlur="controlerPrenom();"/>&nbsp;&nbsp;<label id="vprenom"  style="color:#FF0066;text-decoration:blink;"><font color="red"></font></label></td></tr>
+<tr><td><font size = 4><font color = "white"> Email </font></td>
+<td colspan = 5>
+<input type = "text" id = "email" size = 65 onBlur = "testmail();">
+&nbsp;<label id="vemail" style="color:#FF0066;text-decoration:blink;"><font color="red"></font></label>
+</td>
+</tr>
+<tr>
+<td><font size = 4><font color = "white"> Date de naissance </font>
+</font></td>
+<td width="251">
+<!--Jour de naissance-->
+<select name = "jour" size = 1 id="datenaiss">
+<option> 1 </option>
+<option> 2 </option>
+<option> 3 </option>
+<option> 4 </option>
+<option> 5 </option>
+<option> 6 </option>
+<option> 7 </option>
+<option> 8 </option>
+<option> 9 </option>
+<option> 10 </option>
+<option> 11 </option>
+<option> 12 </option>
+<option> 13 </option>
+<option> 14 </option>
+<option> 15 </option>
+<option> 16 </option>
+<option> 17 </option>
+<option> 18 </option>
+<option> 19 </option>
+<option> 20 </option>
+<option> 21 </option>
+<option> 22 </option>
+<option> 23 </option>
+<option> 24 </option>
+<option> 25 </option>
+<option> 26 </option>
+<option> 27 </option>
+<option> 28 </option>
+<option> 29 </option>
+<option> 30 </option>
+<option> 31 </option>
+
+<!--Mois de naissance-->
+</select><select name = "mois" size = 1>
+<option> Janvier </option>
+<option> Février </option>
+<option> Mars </option>
+<option> Avril </option>
+<option> Mai </option>
+<option> Juin </option>
+<option> Juillet </option>
+<option> Août </option>
+<option> Septembre </option>
+<option> Octobre </option>
+<option> Novembre </option>
+<option> Décembre </option>
+</select>
+&nbsp;&nbsp;&nbsp;
+
+<!--Annee de naissance-->
+<select name = "année" size = 1 width = 10 id="dateNaiss" onBlur="controlerDateNaiss();">
+<option> 1985 </option>
+<option> 1986 </option>
+<option> 1987 </option>
+<option> 1988 </option>
+<option> 1989 </option>
+<option> 1990 </option>
+<option> 1991 </option>
+<option> 1992 </option>
+<option> 1993 </option>
+<option> 1994 </option>
+<option> 1995 </option>
+<option> 1996 </option>
+<option> 1997 </option>
+<option> 1998 </option>
+<option> 1999 </option>
+<option> 2000 </option>
+</select></td>
+</tr>
+<tr><td><font size = 4><font color = "white">Fili&egrave;re:</font></font>
+</td>
+<td>
+<select name = "filière" size = 1 id="filiere" onBlur="controlerFiliere();">
+<option> Classe Preparatoire <option>
+<option> CS2I <option>
+<option> 3IL <option>
+<option> TIC<option>
+<option> BTS <option>
+</select></td>
+<td width="261">
+<font size = 4>
+<font color = "white"> Sexe&nbsp;</font></font>
+<select name = "sexe" id="sexe" onBlur="controlerSexe();">
+<option > Homme </option>
+<option> Femme </option>
+</select></td>
+</tr>
+<tr>
+<td>
+<font size = 4><font color = "white"> Poids </font></td>
+<td>
+<input type = "text" name = "poids" id="poidskg" size = 5 onBlur = "controlerPoids();"> &nbsp;
+<font size = 3>
+<font color = "white"> Kg </font> &nbsp; </font>
+<font color = "red"><font size = 4><span id = "rpoid">
+</span>
+</font>&nbsp;&nbsp;&nbsp;<font size = 4><font color = "white"> Taille </font></font> &nbsp;
+ <input type = "text" name = "taille" id="taille" size = 5 onBlur = "controlerPoidTaille();"> &nbsp; 
+ <font size = 3>
+ <font color = "white"> m </font> </font> &nbsp; <font color = "red">
+ <font size = 4><span id = "rtail">
+ </span> </font>
+ </font> </td>
+<td><font size = 4><font color = "white"> &nbsp;&nbsp;&nbsp; Tour de Rein: &nbsp; </font>
+  <input type = "text" name = "rein" id="Trein" size = 5 onblur = "controlerPoidTrein();" />  &nbsp; 
+<font size = 3><font color = "white"> cm </font></font> &nbsp; <font color = "red"><font size = 4>
+<span id = "rtour"></span></font></font></td>	
+</tr>
+<tr><td><font color = "white">Principal Caract&egrave;re</font>
+<td colspan = 5>
+<input type = "text" name = "pseudo" id="Pcaractere" size = 65 onBlur = "controlerPcaracter();">
+<font size = 4><font color = "red">
+<span id = "Edpseudo"></span>
+</font></font></td></tr>
+<tr>
+<td colspan = 3 align = "left"><font size = 4><font color = "red">
+<font size = 4><font color = "white">Votre passion </font></font> &nbsp; <font color = "red"><font size = "4"><span id = "rpassion"> 
+</span></font></font> <font size = 4><span id = "Edcaract"></span>
+</font></font> &nbsp; &nbsp; &nbsp;
+<input type = "text" name = "pseudo" id="Vpassion" placeholder="votre passion Exple le sport"size = 65 onBlur = "controleVpassion();"></td>
+<td colspan = 2 align = "left">&nbsp;</td>
+</tr>
+<td colspan = 2 align = "left">
+<table border="2" width="250" height="250" id="rong">
+<tr>
+<td width="253" height="250" id="rong" ><input type="image"  id="imgstore" value=""/></td>
+</tr>
+</table></td>
+<td colspan = 2  align = "left">
+<table border="2" width="250" height="250" id="rong">
+<tr>
+<td width="253" height="250"id="rong" ><input type="image" id="imgstore2"  value=""/></td>
+</tr>
+</table></td>
+</tr>
+</table>
+</td>
+</tr>
+
+<tr>
+<td align = "center"><font size = 4><b>
+<font color = "white"> Photo 1:&nbsp; </b></font>
+</font><input type = "file" id="getimage" name = "fp1" > &nbsp; <font size = 4>
+<font color = "red"><font size = 4><span id = "Edphoto1"></span></font></font></td>
+<td align = "center"><b><font color = "white"> Photo 2:&nbsp; </b></font>
+</font><input type = "file" id="getimage2" name = "fp2">&nbsp;<font color = "red">
+<font size = 4><span id = "Edphoto2"></span></font></font>
+</td>
+</tr>
+<tr><td align = "center" colspan = 2><input type = "button" value = "Envoyer" onClick="ouvrir();"/></td></tr>
+</table>
+</td>
+</tr>
+</table>
+</div>
+</body>
+<div id="pied">
+<center><h1><font color="white"><marquee behavior="alternate">
+<blink>DJOUMDJEU POUGOUE ETUDIANT A L'IUC FILIERE TIC (PA_2)</blink></marquee>
+</font></h1></center>
+</div>
+</body>
+</html>

@@ -1,0 +1,225 @@
+﻿
+<html>
+<head>
+
+<script language="javascript">
+function verification(){
+var login =document.getElementById('log').value;
+var pass =document.getElementById('Pass').value;
+if(login=="" && pass==""){
+	alert("Veillez vous authentifier avant de commence toute transaction");
+}else{alert("Veillez vous authentifier avant de commence toute transaction");}
+}
+</script>
+<link href="images/p.gif" rel="shortcut icon" />
+<script language="javascript"  src="modifier.js"></script>
+<script language="javascript"  src="modifier2.js"></script>
+<script language="javascript"  src="testajax.js"></script>
+<script language="javascript" src="jquery.js">
+</script>
+<title>BIBLIOTHEQUE DES LIVRES</title>
+<link rel="stylesheet" href="cssP.css" type="text/css">
+<script language="javascript">
+function Recherche(){
+var chaine='<h1><center>RECHERCHE D\'UN MEDICAMENT</h1></center>' +
+'<center><form action="page.php" method="post" name="form">' +
+'<table border="0"><tr><th>LOCALISATION    </th>' +
+'<td><select name="typeRech"  style="width:250px">'+
+'<option value="partout" selected="selected">------------ Quartier ------------</option>'+
+'<option title="2485" value="Akwa">Akwa</option>'+
+'<option title="15" value="Akwa-Nord">Akwa-Nord</option>'+
+'<option title="58" value="Bclesioeacute;panda">Bépanda</option>'+
+'<option title="334" value="Bali">Bali</option>'+
+'<option title="195" value="Bassa">Bassa</option>'+
+'<option title="10" value="Bedi">Bedi</option>'+
+'<option title="4" value="Bessenguclesioegrave;">Bessenguè</option>'+
+'<option title="236" value="Bonabclesioeacute;ri">Bonabéri</option>'+
+'<option title="20" value="Bonadibong">Bonadibong</option>'+
+'<option title="2" value="Bonaloka">Bonaloka</option>'+
+'<option title="132" value="Bonamoussadi">Bonamoussadi</option>'+
+'<option title="619" value="Bonanjo">Bonanjo</option>'+
+'<option title="486" value="Bonapriso">Bonapriso</option>'+
+'<option title="31" value="Citclesioeacute; Cicam">Cité Cicam</option>'+
+'<option title="14" value="Citclesioeacute; des Palmiers">Cité des Palmiers</option>'+
+'<option title="429" value="Dclesioeacute;ido">Déido</option>'+
+'<option title="2" value="Dakar">Dakar</option>'+
+'<option title="1" value="Kotto">Kotto</option>'+
+'<option title="6" value="Koumassi">Koumassi</option>'+
+'<option title="26" value="Logbaba">Logbaba</option>'+
+'<option title="2" value="Logbessou">Logbessou</option>'+
+'<option title="1" value="Logpom">Logpom</option>'+
+'<option title="15" value="Madagascar">Madagascar</option>'+
+'<option title="42" value="Makclesioegrave;pclesioegrave;">Makèpè</option>'+
+'<option title="18" value="Mboppi">Mboppi</option>'+
+'<option title="8" value="Ndogbati">Ndogbati</option>'+
+'<option title="46" value="Ndogbong">Ndogbong</option>'+
+'<option title="5" value="Ndogpassi">Ndogpassi</option>'+
+'<option title="2" value="Ndogsimbi">Ndogsimbi</option>'+
+'<option title="38" value="Ndokoti">Ndokoti</option>'+
+'<option title="94" value="New-Bell">New-Bell</option>'+
+'<option title="6" value="Ngodi">Ngodi</option>'+
+'<option title="7" value="Nyalla">Nyalla</option>'+
+'<option title="2" value="Nylon">Nylon</option>'+
+'<option title="1" value="Pk10">Pk10</option>'+
+'<option title="2" value="PK11">PK11</option>'+
+'<option title="5" value="PK8">PK8</option>'+
+'<option title="1" value="PK9">PK9</option>'+
+'<option title="4" value="Saint-Michel">Saint-Michel</option>'+
+'<option title="4" value="Saint-Thomas">Saint-Thomas</option>'+
+'<option title="46" value="Village">Village</option>'+
+'<option title="11" value="Yassa">Yassa</option>'+
+'<option title="3" value="Youpwe">Youpwe</option>'+
+'</SELECT></td></tr>'+
+'<tr><th>VILLE  </th>' +
+'<td><select name="typeVille"  style="width:100px">'+
+	'<option value="ville">Ville</option>'+
+	'<option value="titre">Douala</option>'+
+	'<option value="nom">Yaounde</option>'+
+'</SELECT></td></tr>'+
+'<tr><th>Nom du Medicament a recherche </th>'+
+'<td><input name="termeRech" type="text"></td></tr>'+
+'<tr><th colspan="2"><input type="submit" value="Rechercher" onClick="mafonctionAjax();"></th></tr></table></form></center>';
+
+
+document.getElementById("form").innerHTML=chaine;
+}
+
+function Recherche2(){
+var chaine='<h1><center>RECHERCHE D\'UN LIVRE</h1></center>' +
+'<center><form action="page.php" method="post" name="form">' +
+'Choisir le champs de recherche:</br>' +
+'<select name="typeRech"  style="width:100px">'+
+	'<option value="auteur">auteur</option>'+
+	'<option value="titre">titre</option>'+
+	'<option value="isbn">ISBN</option>'+
+'</SELECT><br/>Entrer le critere de recherche : <br/>'+
+'<input name="termeRech" type="text">'+
+'<br/><input type="submit" value="Rechercher" onClick="mafonctionAjax3();"></form></center>';
+
+
+document.getElementById("form").innerHTML=chaine;
+}
+function init(){
+
+document.getElementById("form").innerHTML='<h1><center>PRESENTATION DES PHARMACIES DE GARDE</center></h1>';
+}
+
+function ajouter(){
+	
+	valeur='<center><h1>AJOUT D\'UN NOUVEAU MEDICAMENT</h1><br/><br/><br/>' + '<form action="insert_livre.php" method="post"><table border="0">' +
+        '<tr><td>NOM</td><td><input type="text" id="ref" maxlength="13" size="13"><br/></td></tr>' + 
+	'<tr><td>ISBN</td><td><input type="text" id="is" maxlength="13" size="13"><br/></td>' +
+	'</tr><tr><td>TYPE</td><td><input type="text" id="au" maxlength="30" size="30"><br/></td>' +
+	'</tr><tr><td>NOTISSER</td><td><input type="text" id="ti" maxlength="60" size="30"><br/></td>' +
+	'<tr><td>Prix Fcfa</td><td><input type="text" id="pri" maxlength="7" size="7"><br/></td>' +
+	'</tr><tr><td colspan="2"><input type="button" value="Inserer" onClick="ajout();"></td></tr>' +
+   '</table></form></center>';
+
+document.getElementById("form").innerHTML=valeur;
+}
+
+</script>
+
+<SCRIPT language="javascript">     
+			var tabb=new Array("images/1.JPG ","images/2.JPG ","images/3.JPG"," images/4.JPG","images/5.JPG","images/6.JPG","images/7.JPG","images/8.JPG","images/9.JPG");
+			var indiceb=0;
+			setInterval("if (++indiceb == tabb.length) indiceb=0;"+"document.images['periodique'].src=tabb[indiceb];", 1500);			
+ </SCRIPT>
+</head>
+
+<body onLoad="mafonctionAjax2();">
+ 
+
+<div id="entete">
+  &nbsp;&nbsp;&nbsp;<center>
+  <div id="logo"> <img src="images/croix.gif" width="100" height="100" /></div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img id="rong" name="periodique" src="images/1.JPG" height="155" width="907"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<div id="logo1"><img src="images/croix.gif" width="100" height="100" /></br>
+  <center> <table border="0"><tr><th><font color="#00CCFF">Date du jour :</font></th><th>    <font color="#00CCFF"><?php echo date("d-m-y");?></font></th></tr></table></center></div>
+  
+</center>
+</div>
+<div class="menu1">
+		<ul id="menu1">
+				<li><a href="#" onClick="init();">ACCUEIL</a>			</li>
+			<li><a href="#" onClick="boutique();">PHARMACIES</a> 
+                    <ul>
+                        <li><a href="#" onClick="boutique();">LISTE </a> </li>
+                        <li><a href="#" onClick="boutique();">RECHERCHER</a> </li>
+                        <li><a href="#" onClick="boutique();">AJOUTER</a> </li>
+                        <li><a href="#" onClick="boutique();">MODIFIER</a> </li>
+                        <li><a href="#" onClick="boutique();">SUPPRIMER</a> </li>
+                     </ul>		
+			</li>
+			<li><a href="#">MEDICAMENTS</a>
+				<ul>
+                        <li><a href="#" onClick="boutique();">LISTE </a> </li>
+                        <li><a href="#" onClick="Recherche();">RECHERCHER</a> </li>
+                        <li><a href="#" onClick="ajouter();">AJOUTER</a> </li>
+                        <li><a href="#" onClick="boutique();">MODIFIER</a> </li>
+                        <li><a href="#" onClick="boutique();">SUPPRIMER</a> </li>
+                     </ul>	
+			</li>
+			<li><a href="#" onClick="travail1();">NOS SERVICES</a>			</li>
+			<li><a href="#">CONTACT</a>			</li>
+		</ul>
+	</div>
+    
+<div id="contenu">
+ <div id="droite">
+ <center>
+ <form>
+		<fieldset id="fil">
+        <legend>AUTHENTIFICATION</legend>
+	<p id="login">
+		<label for="username">
+			Identifiant<br>
+			<input name="username" id="username" alt="username" size="18" type="text">
+		</label>
+	</p>
+	<p id="password">
+		<label for="passwd">Mot de passe<br>
+			<input name="passwd" id="passwd"  size="18" alt="password" type="password">
+		</label>
+	</p>
+		<p id="Tremember">
+		<label for="remember">
+					<input name="remember" id="remember" value="yes" alt="Remember Me" type="checkbox">Se souvenir de moi	
+		</label>
+	</p>
+		<input name="Submit"  id="btnn"value="Connexion" type="submit"></br><a href="#">Créer un compte</a>
+		
+	</fieldset>
+</form>
+</center>
+</div>
+ <div id="gauche">
+ <center>
+ <form>
+		<fieldset id="filG">
+	<legend>SONDAGE_ONLINE</legend>
+<b>Trouvez-vous ce site exemple pertinent ?</b>
+<pre>
+</br>
+<input type="radio" id="r1">Tout à fait</input></br>
+<input type="radio" id="r2">Moyennement</input></br>
+ <input type="radio" id="r3">Pas du tout </input>
+</pre></br>
+ <input type="submit" id="vote" value="Vote"/>&nbsp;&nbsp;&nbsp;&nbsp;<a href="#">Resultat</a>
+ 	</fieldset>
+</form>
+</center>
+</div>
+
+<div id="form">
+                    
+                      <center>
+               <h1> PRESENTATATION DES PHARMACIES DE GARDE</h1>
+             </center>
+          
+ </div>
+ </div>
+</div>
+</div>
+<div id="pied">
+</div>
+</body>
+</html>

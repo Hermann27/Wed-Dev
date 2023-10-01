@@ -1,0 +1,51 @@
+<style>
+
+body { font-family: verdana, arial, helvetica, sans-serif;  font-size: 12px; color: #000000 }
+
+td { font-family: verdana, arial, helvetica, sans-serif;  font-size: 10px; color: #000000 }
+
+
+
+
+
+.header {color: #333333;  font-family: verdana, arial, helvetica, sans-serif;  font-size: 14px; text-decoration: none}
+
+
+
+
+
+
+
+
+a:link {color: #516D8D;  font-family: verdana, arial, helvetica, sans-serif; font-weight: normal; font-size: 10px; text-decoration: none}
+
+a:visited {color: #ffffff;  font-family: verdana, arial, helvetica, sans-serif; font-weight: normal; font-size: 10px; text-decoration: none} 
+
+a:active {color: #516D8D;  font-family: verdana, arial, helvetica, sans-serif; font-weight: normal; font-size: 10px; text-decoration: none} 
+
+a:hover {text-decoration: none;  font-family: verdana, arial, helvetica, sans-serif; font-weight: normal; font-size: 14px;color: #516D8D}
+
+
+
+
+
+
+
+a.menu:link {
+	color: #516D8D;
+	font-family: verdana, arial, helvetica, sans-serif;
+	font-weight: normal;
+	font-size: 12px;
+}
+
+a.menu:visited {color: #516D8D;  font-family: verdana, arial, helvetica, sans-serif; font-weight: normal; font-size: 11px; text-decoration: none} 
+
+a.menu:active {color: #516D8D;  font-family: verdana, arial, helvetica, sans-serif; font-weight: normal; font-size: 11px; text-decoration: none} 
+
+a.menu:hover {text-decoration: none;  font-family: verdana, arial, helvetica, sans-serif; font-weight: bold; font-size: 13px;color: #516D8D}
+
+
+
+
+
+</style>

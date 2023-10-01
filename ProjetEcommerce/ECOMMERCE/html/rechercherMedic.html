@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Pharmacies de garde</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="../css/coin-slider.css" />
+<link href="../images/ico.jpg" rel="shortcut icon" />
+<script type="text/javascript" src="../js/cufon-yui.js"></script>
+<script type="text/javascript" src="../js/cufon-aller.js"></script>
+<script type="text/javascript" src="../js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="../js/script.js"></script>
+<script type="text/javascript" src="../js/coin-slider.min.js"></script>
+</head>
+<body>
+<div class="main">
+  <div class="header">
+    <div class="header_resize">
+      <div class="logo">
+        <h1>PHARM<span>SEARCH  </span></h1>
+      </div>
+      <div class="menu_nav">
+        <ul>
+          <li><a href="../index.php"><span>Accueil</span></a></li>
+          <li><a href="#"><span>Pharmacies</span></a>
+              <ul>
+                  <li><a href="../php/listePharmacie.php">Liste des pharmacies</a></li>
+                  <li><a href="recherchePharmacie.html">Rechercher</a></li>
+              </ul>
+          </li>
+            <li  class="active"><a href="#"><span>Medicaments</span></a>
+               <ul><li><a href="../php/listeMedic.php">Liste</a></li>
+               <li><a href="rechercherMedic.html">Rechercher</a></li>
+               <li><a href="insertMedic.html">Ajouter</a></li></ul>
+          </li>
+       
+          <li><a href="#"><span>Contact</span></a></li>
+        </ul>
+      </div>
+      <div class="clr"></div>
+      <div class="slider">
+        <div id="coin-slider"> <a href="#"><img src="../images/slide1.jpg" width="935" height="307" alt="" /> </a> <a href="#"><img src="../images/slide2.jpg" width="935" height="307" alt="" /> </a> <a href="#"><img src="../images/slide3.jpg" width="935" height="307" alt="" /> </a> </div>
+        <div class="clr"></div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        <div class="article">
+          <h2>PRESENTATION DES MEDICAMENTS</h2>
+          <p class="infopost">Pr&eacute;sentation du site</p>
+          <div class="clr"></div> <center>
+                 <form action="../php/resultsMedic.php" method="post">
+   		    <p>&nbsp;</p>
+   		    <p>Choisir le champ de recherche:</p>
+   		    <p><br/>
+                <select name="typeRech">
+                  <option value="nom">Nom</option>
+                  <option value="forme">Localisation</option>
+                </select>
+</p>
+   		    <p><br/>
+            Entrer le crit&egrave;re&nbsp;ou&nbsp;de&nbsp;recherche:</p>
+   		    <p><br/>
+   		      <input name="termeRech" type="text"/>
+	        </p>
+   		    <p><br/>
+   		      <input type="submit" value="Rechercher">
+   		    </p>
+<p>&nbsp;</p>
+          </form></center>
+          <div class="clr"></div>
+        </div>
+      </div>
+      <div class="sidebar">
+        <div class="searchform">
+          <form id="formsearch" name="formsearch" method="post" action="#">
+            <span>
+            <input name="editbox_search" class="editbox_search" id="editbox_search" maxlength="80" value="rechercher une pharmacie" type="text" onclick="this.value=''"/>
+            </span>
+            <input name="button_search" src="../images/search.gif" class="button_search" type="image" />
+          </form>
+        </div>
+        <div class="clr"></div>
+        <div class="gadget">
+         <img src="../images/st_garde.gif" width="220" height="75" alt="" class="gal" />
+</div>
+      
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+      
+  <div class="footer">
+    <div class="footer_resize">
+      <p class="lf">Copyright &copy; TI-P. All Rights Reserved</p>
+      <p class="rf">By Group 4</p>
+      <div style="clear:both;"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

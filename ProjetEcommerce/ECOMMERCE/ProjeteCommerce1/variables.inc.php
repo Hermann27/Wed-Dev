@@ -1,0 +1,9 @@
+<?php 
+$bdserver="localhost";
+$bdlogin="root";
+$bdpwd="";
+$bd="pharmacie";
+$cdes="commander";
+$medicament="medicament";
+$url="http://localhost/ProjeteCommerce/index.php";
+?>

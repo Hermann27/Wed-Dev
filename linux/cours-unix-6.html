@@ -1,0 +1,275 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-15">
+
+
+ <meta name="GENERATOR" content="SGML-Tools 1.0.9">
+ <title>Cours utilisateur UNIX  : Commandes UNIX et redirection  </title>
+ <link 
+href="http://www.lmd.ens.fr/Ressources-Info/Unix-Doc/html/cours-unix-7.html"
+ rel="next">
+ <link 
+href="http://www.lmd.ens.fr/Ressources-Info/Unix-Doc/html/cours-unix-5.html"
+ rel="previous">
+ <link 
+href="http://www.lmd.ens.fr/Ressources-Info/Unix-Doc/html/cours-unix.html#toc6"
+ rel="contents">
+</head><body>
+<a 
+href="http://www.lmd.ens.fr/Ressources-Info/Unix-Doc/html/cours-unix-7.html">Next</a>
+<a 
+href="http://www.lmd.ens.fr/Ressources-Info/Unix-Doc/html/cours-unix-5.html">Previous</a>
+<a 
+href="http://www.lmd.ens.fr/Ressources-Info/Unix-Doc/html/cours-unix.html#toc6">Contents</a>
+<hr>
+<h2><a name="s6">6. Commandes UNIX et redirection  </a></h2>
+
+<h2><a name="ss6.1">6.1 Syntaxe d'une commande  </a>
+</h2>
+
+<p>La syntaxe standard d'une commande UNIX est la suivante :  
+</p><p>
+</p><pre>commande -options arg1 arg2 arg3  
+ 
+</pre>
+<p>Les options varient en fonction de la commande, le nombre des 
+arguments
+qui suivent dépend aussi de la commande, par exemple la commande :  
+</p><p>
+</p><pre>sort -r mon-fichier  
+ 
+</pre>
+<p><b>sort</b> (trier) permet de trier un fichier, l'option r (reverse),
+ permet de
+trier en sens inverse le fichier. L'argument unique de la commande est 
+le nom
+du fichier. Avec  
+</p><p>
+</p><pre>cp -R mon-repertoire nouveau-repertoire  
+ 
+</pre>
+<p>La commande <b>cp</b> (copy) copie un répertoire (option R) vers un 
+autre répertoire,
+on a ici deux arguments.  
+</p><p>On peut coupler deux options : <b>ps -ef</b>, avec cette commande
+ on a l'option
+<b>e</b> et <b>f</b> (voir plus loin la signification de la commande).  
+</p><p>A noter que pour introduire une option on met -, ce n'est pas 
+nécessaire
+pour certaines commandes (tar par exemple).  
+</p><h2><a name="ss6.2">6.2 Les entrées sorties  </a>
+</h2>
+
+<p>Il y a trois sortes d'entrées sorties ou flux de données : le premier
+ est
+l'entrée standard, c'est à dire ce que vous saisissez au clavier, le 
+deuxième
+est la sortie standard, c'est à dire l'écran, plus précisément le shell,
+ et
+le troisième est la sortie standard des messages d'erreurs consécutifs à
+ une
+commande, qui est généralement l'écran.  
+</p><p>Chacun de ces flux de données est identifié par un numéro 
+descripteur,
+0 pour l'entrée standard, 1 pour la sortie standard et 2 pour la sortie 
+standard
+des messages d'erreur.  
+</p><h2><a name="ss6.3">6.3 Redirection des entrées sorties  </a>
+</h2>
+
+<p>Quand vous lancez une commande dans un shell, il peut y avoir du 
+texte
+qui s'affiche suite à l'exécution de la commande, ce texte par défaut, 
+s'affiche
+dans le shell. On dit que le shell (ou terminal) est la sortie standard,
+ c'est
+là où va s'afficher tous les commentaires d'une commande.  
+</p><p>Vous pouvez changer ce comportement, en tapant :  
+</p><p>
+</p><pre>ma-commande &gt; mon-fichier  
+ 
+</pre>
+<p>Tous les commentaires, les sorties, de la commande, ne vont pas 
+apparaître
+au shell mais être écrits dans un fichier. En d'autres termes, la 
+standard
+standard est redirigé vers un fichier. Cela peut être utile, si vous 
+avez une
+commande qui génère énormément de commentaire, et que vous voulez les 
+récupérer,
+pour les exploiter par la suite, à la terminaison de la commande.  
+</p><p>La redirection <b>&gt;</b> a pour effet de créer le fichier<b> 
+mon-fichier</b>, si ce
+fichier existait déjà, il est tout simplement écrasé (supprimé et 
+recréé),
+ce qui peut être gênant si vous ne voulez pas perdre ce qu'il contient, 
+vous
+disposez donc de la redirection &gt;&gt;. En tapant :  
+</p><p>
+</p><pre>ma-commande &gt;&gt; mon-fichier  
+ 
+</pre>
+<p>Le fichier <b>mon-fichier </b>n'est pas écrasé, mais la sortie 
+standard (les commentaires
+de la commande) sont ajoutés en fin de fichier, à la suite du texte qui 
+était
+déjà dans le fichier.  
+</p><p>Les redirections marchent dans les deux sens, par exemple en 
+tapant la
+commande suivante :  
+</p><p>
+</p><pre>sort &lt; mon-fichier  
+ 
+</pre>
+<p>Vous envoyez le contenu du fichier<b> mon-fichier </b>vers la 
+commande <b>sort</b> (trie),
+celle-ci va donc trier le contenu du fichier, par défaut le résultat 
+sort sur
+la sortie standard, c'est à dire à l'écran, plus précisément sur le 
+shell.
+Avec :  
+</p><p>
+</p><pre>sort &lt; mon-fichier &gt; fichier-trie  
+ 
+</pre>
+<p>On a vu que<b> sort &lt; mon-fichier</b> avait pour effet de trier le
+ fichier
+<b>mon-fichier</b>, l'expression <b>&gt;fichier-trie</b> a pour effet 
+d'envoyer le résultat
+(le fichier trié) dans un fichier <b>fichier-trie</b>, le résultat 
+n'apparaît plus
+à l'écran, mais est sauvegardé dans un fichier.  
+</p><p>Avec la redirection <b>&lt;&lt;</b> la commande va lire les 
+caractères jusqu'à
+la rencontre d'une certaine chaîne de caractères. Exemple avec la 
+commande
+<b>cat</b> (catalogue, permet d'éditer le contenu d'un fichier).  
+</p><p>
+</p><pre>&gt;cat &lt;&lt; fin je tape du texte jusqu'à la chaîne de caractère fin &gt;  
+ 
+</pre>
+<p>En tapant la commande, vous revenez à la ligne, mais perdez le 
+prompt,
+<b>cat</b> va lire (et éditer) les caractères que vous saisissez jusqu'à
+ qu'il rencontre
+la chaîne fin, à ce moment là, le prompt apparaît à nouveau. Si vous 
+voulez
+créer un fichier avec un peu de texte à l'intérieur, vous ferez :  
+</p><p>
+</p><pre>&gt;cat &lt;&lt; fin &gt; mon-fichier je tape du texte qui sera sauvegardé dans mon-fichier, pour terminer le texte fin &gt;  
+ 
+</pre>
+<p>Le texte que vous venez de saisir, se trouve donc dans <b>mon-fichier</b>.
+  
+</p><p>Avec la commande :  
+</p><p>
+</p><pre>&gt;fichier-vide  
+ 
+</pre>
+<p>Vous créez un fichier vide <b>fichier-vide</b>.  
+</p><h2><a name="ss6.4">6.4 Redirection des erreurs  </a>
+</h2>
+
+<p>Par défaut les messages d'erreur s'affichent à l'écran (sortie 
+standard
+par défaut), vous pouvez modifier ce comportement. On rappelle que la 
+sortie
+d'erreur a pour code 2. Vous pouvez sauvegarder dans un fichier vos 
+messages
+d'erreur, pour analyse ultérieure, en tapant :  
+</p><p>
+</p><pre>cat mon-fichier 2&gt;fichier-erreur  
+ 
+</pre>
+<p>Si on rencontre une erreur pendant l'exécutionde la commande 
+d'édition
+<b>cat</b> de <b>mon-fichier </b>(absence du fichier par exemple), le 
+message d'erreur sera
+sauvegardé dans le fichier <b>fichier-erreur</b>.  
+</p><p>En tapant :  
+</p><p>
+</p><pre>sort mon-fichier &gt; fichier-trie  
+ 
+</pre>
+<p>Vous redirigez le résultat de la commande <b>sort mon-fichier</b> 
+vers le fichier<b>fichier-trie</b>, la sortie standard (descripteur 1) 
+n'est donc plus l'écran (plus
+précisément le shell ou terminal) mais le fichier<b> fichier-trie</b>.  
+</p><p>Par défaut les messages d'erreur s'affichent dans le shell, vous 
+pouvez
+faire en sorte qu'ils s'affichent dans le fichier<b> fichier-trie</b>, 
+en tapant :
+</p><p>
+</p><p>
+</p><pre>sort mon-fichier &gt; fichier-trie 2&gt;&amp;1  
+ 
+</pre>
+<p>Avec la syntaxe <b>&gt;&amp;</b> vous indiquez que les messages 
+d'erreurs seront
+redirigés vers la sortie standard qui est le fichier <b>fichier-trie</b>.
+  
+</p><h2><a name="ss6.5">6.5 Les pipes  </a>
+</h2>
+
+<p>Un pipe (en français tube de communication) permet de rediriger la 
+sortie
+d'une commande vers une autre. En d'autres termes, pour rediriger les 
+résultats
+(la sortie) d'une commande, on a vu qu'on pouvait taper :  
+</p><p>
+</p><pre>commande1 &gt; sortie1  
+ 
+</pre>
+<p>On redirige cette sortie vers une autre commande, ça devient donc une
+ entrée
+pour cette dernière commande, pour cela vous tapez :  
+</p><p>
+</p><pre>commande2 &lt; sortie1  
+ 
+</pre>
+<p>En fait la syntaxe <b>commande1|commande2</b> (<b>|</b> étant le 
+symbole de pipe) est
+totalement équivalente aux deux lignes de commandes précédentes.  
+</p><p>Exemple : <b>ls</b> permet la visualisation de fichiers, en 
+tapant <b>ls</b>, on obtient
+:  
+</p><p>
+</p><pre>fichier1 fichier2 totofichier  
+ 
+</pre>
+<p><b>grep</b> permet la recherche d'une chaîne de caractère dans une 
+liste donnée,
+en tapant <b>grep toto * </b>(<b>*</b> signifie tous les fichiers, <b>grep</b>
+ recherche la chaîne
+de caractère <b>toto</b> dans les noms de tous les fichiers), on obtient
+ :  
+</p><p>
+</p><pre>totofichier  
+ 
+</pre>
+<p>On a le même résultat avec le <b>|</b>, en tapant :  
+</p><p>
+</p><pre>ls | grep toto  
+ 
+</pre>
+<p>La première commande aura pour effet de lister le nom des fichiers se
+ trouvant
+à l'endroit où l'on a tapé la commande, la sortie standard (le résultat 
+de
+la commande) est donc une liste de nom, elle est redirigée vers la 
+commande
+<b>grep</b>, qui va y chercher une chaîne de caractère contenant <b>toto</b>.
+ Le résultat
+est donc aussi:  
+</p><p>
+</p><pre>totofichier  
+ 
+</pre>
+<hr>
+<a 
+href="http://www.lmd.ens.fr/Ressources-Info/Unix-Doc/html/cours-unix-7.html">Next</a>
+<a 
+href="http://www.lmd.ens.fr/Ressources-Info/Unix-Doc/html/cours-unix-5.html">Previous</a>
+<a 
+href="http://www.lmd.ens.fr/Ressources-Info/Unix-Doc/html/cours-unix.html#toc6">Contents</a>
+</body></html>

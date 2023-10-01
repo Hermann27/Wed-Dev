@@ -1,0 +1,1 @@
+document.write ('<A HREF="http://openadext.tf1.fr/RealMedia/ads/click_lx.ads/www.over-blog.com/masculin/hightech/marieinfo.over-blog.com/645148831/x16/default/empty.gif/77786a66656b754c326c6f4142337244" target="_blank"><IMG SRC="http://openadext.tf1.fr/RealMedia/ads/Creatives/default/empty.gif"  WIDTH=1 HEIGHT=1 ALT="" BORDER=0 BORDER="0"></A>');

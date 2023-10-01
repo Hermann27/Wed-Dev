@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Authentificate</title>
+<link rel="stylesheet" href="../css/style.css" />
+<script language="javascript" src="../js/js.js"></script>
+</head>
+
+<body>
+
+<form action="auth.php" method="post">
+    	<table>
+        	<tr>
+            	<td colspan="2"><div align="center" id="rep"></div></td>
+    			<td>
+            </tr>
+    		<tr>
+            	<td>Email :</td>
+    			<td><input type="text" id="email" name="email" /><td>
+            </tr>
+    		<tr>
+            	<td>Mot de passe :</td>
+    			<td><input type="password" id="motdepasse" name="motdepasse" /><td>
+            </tr>
+    		<tr>
+            	<td colspan="2" align="center"><input type="button" value="Entrer" onclick="ajx('securite','authentification', 'email='+document.getElementById('email').value+'&motdepasse='+document.getElementById('motdepasse').value, 'rep',this)"/>
+                </td>
+            </tr>
+    </table></form>
+    
+</body>
+</html>

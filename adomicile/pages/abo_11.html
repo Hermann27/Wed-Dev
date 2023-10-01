@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="../css/style.css" />
+<script language="javascript" src="../js/js.js"></script>
+<script language="javascript">			
+	
+	function calcul(){
+		var an = document.getElementById('annuel').innerHTML;
+		var index = document.getElementById('nbreAn').selectedIndex;
+		switch(index){			
+		case 0: 
+			document.getElementById('total').innerHTML = an * index;
+			document.getElementById('bordereau').value = ""; 
+			document.getElementById('bordereau').disabled = true; 
+			break;		
+		default: 
+			document.getElementById('total').innerHTML = an * index;
+			document.getElementById('bordereau').disabled = false; 
+			break;
+		}
+	}
+	
+	function debut(){
+		/*document.getElementById('nbreAn').selectedIndex = 0;
+		document.getElementById('bordereau').value = "";*/
+	}
+	
+</script>
+<title>ABONNEMENT</title>
+</head>
+
+<body onload=" ajx('client', 'lister', '', 'rep2', this); ajx('categorie', 'listerc', '', 'rep3', this); ">
+<form id="form1" name="form1" method="post" action="mabo_1.php" ><table width="0" border="0" cellspacing="2" cellpadding="2">
+<tr>
+    <td colspan="3" align="center">&nbsp;</td>
+  </tr>
+<tr>
+    <td align="right">Nombre d'Ann&eacute;es:</td>
+    <td align="left">
+      <select name="nbreAn" id="nbreAn" onchange="calcul()" >
+      <option value=""></option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      </select>
+      *</td>
+    <td align="left">&nbsp;</td>
+  </tr>
+ 
+   <tr>
+    <td align="right">Montant Annuel: </td>
+    <td align="left"><span id ="annuel" >20000</span> FCFA</td>
+    <td align="left">&nbsp;</td>
+  </tr>
+   <tr>
+    <td align="right">Montant Total: </td>
+    <td align="left"><span id ="total" >0</span> FCFA</td>
+    <td align="left">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right">Num&eacute;ro Bordereau du Transfert: </td>
+    <td align="left">
+      <input type="text" name="bordereau" id="bordereau" maxlength="20" disabled="disabled"/><input type="hidden" name="CODEABT" id="CODEABT" />
+      *
+    </td>
+    <td align="left">&nbsp;</td>
+  </tr>
+ 
+  <tr>
+    <td align="right">&nbsp;</td>
+    <td align="left"><input type="button" id = "ok" value = "valider" onclick="ajx('client','abonner', 'nbreAn='+document.getElementById('nbreAn').value+'&annuel='+document.getElementById('annuel').innerHTML+'&total='+document.getElementById('total').innerHTML+'&bordereau='+document.getElementById('bordereau').value, 'rep', this)" /></td>
+    <td align="left"><div id="rep"></div></td>
+  </tr>
+</table>
+
+<div id="rep2">
+
+</div>
+
+<div id="rep3">
+
+</div>
+</form>
+</body>
+</html>

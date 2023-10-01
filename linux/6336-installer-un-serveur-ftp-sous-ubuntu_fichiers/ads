@@ -1,0 +1,27 @@
+{ 
+ 
+var google_ads = new Array(); 
+var google_ad; 
+var google_radlinks = new Array(); 
+var google_radlink; 
+var google_info = new Object(); 
+google_ad = new Object(); 
+google_ad.n = 1; 
+google_ad.type = "text"; 
+google_ad.bidtype = "CPC"; 
+google_ad.targeting_type = "contextual"; 
+google_ad.url = "http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=BP_tBNNG_S7z8FdOU-Ab3sPjSB_7q7OsB1I7GgRLAjbcBgOIJEAEYASDJ960GOABQ7ani1QNgebIBF3d3dy5jb21tZW50Y2FtYXJjaGUubmV0yAEB2gFMaHR0cDovL3d3dy5jb21tZW50Y2FtYXJjaGUubmV0L2ZhcS82MzM2LWluc3RhbGxlci11bi1zZXJ2ZXVyLWZ0cC1zb3VzLXVidW50dagDAegD4AXoA7AC6AOvAugDBegDtwL1AwABEAT1AwAAABA&amp;num=1&amp;sig=AGiWqtzJQ7z2MmhFCiAOZvu6ms9DMUHDkA&amp;client=ca-pub-6969989765125400&amp;adurl=http://www.guichetweb.com"; 
+google_ad.visible_url = "www.guichetweb.com"; 
+google_ad.line1 = "H\x26#233;bergement : 35000 FCFA"; 
+google_ad.line2 = "Espace 5Go - 7Go / Email - 2 BD"; 
+google_ad.line3 = "Conception web - Streaming radio TV"; 
+google_ad.regionname = ""; 
+google_ads[0] = google_ad; 
+google_info.feedback_url = "http://www.google.com/url?ct\x3dabg\x26q\x3dhttps://www.google.com/adsense/support/bin/request.py%3Fcontact%3Dabg_afc%26url%3Dhttp://www.commentcamarche.net/faq/6336-installer-un-serveur-ftp-sous-ubuntu%26hl%3Dfr%26client%3Dca-pub-6969989765125400%26adU%3Dwww.guichetweb.com%26adT%3DH%25C3%25A9bergement%2B:%2B35000%2BFCFA%26gl%3DCM\x26usg\x3dAFQjCNETn8N6MS4CyC0G55oc-hJLTSMwzw"; 
+if (window.google_ad_request_done) { 
+google_ad_request_done(google_ads); 
+} 
+if (window.google_radlink_request_done) { 
+google_radlink_request_done(google_radlinks); 
+} 
+}

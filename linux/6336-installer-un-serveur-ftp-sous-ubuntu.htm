@@ -1,0 +1,1600 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html dir="ltr" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml" 
+lang="fr"><head>
+
+
+    <link rel="shortcut icon" 
+href="http://www.commentcamarche.net/favicon.ico?200809111205">
+    <title>Installer un serveur FTP sous Ubuntu</title>
+<meta http-equiv="Content-Language" content="fr"><meta name="keywords" 
+content="serveur ftp linux,serveur ftp ubuntu,server ftp linux,ubuntu 
+serveur ftp,serveur FTP sous linux,ftp ubuntu,ubuntu FTP server,crée 
+serveur FTP ubuntu,ubuntu server ftp,installer ftp ubuntu"><meta 
+name="description" content="Sommaire: 1. Installer le serveur FTP 2. 
+Configurer le serveur FTP 2.1 Interdire le FTP anonyme 2.2 Autoriser les
+ utilisateurs locaux à se connecter 2.3 Autoriser les utilisateurs à 
+uploader des fichiers 2.3 Choisir l'interface 3. (re)Démarrer le..."><meta
+ name="HandheldFriendly" content="True"><link rel="alternate" 
+media="handheld" href="http://m.commentcamarche.net/"><script src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/js.js" type="text/javascript"></script><link
+ href="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/css.css" 
+rel="stylesheet" type="text/css" media="screen"><link 
+href="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/cssmodule.css" 
+rel="stylesheet" type="text/css" media="screen"><link 
+href="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/cssmodule_002.css"
+ rel="stylesheet" type="text/css" media="print"><meta 
+http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<link rel="alternate" type="application/rss+xml" title="Actualité" 
+href="http://www.commentcamarche.net/rss/actualite.php3">
+<meta http-equiv="expires" content="0"><meta http-equiv="Pragma" 
+content="no-cache"></head><body id="" class="faq">
+    <div id="tt" style="display: none;">
+        <div id="tttop"></div><div id="ttcont"></div><div id="ttbot"></div>
+    </div>
+    <span class="tooltips" style="display: none;" id="ntt">
+        <span id="nttcont"></span>
+        <span class="arrowDown"></span>
+    </span>
+<div id="header">
+        <div id="top">
+        
+        <h1>
+            <a href="http://www.commentcamarche.net/" name="top" 
+title="Comment Ça Marche - CCM - Informatique"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/logo.png" 
+alt="Comment Ça Marche - CCM - Informatique"></a>
+        </h1>
+        <form action="/search/index" method="get" class="headerFooter">
+            <fieldset>
+                <legend>Recherche</legend>
+                <input id="searchform_input" name="q" class="search" 
+value="configuration ftp linux" 
+onfocus="if($('searchform_focused').value==0){ 
+$('searchform_input').value=''; $('searchform_focused').value=1; };" 
+type="text">
+                <input id="searchform_focused" name="already_focused" 
+value="1" type="hidden">
+                <input class="submit" value="OK" type="submit">
+            </fieldset>
+        </form><script type="text/javascript">
+//<![CDATA[
+q = refk();
+if($('searchform_input')&&q&&q!=' ') {
+     $('searchform_input').value=q;
+     $('searchform_focused').value=1;
+}
+//]]>
+</script><ul id="topNav">
+    <li>
+        <a class="userName" 
+href="http://www.commentcamarche.net/communaute/inscription.php3">Inscrivez-vous</a>
+    </li>
+    <li><a href="http://www.commentcamarche.net/plan/">Plan</a></li>
+        <li id="language">
+        <a href="http://www.commentcamarche.net/communaute/lang.php3" 
+class="boxButton">Langue</a>
+        <div class="boxHover">
+            <ul>
+                                        <li><a 
+href="http://www.commentcamarche.net/" lang="fr">Français</a></li>
+                                            <li><a 
+href="http://de.kioskea.net/" lang="de">Allemand</a></li>
+                                            <li><a 
+href="http://en.kioskea.net/" lang="en">Anglais</a></li>
+                                            <li><a 
+href="http://es.kioskea.net/" lang="es">Espagnol</a></li>
+                                            <li><a 
+href="http://it.kioskea.net/" lang="it">Italien</a></li>
+                                            <li><a 
+href="http://pt.kioskea.net/" lang="pt">Portugais</a></li>
+                                        </ul>
+        </div>
+    </li>
+                <li id="themes">
+        <a href="#" class="boxButton">Nos sites</a>
+        <div class="boxHover">
+            <ul>
+                                        <li class="selected"><a 
+href="http://www.commentcamarche.net/">High-Tech</a></li>
+                                            <li><a 
+href="http://sante-medecine.commentcamarche.net/">Santé-Médecine</a></li>
+                                            <li><a 
+href="http://droit-finances.commentcamarche.net/">Droit-Finances</a></li>
+                                        </ul>
+        </div>
+    </li>
+                <li id="rss">
+        <a href="#" class="boxButton">RSS</a>
+        <div class="boxHover">
+            <ul>
+                                <li><a 
+href="http://www.commentcamarche.net/rss/actualite.php3">Actualités</a></li>
+                                    <li><a 
+href="http://www.commentcamarche.net/rss/rss_faq_last.php3">FAQ</a></li>
+                                <li><a 
+href="http://www.commentcamarche.net/rss/rss_download_last.php3">Logiciels</a></li>
+                <li><a 
+href="http://www.commentcamarche.net/rss/rss_download_updates.php3">Logiciels
+ - Mises à jour</a></li>
+                                                </ul>
+        </div>
+    </li>
+        <li id="identification">
+        <a href="http://www.commentcamarche.net/communaute/" 
+class="boxButton" id="a_boxbutton">
+                Connexion        </a>
+        <div class="boxHover" id="div_boxhover">
+            <form 
+action="/faq/6336-installer-un-serveur-ftp-sous-ubuntu" method="post">
+                <fieldset>
+                    <legend>Identification</legend>
+                                            <label>Identifiant</label>
+                    <input tabindex="1" name="login" 
+onfocus="$('identification').className='focused';select();return true;" 
+onblur="$('identification').className='';return true;" type="text">
+                    <label>Mot de passe</label> ( <a tabindex="3" 
+href="http://www.commentcamarche.net/communaute/motdepasse.php3" 
+class="passLost">oublié ?</a> )
+                    <input tabindex="2" name="pass" value="" 
+onfocus="$('identification').className='focused';select();return true;" 
+onblur="$('identification').className='';return true;" type="password">
+                    <input name="log_in" class="submit" 
+onfocus="$('identification').className='focused';return true;" 
+onblur="$('identification').className='';return true;" value="Connexion"
+ type="submit">
+                </fieldset>
+            </form>
+        </div>
+    </li>
+        </ul>
+    </div>
+
+    <!-- MAIN NAVIGATION -->
+
+    <div id="nav">
+	<div class="content">
+	    <ul id="mmenu_ul_id" onmouseout="mmenu.tempo();">
+            <li onmouseover="mmenu.select(this)"><a 
+href="http://www.commentcamarche.net/">Accueil</a></li>
+            <li onmouseover="mmenu.select(this)">
+                <a href="http://www.commentcamarche.net/forum/">Forum</a>
+            </li>
+            <li class="selected current" 
+onmouseover="mmenu.select(this)">
+                <a href="http://www.commentcamarche.net/faq/">Astuces</a>
+            </li>
+            <li onmouseover="mmenu.select(this)">
+                <a href="http://www.commentcamarche.net/telecharger/">Télécharger</a>
+            </li>
+            <li onmouseover="mmenu.select(this)">
+                <a href="http://www.commentcamarche.net/news/">Actualités</a>
+            </li>
+            <li onmouseover="mmenu.select(this)">
+                <a href="http://www.commentcamarche.net/contents/">Dossiers</a>
+            </li>
+            <li onmouseover="mmenu.select(this)">
+                <a href="http://www.commentcamarche.net/guide/">Guide 
+d'achat</a>
+            </li>
+            <li onmouseover="mmenu.select(this)">
+                <a href="http://www.commentcamarche.net/sites/">Annuaire
+ web</a>
+            </li>
+            <li onmouseover="mmenu.select(this)">
+                <a href="http://www.commentcamarche.net/offre-emploi/">Emploi</a>
+            </li>
+            <li onmouseover="mmenu.select(this)">
+                <a href="http://www.commentcamarche.net/professionnels/">Entreprise</a>
+            </li>
+	    </ul>
+	</div>
+	<div class="bgShadow"></div>
+    </div>
+</div>
+    <div id="section">
+        <div id="topContent">
+<div id="ad_top" class="advertising">
+    <script type="text/javascript">
+<!--
+sas_pageid='10987/81929';
+sas_formatid=4785;
+sas_target='';
+SmartAdServer(sas_pageid,sas_formatid,sas_target);
+//-->
+    </script><script id="SmartScr4785" src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/a_005.js"></script><script language="JavaScript" type="text/javascript" src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/01">
+</script><object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" 
+codebase="HTTP://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab"
+ id="idSWFCON1270054894658" width="728" height="90"><param name="movie" 
+value="HTTP://spe.atdmt.com/ds/NMFRMUMFMCON/2010_April_Homepc_Newcampaign/IE8_InPrivatecadeau_728x90.swf?ver=1&amp;clickTag1=http://www3.smartadserver.com/clic/countgo.asp?694008;81929;8867356429324048641;7100594546;M;3247840;URL=http://clk.atdmt.com/go/216074194/direct;ai.155435935;ct.1/01&amp;clickTag=http://www3.smartadserver.com/clic/countgo.asp?694008;81929;8867356429324048641;7100594546;M;3247840;URL=http://clk.atdmt.com/go/216074194/direct;ai.155435935;ct.1/01"><param
+ name="base" value="HTTP://spe.atdmt.com/ds/NMFRMUMFMCON/"><param 
+name="FlashVars" 
+value="ArmClickType=&amp;unique_id=_CON1270054894658&amp;ArmApi=armapi_a1_a1&amp;ArmClickUrl=http://clk.atdmt.com/go/216074194/direct;ai.155435935;ct.$num$/01/&amp;ArmClickToken=$num$"><param
+ name="quality" value="high"><param name="salign" value="lt"><param 
+name="loop" value="true"><param name="wmode" value="opaque"><param 
+name="allowScriptAccess" value="always"><embed 
+allowscriptaccess="always" quality="high" salign="LT" loop="true" 
+type="application/x-shockwave-flash" 
+pluginspace="HTTP://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash"
+ base="HTTP://spe.atdmt.com/ds/NMFRMUMFMCON/" wmode="opaque" 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/IE8_InPrivatecadeau_728x90.swf"
+ 
+flashvars="unique_id=_CON1270054894658&amp;ArmApi=armapi_a1_a1&amp;ArmClickUrl=http://clk.atdmt.com/go/216074194/direct;ai.155435935;ct.$num$/01/&amp;ArmClickToken=$num$"
+ width="728" height="90"></object>
+
+
+</div>
+<!-- AUTOPROMO BOX -->
+<div class="autoPromoCcm">
+    <a href="http://www.commentcamarche.net/" class="allBlock"></a>
+    <div class="menu">
+        <a href="http://www.commentcamarche.net/" class="floatLeft CCM 
+selected">High-Tech</a>
+        <a href="http://sante-medecine.commentcamarche.net/" 
+class="floatLeft MS">Santé Médecine</a>
+        <a href="http://droit-finances.commentcamarche.net/" 
+class="floatRight DF">Droit-Finances</a>
+    </div>
+    <div class="inlineBlock">
+        <div>
+        <p class="bigFont"><a 
+href="http://www.commentcamarche.net/faq/sujet-18984-mettre-une-video-dans-sa-psp">Mettre</a></p>
+        <p class="mediumFont"><a 
+href="http://www.commentcamarche.net/faq/sujet-18984-mettre-une-video-dans-sa-psp">une
+ vidéo</a></p>        <p class="smallFont"><a 
+href="http://www.commentcamarche.net/faq/sujet-18984-mettre-une-video-dans-sa-psp">dans
+ sa PSP</a></p>        </div>
+    </div>
+    <a 
+href="http://www.commentcamarche.net/faq/sujet-18984-mettre-une-video-dans-sa-psp"><span
+ class="inlineBlock"></span></a>
+</div>
+    	</div>
+        <div id="content">
+            <div id="tpl_2cols">
+<div class="topCol">
+    <!-- FIL ARIANE -->
+    <ul id="breadScrumb">
+        <li class="home"><a class="linkC" 
+href="http://www.commentcamarche.net/" title="Accueil">Accueil</a> &#8250;</li>
+        <li><a class="linkC" href="http://www.commentcamarche.net/faq/" 
+title="Fiches pratiques">Fiches pratiques</a> &#8250;</li>
+        <li><a class="linkC" 
+href="http://www.commentcamarche.net/faq/systemes-d-exploitation-4" 
+title="Systèmes d'exploitation">Systèmes d'exploitation</a> &#8250;</li>
+        <li><a class="linkC" 
+href="http://www.commentcamarche.net/faq/linux-97" title="Linux">Linux</a>
+ &#8250;</li>
+        <li><a class="linkC" 
+href="http://www.commentcamarche.net/faq/distributions-362" 
+title="Distributions">Distributions</a> &#8250;</li>
+        <li><a class="linkC" 
+href="http://www.commentcamarche.net/faq/ubuntu-477" title="Ubuntu">Ubuntu</a>
+ &#8250;</li>
+        <li class="selected"><a class="linkC" 
+href="http://www.commentcamarche.net/faq/6336-installer-un-serveur-ftp-sous-ubuntu"
+ title="Installer un serveur FTP sous Ubuntu">Installer un serveur FTP 
+sous Ubuntu</a></li>
+    </ul>
+    <!-- LIENS OPTIONS -->
+    <ul id="toolsLinks">
+        <li><a class="linkF" href="javascript:window.print();" 
+rel="nofollow">Imprimer</a></li>
+    </ul>
+     <div class="clear"></div>
+</div>
+<div class="colMiddle">
+    <div class="advertising">
+    <div id="newForumAd" class="newForumAd">
+        <script type="text/javascript" language="JavaScript1.1">
+            sas_pageid='10987/81929';
+            sas_formatid='4788';			// Format : 673*100 link box 673x100: 4788
+            sas_target='';
+            SmartAdServer(sas_pageid,sas_formatid,sas_target);
+        </script><script id="SmartScr4788" src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/a_004.js"></script><img
+ 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/2402-94325-22097-0.gif"
+ border="0">
+<a 
+href="http://www3.smartadserver.com/clic/countgo.asp?694179;81929;8867356429324048641;7100594546;S;0;URL=http://adfarm.mediaplex.com/ad/ck/2402-94325-22097-0?mpt=7100594546"
+ target="_blank">
+<img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/LOGO_DELL.jpg" 
+width="40" border="0" height="50"></a><a 
+href="http://www3.smartadserver.com/clic/countgo.asp?694179;81929;8867356429324048641;7100594546;S;0;URL=http://adfarm.mediaplex.com/ad/ck/2402-94325-22097-0?mpt=7100594546]"
+ target="_blank" class="visualstudio"></a><p vertical-align="top"><a 
+href="http://www3.smartadserver.com/clic/countgo.asp?694179;81929;8867356429324048641;7100594546;S;0;URL=http://adfarm.mediaplex.com/ad/ck/2402-94325-22097-0?mpt=7100594546]"
+ target="_blank" class="visualstudio"><br>Choisissez Dell Vostro avec la
+ nouvelle gamme de processeurs 2010 Intel® Core&#8482; à partir de 429 &#8364;
+
+        </a></p><div class="clear"></div>
+<a 
+href="http://www3.smartadserver.com/clic/countgo.asp?694179;81929;8867356429324048641;7100594546;S;0;URL=http://adfarm.mediaplex.com/ad/ck/2402-94325-22097-0?mpt=7100594546]"
+ target="_blank" class="visualstudio">    </a></div>
+</div>
+<div class="marB15">
+<a name="topedit" style="float: left; visibility: hidden;"></a>
+
+<h1 id="art_title" class="ftSize24 ftBold marT15 marB5">Installer un 
+serveur FTP sous Ubuntu</h1>
+<div class="ftGrey marB15">Publié par <a 
+href="http://www.commentcamarche.net/communaute/profil-sebsauvage" 
+class="ftBold">sebsauvage</a> - Dernière mise à jour le 17 novembre 2009
+ à 18:49 par <a 
+href="http://www.commentcamarche.net/communaute/profil-marlalapocket" 
+class="ftBold">marlalapocket</a></div>
+
+<div class="contentTemplate" id="article_ctn">
+    <div id="overlay" style="display: none;" class="loaderAjax"></div>
+    <div class="container" id="article_cnt">
+Sommaire:
+<br><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/7945-ubuntu-logo1-s-.png"
+ alt="" style="display: block; float: right; clear: none;" width="150" 
+border="0" height="137"><div id="toc" class="toc">
+
+<ul><li><a href="#1-installer-le-serveur-ftp">1. Installer le serveur 
+FTP</a>
+</li><li><a href="#2-configurer-le-serveur-ftp">2. Configurer le serveur
+ FTP</a>
+<ul><li><a href="#2-1-interdire-le-ftp-anonyme">2.1 Interdire le FTP 
+anonyme</a>
+</li><li><a href="#2-2-autoriser-les-utilisateurs-locaux-a-se-connecter">2.2
+ Autoriser les utilisateurs locaux à se connecter</a>
+</li><li><a 
+href="#2-3-autoriser-les-utilisateurs-a-uploader-des-fichiers">2.3 
+Autoriser les utilisateurs à uploader des fichiers</a>
+</li><li><a href="#2-3-choisir-l-interface">2.3 Choisir l'interface</a>
+</li></ul></li><li><a href="#3-re-demarrer-le-serveur-ftp">3. 
+(re)Démarrer le serveur FTP</a>
+</li><li><a href="#notes">Notes</a></li></ul>
+<br></div>
+<br>
+<br><a name="1-installer-le-serveur-ftp"></a><h2>1. Installer le serveur
+ FTP</h2>
+<br>Pour installer le serveur <a 
+href="http://www.commentcamarche.net/internet/ftp.php3">FTP</a>, tapez:
+<br><pre>sudo aptitude install vsftpd</pre>
+<br><a name="2-configurer-le-serveur-ftp"></a><h2>2. Configurer le 
+serveur FTP</h2>
+<br>La configuration du serveur FTP se fait en éditant le fichier 
+/etc/vsftpd.conf
+<br>
+<br>Pour éditer ce fichier, faites:
+<br><pre>gksu gedit /etc/vsftpd.conf</pre>
+<br><a name="2-1-interdire-le-ftp-anonyme"></a><h3>2.1 Interdire le FTP 
+anonyme</h3>
+<br>Changez la ligne:
+<br><pre>anonymous_enable=YES</pre>
+<br>en:
+<br><pre>anonymous_enable=NO</pre>
+<br><a name="2-2-autoriser-les-utilisateurs-locaux-a-se-connecter"></a><h3>2.2
+ Autoriser les utilisateurs locaux à se connecter</h3>
+<br>Ajoutez:
+<br><pre>local_enable=YES</pre>
+<br>Cela permettra aux utilisateurs déclarés dans Ubuntu d'utiliser le 
+même login/mot de passe pour accéder au serveur FTP.
+<br><a name="2-3-autoriser-les-utilisateurs-a-uploader-des-fichiers"></a><h3>2.3
+ Autoriser les utilisateurs à uploader des fichiers</h3>
+<br>Ajoutez:
+<br><pre>write_enable=YES</pre>
+<br><a name="2-3-choisir-l-interface"></a><h3>2.3 Choisir l'interface</h3>
+<br>Par défaut le serveur FTP sera en écoute sur toutes les interfaces. 
+Si vous voulez restreindre - par exemple - uniquement à votre réseau 
+local en 10.0.0.x, ajoutez la ligne:
+<br><pre>listen_address=10.0.0.1</pre>
+<br>Si l'adresse de IP LAN votre serveur FTP est 10.0.0.1
+<br><a name="3-re-demarrer-le-serveur-ftp"></a><h2>3. (re)Démarrer le 
+serveur FTP</h2>
+<br>(re)démarrez le serveur FTP pour qu'il prenne en compte la 
+configuration que nous venons de modifier.
+<br>Tapez:
+<br><pre>sudo /etc/init.d/vsftpd restart</pre>
+<br><a name="notes"></a><h2>Notes</h2>
+<br>Pour plus d'informations, consultez <a 
+href="http://doc.ubuntu-fr.org/vsftpd" target="_blank">doc.ubuntu-fr.org</a>
+        </div>
+        <div class="clear"></div>  
+             
+</div>
+
+
+<div class="pagination">
+    <a 
+href="http://www.commentcamarche.net/faq/6323-installer-un-serveur-proxy-http-squid"
+ class="previousPage" style="max-width: 150px;"><span></span>Installer 
+un serveur proxy HTTP (Squid)</a>
+    <a 
+href="http://www.commentcamarche.net/faq/6339-quels-sont-mes-ports-ouverts-sous-ubuntu"
+ class="nextPage" style="max-width: 150px;"><span></span>Quels sont mes 
+ports ouverts sous Ubuntu ?</a>
+    <div style="width: 250px; margin: auto;">
+        <a 
+href="http://www.commentcamarche.net/faq/5400-installer-java-sous-ubuntu">5
+ </a>
+        <a 
+href="http://www.commentcamarche.net/faq/5403-installer-les-polices-truetype-microsoft">6
+ </a>
+        <a 
+href="http://www.commentcamarche.net/faq/5440-installer-un-firewall-sous-ubuntu-firestarter">7
+ </a>
+        <a 
+href="http://www.commentcamarche.net/faq/5442-texte-trop-gros-sous-ubuntu">8
+ </a>
+        <a 
+href="http://www.commentcamarche.net/faq/5535-se-loguer-automatiquement">9
+ </a>
+        <a 
+href="http://www.commentcamarche.net/faq/5544-lire-et-ecrire-les-partitions-windows-ntfs">10
+ </a>
+        <a 
+href="http://www.commentcamarche.net/faq/6157-xubuntu-linux-avec-seulement-64-mo-de-ram">11
+ </a>
+        <a 
+href="http://www.commentcamarche.net/faq/6323-installer-un-serveur-proxy-http-squid">12
+ </a>
+        <a 
+href="http://www.commentcamarche.net/faq/6336-installer-un-serveur-ftp-sous-ubuntu"
+ class="selected">page 13 </a>
+        <a 
+href="http://www.commentcamarche.net/faq/6339-quels-sont-mes-ports-ouverts-sous-ubuntu">14
+ </a>
+        <a 
+href="http://www.commentcamarche.net/faq/6346-ouvrir-un-terminal-ici">15
+ </a>
+        <a 
+href="http://www.commentcamarche.net/faq/6347-declencher-des-actions-sur-les-coins-de-l-ecran">16
+ </a>
+        <a 
+href="http://www.commentcamarche.net/faq/6357-editer-le-menu-contextuel-de-nautilus-navigateur-de-fichiers">17
+ </a>
+        <a 
+href="http://www.commentcamarche.net/faq/6365-comment-parametrer-l-economiseur-d-ecran">18
+ </a>
+        <a 
+href="http://www.commentcamarche.net/faq/6366-compresser-decompresser-les-archives-rar-7z-arj-lzh">19
+ </a>
+    </div>
+</div>
+<div class="clear"></div>
+</div>
+<div class="newAdsense"><script type="text/javascript"><!--
+	google_ad_client = "pub-6969989765125400";
+	google_language = "fr";
+	var ccm_language = "fr";
+	google_ad_type = "text";
+	google_ad_channel ="";
+        var google_adnum = 0;
+        google_ad_output = "js";
+        google_max_num_ads = "4";
+        google_feedback = 'on';
+        google_skip = google_adnum;
+	//-->
+	</script>
+	<script type="text/javascript" src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/show_ads.js">
+	</script><script src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/test_domain.js"></script><script>google_protectAndRun("ads_core.google_render_ad", google_handleError, google_render_ad);</script><script language="JavaScript1.1" src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/ads"></script><a
+ 
+href="http://www.google.com/url?ct=abg&amp;q=https://www.google.com/adsense/support/bin/request.py%3Fcontact%3Dabg_afc%26url%3Dhttp://www.commentcamarche.net/faq/6336-installer-un-serveur-ftp-sous-ubuntu%26hl%3Dfr%26client%3Dca-pub-6969989765125400%26adU%3Dwww.guichetweb.com%26adT%3DH%25C3%25A9bergement%2B:%2B35000%2BFCFA%26gl%3DCM&amp;usg=AFQjCNETn8N6MS4CyC0G55oc-hJLTSMwzw"
+ class="ftGoogle" target="_blank">Annonces Google</a><div class="marT15"><h2><a
+ class="floatRight ftWebsite" 
+href="http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=BP_tBNNG_S7z8FdOU-Ab3sPjSB_7q7OsB1I7GgRLAjbcBgOIJEAEYASDJ960GOABQ7ani1QNgebIBF3d3dy5jb21tZW50Y2FtYXJjaGUubmV0yAEB2gFMaHR0cDovL3d3dy5jb21tZW50Y2FtYXJjaGUubmV0L2ZhcS82MzM2LWluc3RhbGxlci11bi1zZXJ2ZXVyLWZ0cC1zb3VzLXVidW50dagDAegD4AXoA7AC6AOvAugDBegDtwL1AwABEAT1AwAAABA&amp;num=1&amp;sig=AGiWqtzJQ7z2MmhFCiAOZvu6ms9DMUHDkA&amp;client=ca-pub-6969989765125400&amp;adurl=http://www.guichetweb.com"
+ onmouseout="window.status=''" 
+onmouseover="window.status='www.guichetweb.com';return true" 
+target="_blank">www.guichetweb.com</a><a 
+href="http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=BP_tBNNG_S7z8FdOU-Ab3sPjSB_7q7OsB1I7GgRLAjbcBgOIJEAEYASDJ960GOABQ7ani1QNgebIBF3d3dy5jb21tZW50Y2FtYXJjaGUubmV0yAEB2gFMaHR0cDovL3d3dy5jb21tZW50Y2FtYXJjaGUubmV0L2ZhcS82MzM2LWluc3RhbGxlci11bi1zZXJ2ZXVyLWZ0cC1zb3VzLXVidW50dagDAegD4AXoA7AC6AOvAugDBegDtwL1AwABEAT1AwAAABA&amp;num=1&amp;sig=AGiWqtzJQ7z2MmhFCiAOZvu6ms9DMUHDkA&amp;client=ca-pub-6969989765125400&amp;adurl=http://www.guichetweb.com"
+ onmouseout="window.status=''" 
+onmouseover="window.status='www.guichetweb.com';return true" 
+target="_blank">Hébergement : 35000 FCFA</a></h2> <p>Espace 5Go - 7Go / 
+Email - 2 BD Conception web - Streaming radio TV</p> </div></div>
+<div class="clear"></div>
+<script type="text/javascript">
+<!--
+var plus ='Plus';
+var minus ='Moins';
+//-->
+</script>
+    <h3 class="marB10 ftBlack ftSize14 ftVerdana">
+        <a href="http://www.commentcamarche.net/s/serveur+ftp+linux">CommentCaMarche
+ recommande </a>
+    </h3>
+<div id="similiTable" class="hidelast">
+<ul class="simili">
+<li><span class="floatLeft">
+<a id="otherContentsLink" 
+href="http://www.commentcamarche.net/s/Configuration%20ftp%20linux" 
+class="icoSimiliGreen"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ alt="serveur ftp linux" title="serveur ftp linux" width="16" 
+height="16"></a>
+<a id="otherContentsLink2" class="title" 
+href="http://www.commentcamarche.net/s/Configuration%20ftp%20linux" 
+style="font-weight: bold;">Configuration ftp linux</a>
+</span>
+<a class="floatRight" 
+href="http://www.commentcamarche.net/s/serveur+ftp+linux"><strong>Rechercher</strong></a><div
+ class="clear"></div></li>
+<li class=""><span class="floatLeft">
+<a 
+href="http://www.commentcamarche.net/faq/3028-installer-un-serveur-ftp-sous-windows"
+ class="icoSimiliGreen"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ alt="installer un serveur ftp" title="installer un serveur ftp" 
+width="16" height="16"></a>
+<a 
+href="http://www.commentcamarche.net/faq/3028-installer-un-serveur-ftp-sous-windows"
+ class="title"><strong>Installer un serveur FTP sous Windows</strong></a>
+</span>
+<a class="floatRight" style="background: none repeat scroll 0% 0% 
+rgb(222, 252, 200);" href="http://www.commentcamarche.net/faq/"><strong>Fiches
+ pratiques</strong></a><div class="clear"></div></li><li class=""><span 
+class="floatLeft">
+<a 
+href="http://www.commentcamarche.net/faq/6658-installer-un-serveur-ssh-sous-ubuntu"
+ class="icoSimiliGreen"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ alt="serveur ftp ssh ubuntu" title="serveur ftp ssh ubuntu" width="16" 
+height="16"></a>
+<a 
+href="http://www.commentcamarche.net/faq/6658-installer-un-serveur-ssh-sous-ubuntu"
+ class="title"><strong>Installer un serveur ssh sous Ubuntu</strong></a>
+</span>
+<a class="floatRight" style="background: none repeat scroll 0% 0% 
+rgb(222, 252, 200);" href="http://www.commentcamarche.net/faq/"><strong>Fiches
+ pratiques</strong></a><div class="clear"></div></li><li class=""><span 
+class="floatLeft">
+<a 
+href="http://www.commentcamarche.net/forum/affich-2362615-installer-le-serveur-graphique-sous-debian"
+ class="icoSimiliGreen"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ alt="serveur ftp graphique ubuntu" title="serveur ftp graphique ubuntu"
+ width="16" height="16"></a>
+<a 
+href="http://www.commentcamarche.net/forum/affich-2362615-installer-le-serveur-graphique-sous-debian"
+ class="title">Installer le serveur graphique sous Debian [Résolu]</a>
+</span>
+<a class="floatRight" href="http://www.commentcamarche.net/forum/"><strong>Forum</strong></a><div
+ class="clear"></div></li><li class=""><span class="floatLeft">
+<a 
+href="http://www.commentcamarche.net/telecharger/telecharger-89-filezilla-server"
+ class="icoSimiliGreen"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ alt="installer un serveur ftp fillezila sous windows 2003 serveur" 
+title="installer un serveur ftp fillezila sous windows 2003 serveur" 
+width="16" height="16"></a>
+<a 
+href="http://www.commentcamarche.net/telecharger/telecharger-89-filezilla-server"
+ class="title"><strong>Filezilla Server</strong></a>
+</span>
+<a class="floatRight" style="background: none repeat scroll 0% 0% 
+rgb(222, 252, 200);" href="http://www.commentcamarche.net/telecharger/"><strong>Télécharger</strong></a><div
+ class="clear"></div></li><li class="last"><span class="floatLeft">
+<a 
+href="http://www.commentcamarche.net/forum/affich-13967692-installation-serveur-telnet"
+ class="icoSimiliBlue"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ alt="installer un serveur telnet sous ubuntu?" title="installer un 
+serveur telnet sous ubuntu?" width="16" height="16"></a>
+<a 
+href="http://www.commentcamarche.net/forum/affich-13967692-installation-serveur-telnet"
+ class="title">Installation serveur telnet</a>
+</span>
+<a class="floatRight" href="http://www.commentcamarche.net/forum/"><strong>Forum</strong></a><div
+ class="clear"></div></li><li class="last"><span class="floatLeft">
+<a 
+href="http://www.commentcamarche.net/faq/6323-installer-un-serveur-proxy-http-squid"
+ class="icoSimiliGreen"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ alt="installer un serveur mandataire sur ubuntu" title="installer un 
+serveur mandataire sur ubuntu" width="16" height="16"></a>
+<a 
+href="http://www.commentcamarche.net/faq/6323-installer-un-serveur-proxy-http-squid"
+ class="title"><strong>Installer un serveur proxy HTTP (Squid)</strong></a>
+</span>
+<a class="floatRight" style="background: none repeat scroll 0% 0% 
+rgb(222, 252, 200);" href="http://www.commentcamarche.net/faq/"><strong>Fiches
+ pratiques</strong></a><div class="clear"></div></li><li class="last"><span
+ class="floatLeft">
+<a 
+href="http://www.commentcamarche.net/forum/affich-179236-comment-installer-un-serveur-ftp-sur-linux"
+ class="icoSimiliBlue"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ alt="installer un serveur ftp sous linux" title="installer un serveur 
+ftp sous linux" width="16" height="16"></a>
+<a 
+href="http://www.commentcamarche.net/forum/affich-179236-comment-installer-un-serveur-ftp-sur-linux"
+ class="title">Comment installer un serveur FTP sur Linux</a>
+</span>
+<a class="floatRight" href="http://www.commentcamarche.net/forum/"><strong>Forum</strong></a><div
+ class="clear"></div></li><li class="last"><span class="floatLeft">
+<a 
+href="http://www.commentcamarche.net/forum/affich-9679925-creer-serveur-ftp-avec-filezilla"
+ class="icoSimiliBlue"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ alt="installer un serveur ftp filezilla" title="installer un serveur 
+ftp filezilla" width="16" height="16"></a>
+<a 
+href="http://www.commentcamarche.net/forum/affich-9679925-creer-serveur-ftp-avec-filezilla"
+ class="title">Créer serveur FTP avec FILEZILLA</a>
+</span>
+<a class="floatRight" href="http://www.commentcamarche.net/forum/"><strong>Forum</strong></a><div
+ class="clear"></div></li><li class="last"><span class="floatLeft">
+<a href="http://www.commentcamarche.net/contents/php/phpinst.php3" 
+class="icoSimiliGreen"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ alt="installation du serveur web sous ubuntu" title="installation du 
+serveur web sous ubuntu" width="16" height="16"></a>
+<a href="http://www.commentcamarche.net/contents/php/phpinst.php3" 
+class="title"><strong>Installation d'un serveur Web sous Linux (Apache, 
+PHP et MySQL)</strong></a>
+</span>
+<a class="floatRight" style="background: none repeat scroll 0% 0% 
+rgb(222, 252, 200);" href="http://www.commentcamarche.net/contents/"><strong>Articles</strong></a><div
+ class="clear"></div></li><li class="last"><span class="floatLeft">
+<a 
+href="http://www.commentcamarche.net/forum/affich-6525226-installer-serveur-ftp-sous-fedora-core-8"
+ class="icoSimiliBlue"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ alt="video d'installation du serveur ftp sous fedora" title="video 
+d'installation du serveur ftp sous fedora" width="16" height="16"></a>
+<a 
+href="http://www.commentcamarche.net/forum/affich-6525226-installer-serveur-ftp-sous-fedora-core-8"
+ class="title">Installer serveur FTP sous Fedora core 8</a>
+</span>
+<a class="floatRight" href="http://www.commentcamarche.net/forum/"><strong>Forum</strong></a><div
+ class="clear"></div></li><li class="last"><span class="floatLeft">
+<a 
+href="http://www.commentcamarche.net/forum/affich-3268305-openldap-ubuntu"
+ class="icoSimiliBlue"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ alt="installer un serveur ldap sous ubuntu" title="installer un serveur
+ ldap sous ubuntu" width="16" height="16"></a>
+<a 
+href="http://www.commentcamarche.net/forum/affich-3268305-openldap-ubuntu"
+ class="title">Openldap ubuntu</a>
+</span>
+<a class="floatRight" href="http://www.commentcamarche.net/forum/"><strong>Forum</strong></a><div
+ class="clear"></div></li><li class="last"><span class="floatLeft">
+<a 
+href="http://www.commentcamarche.net/forum/affich-3121905-ubuntu-6-10-server-zabbix-installation"
+ class="icoSimiliBlue"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ alt="installer un serveur zabbix sur ubuntu" title="installer un 
+serveur zabbix sur ubuntu" width="16" height="16"></a>
+<a 
+href="http://www.commentcamarche.net/forum/affich-3121905-ubuntu-6-10-server-zabbix-installation"
+ class="title">[Ubuntu 6.10 server : Zabbix] &gt; Installation?</a>
+</span>
+<a class="floatRight" href="http://www.commentcamarche.net/forum/"><strong>Forum</strong></a><div
+ class="clear"></div></li><li class="last"><span class="floatLeft">
+<a 
+href="http://www.commentcamarche.net/forum/affich-1227852-ftp-et-unix" 
+class="icoSimiliBlue"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ alt="installation de serveur ftp sur unix" title="installation de 
+serveur ftp sur unix" width="16" height="16"></a>
+<a 
+href="http://www.commentcamarche.net/forum/affich-1227852-ftp-et-unix" 
+class="title">FTP et Unix</a>
+</span>
+<a class="floatRight" href="http://www.commentcamarche.net/forum/"><strong>Forum</strong></a><div
+ class="clear"></div></li><li class="last"><span class="floatLeft">
+<a 
+href="http://www.commentcamarche.net/forum/affich-7329416-tutoriel-serveur-ftp-filezilla-freebox-window"
+ class="icoSimiliGreen"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ alt="installation du serveur ftp filezilla" title="installation du 
+serveur ftp filezilla" width="16" height="16"></a>
+<a 
+href="http://www.commentcamarche.net/forum/affich-7329416-tutoriel-serveur-ftp-filezilla-freebox-window"
+ class="title">Tutoriel Serveur FTP FileZilla Freebox Window [Résolu]</a>
+</span>
+<a class="floatRight" href="http://www.commentcamarche.net/forum/"><strong>Forum</strong></a><div
+ class="clear"></div></li><li class="last"><span class="floatLeft">
+<a 
+href="http://www.commentcamarche.net/forum/affich-1037853-creation-d-un-serveur-ftp-sur-son-pc"
+ class="icoSimiliBlue"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ alt="installer un serveur ftp sur son pc" title="installer un serveur 
+ftp sur son pc" width="16" height="16"></a>
+<a 
+href="http://www.commentcamarche.net/forum/affich-1037853-creation-d-un-serveur-ftp-sur-son-pc"
+ class="title">Création d'un serveur ftp sur son pc</a>
+</span>
+<a class="floatRight" href="http://www.commentcamarche.net/forum/"><strong>Forum</strong></a><div
+ class="clear"></div></li></ul></div>
+<div class="marB25 showMore"><a href="#" 
+onclick="if($('similiTable').className=='hidelast'){ 
+$('similiTable').className=''; $('similiMore').innerHTML=minus;} else{ 
+$('similiTable').className='hidelast'; $('similiMore').innerHTML=plus;} 
+return false;" class="block ftNone"><span class="tick tickRight tickBlue
+ marR10"></span><span class="inlineBlock ftBlue ftBold pointer" 
+id="similiMore">Plus</span></a></div>
+
+<script type="text/javascript">
+//<![CDATA[
+q = refk().replace(/</g,' ').replace(/>/g,' ').replace(/"/g,' ').replace(/&/g,' ');
+q = q.charAt(0).toUpperCase() + q.substr(1);
+
+if($('otherContentsLink')&&$('otherContentsLink2')&&q&&q!=' ') {
+     $('otherContentsLink').href='/s/'+escape(q);
+     $('otherContentsLink2').href='/s/'+escape(q);
+     $('otherContentsLink2').innerHTML=q;
+}
+if($('otherResultsTopic')&&$('otherResultsLink')&&q&&q!=' ') {
+     $('otherResultsLink').href='/s/'+escape(q);
+     $('otherResultsTopic').innerHTML=q;
+}
+if($('similiShowOthers')&&q&&q!=' ') {
+     $('similiShowOthers').href='/s/'+escape(q);
+}
+//]]>
+</script><div class="clear"></div>
+<div class="bottomAd">
+    <script type="text/javascript">
+        sas_pageid='10987/81929';	// Page : commentcamarche/ope_spe
+        sas_formatid=5145;		// Format : 468x180 Big Box 468x180
+        sas_target='';			// Targeting
+        SmartAdServer(sas_pageid,sas_formatid,sas_target);
+    </script><script id="SmartScr5145" src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/a_002.js"></script><a
+ target="_blank" 
+href="http://www3.smartadserver.com/diff/301/657756/go11.asp?657756;81929;8867356429324048641;7100594546;S;3173290"><img
+ id="img3173290" 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/Hotmail%252520300x100_002.jpg"
+ alt="" width="300" border="0" height="100"></a>
+
+    <noscript>
+        <a href="http://www3.smartadserver.com/call/pubjumpi/10987/86487/5145/S/[timestamp]/?">
+            <img src="http://www3.smartadserver.com/call/pubi/10987/86487/5145/S/[timestamp]/?" border="0" alt="" />
+        </a>
+    </noscript>
+</div>
+</div>
+<div class="colRight">
+    <div id="shortcuts"></div>
+    <div class="asideBox">
+<script type="text/javascript">
+<!--
+var plus ='<span>Plus</span>';
+var minus ='<span>Moins</span>';
+//-->
+</script>
+<div class="boxTitle">A voir également</div>
+<div class="clear"></div>
+<div class="hide" id="similishowhide">
+    <ul class="simili">
+<li class=""><span class="floatLeft"><span class="icoSimiliOrange"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ title="Serveur ftp linux" alt="Serveur ftp linux" width="16" 
+height="16"></span> <a 
+href="http://www.commentcamarche.net/s/configuration%20ftp%20linux" 
+class="title" id="first_simili_item"><span><span style="font-weight: 
+bold;">Configuration</span><span><span> <span style="font-weight: bold;">ftp</span>
+ </span><span style="font-weight: bold;">linux</span></span></span></a></span><div
+ class="clear"></div></li><li class="last"><span class="floatLeft"><span
+ class="icoSimiliGreen"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ title="Crée serveur FTP ubuntu" alt="Crée serveur FTP ubuntu" 
+width="16" height="16"></span> <a 
+href="http://www.commentcamarche.net/s/cr%E9e+serveur+FTP+ubuntu" 
+class="title"><span>Crée serveur <span style="font-weight: bold;">FTP</span>
+ ubuntu</span></a></span><div class="clear"></div></li><li class="last"><span
+ class="floatLeft"><span class="icoSimiliGreen"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ title="Ftp ubuntu" alt="Ftp ubuntu" width="16" height="16"></span> <a 
+href="http://www.commentcamarche.net/s/ftp+ubuntu" class="title"><span><span
+ style="font-weight: bold;">Ftp</span> ubuntu</span></a></span><div 
+class="clear"></div></li><li class=""><span class="floatLeft"><span 
+class="icoSimiliGreen"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ title="Installation du serveur ftp sous ubuntu" alt="Installation du 
+serveur ftp sous ubuntu" width="16" height="16"></span> <a 
+href="http://www.commentcamarche.net/s/installation+du+serveur+ftp+sous+ubuntu"
+ class="title"><span>Installation du serveur <span style="font-weight: 
+bold;">ftp</span> sous ubuntu</span></a></span><div class="clear"></div></li><li
+ class="last"><span class="floatLeft"><span class="icoSimiliGreen"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ title="Installation du serveur web sous ubuntu" alt="Installation du 
+serveur web sous ubuntu" width="16" height="16"></span> <a 
+href="http://www.commentcamarche.net/s/installation+du+serveur+web+sous+ubuntu"
+ class="title">Installation du serveur web sous ubuntu</a></span><div 
+class="clear"></div></li><li class=""><span class="floatLeft"><span 
+class="icoSimiliGreen"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ title="Installer un serveur ftp" alt="Installer un serveur ftp" 
+width="16" height="16"></span> <a 
+href="http://www.commentcamarche.net/s/installer+un+serveur+ftp" 
+class="title"><span>Installer un serveur <span style="font-weight: 
+bold;">ftp</span></span></a></span><div class="clear"></div></li><li 
+class="last"><span class="floatLeft"><span class="icoSimiliGreen"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ title="Installer un serveur ftp filezilla" alt="Installer un serveur 
+ftp filezilla" width="16" height="16"></span> <a 
+href="http://www.commentcamarche.net/s/installer+un+serveur+ftp+filezilla"
+ class="title"><span>Installer un serveur <span style="font-weight: 
+bold;">ftp</span> filezilla</span></a></span><div class="clear"></div></li><li
+ class="last"><span class="floatLeft"><span class="icoSimiliGreen"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ title="Installer un serveur ftp fillezila sous windows 2003 serveur" 
+alt="Installer un serveur ftp fillezila sous windows 2003 serveur" 
+width="16" height="16"></span> <a 
+href="http://www.commentcamarche.net/s/installer+un+serveur+ftp+fillezila+sous+windows+2003+serveur"
+ class="title"><span>Installer un serveur <span style="font-weight: 
+bold;">ftp</span> fillezila sous windows 2003 serveur</span></a></span><div
+ class="clear"></div></li><li class="last"><span class="floatLeft"><span
+ class="icoSimiliGreen"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ title="Installer un serveur ftp sous linux" alt="Installer un serveur 
+ftp sous linux" width="16" height="16"></span> <a 
+href="http://www.commentcamarche.net/s/installer+un+serveur+ftp+sous+linux"
+ class="title"><span><span>Installer un serveur <span 
+style="font-weight: bold;">ftp</span> sous </span><span 
+style="font-weight: bold;">linux</span></span></a></span><div 
+class="clear"></div></li><li class="last"><span class="floatLeft"><span 
+class="icoSimiliGreen"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ title="Installer un serveur mandataire sur ubuntu" alt="Installer un 
+serveur mandataire sur ubuntu" width="16" height="16"></span> <a 
+href="http://www.commentcamarche.net/s/installer+un+serveur+mandataire+sur+ubuntu"
+ class="title">Installer un serveur mandataire sur ubuntu</a></span><div
+ class="clear"></div></li><li class="last"><span class="floatLeft"><span
+ class="icoSimiliGreen"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ title="Installer un serveur telnet sous ubuntu?" alt="Installer un 
+serveur telnet sous ubuntu?" width="16" height="16"></span> <a 
+href="http://www.commentcamarche.net/s/installer+un+serveur+telnet+sous+ubuntu%3F"
+ class="title">Installer un serveur telnet sous ubuntu?</a></span><div 
+class="clear"></div></li><li class="last"><span class="floatLeft"><span 
+class="icoSimiliGreen"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ title="Server ftp linux" alt="Server ftp linux" width="16" height="16"></span>
+ <a href="http://www.commentcamarche.net/s/server+ftp+linux" 
+class="title"><span><span>Server <span style="font-weight: bold;">ftp</span>
+ </span><span style="font-weight: bold;">linux</span></span></a></span><div
+ class="clear"></div></li><li class="last"><span class="floatLeft"><span
+ class="icoSimiliGreen"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ title="Serveur ftp graphique ubuntu" alt="Serveur ftp graphique ubuntu"
+ width="16" height="16"></span> <a 
+href="http://www.commentcamarche.net/s/serveur+ftp+graphique+ubuntu" 
+class="title"><span>Serveur <span style="font-weight: bold;">ftp</span> 
+graphique ubuntu</span></a></span><div class="clear"></div></li><li 
+class="last"><span class="floatLeft"><span class="icoSimiliGreen"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ title="Serveur ftp linux" alt="Serveur ftp linux" width="16" 
+height="16"></span> <a 
+href="http://www.commentcamarche.net/s/serveur+ftp+linux" class="title"><span><span>Serveur
+ <span style="font-weight: bold;">ftp</span> </span><span 
+style="font-weight: bold;">linux</span></span></a></span><div 
+class="clear"></div></li><li class="last"><span class="floatLeft"><span 
+class="icoSimiliGreen"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ title="Serveur FTP sous linux" alt="Serveur FTP sous linux" width="16" 
+height="16"></span> <a 
+href="http://www.commentcamarche.net/s/serveur+FTP+sous+linux" 
+class="title"><span><span>Serveur <span style="font-weight: bold;">FTP</span>
+ sous </span><span style="font-weight: bold;">linux</span></span></a></span><div
+ class="clear"></div></li><li class=""><span class="floatLeft"><span 
+class="icoSimiliGreen"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ title="Serveur ftp ssh ubuntu" alt="Serveur ftp ssh ubuntu" width="16" 
+height="16"></span> <a 
+href="http://www.commentcamarche.net/s/serveur+ftp+ssh+ubuntu" 
+class="title"><span>Serveur <span style="font-weight: bold;">ftp</span> 
+ssh ubuntu</span></a></span><div class="clear"></div></li><li 
+class="last"><span class="floatLeft"><span class="icoSimiliGreen"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ title="Serveur ftp ubuntu" alt="Serveur ftp ubuntu" width="16" 
+height="16"></span> <a 
+href="http://www.commentcamarche.net/s/serveur+ftp+ubuntu" class="title"><span>Serveur
+ <span style="font-weight: bold;">ftp</span> ubuntu</span></a></span><div
+ class="clear"></div></li><li class="last"><span class="floatLeft"><span
+ class="icoSimiliGreen"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ title="Ubuntu FTP server" alt="Ubuntu FTP server" width="16" 
+height="16"></span> <a 
+href="http://www.commentcamarche.net/s/ubuntu+FTP+server" class="title"><span>Ubuntu
+ <span style="font-weight: bold;">FTP</span> server</span></a></span><div
+ class="clear"></div></li><li class="last"><span class="floatLeft"><span
+ class="icoSimiliGreen"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ title="Ubuntu server ftp" alt="Ubuntu server ftp" width="16" 
+height="16"></span> <a 
+href="http://www.commentcamarche.net/s/ubuntu+server+ftp" class="title"><span>Ubuntu
+ server <span style="font-weight: bold;">ftp</span></span></a></span><div
+ class="clear"></div></li><li class="last"><span class="floatLeft"><span
+ class="icoSimiliGreen"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ title="Ubuntu serveur ftp" alt="Ubuntu serveur ftp" width="16" 
+height="16"></span> <a 
+href="http://www.commentcamarche.net/s/ubuntu+serveur+ftp" class="title"><span>Ubuntu
+ serveur <span style="font-weight: bold;">ftp</span></span></a></span><div
+ class="clear"></div></li><li class="last"><span class="floatLeft"><span
+ class="icoSimiliGreen"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent_002.gif"
+ title="Video d'installation du serveur ftp sous fedora" alt="Video 
+d'installation du serveur ftp sous fedora" width="16" height="16"></span>
+ <a 
+href="http://www.commentcamarche.net/s/video+d%27installation+du+serveur+ftp+sous+fedora"
+ class="title"><span>Video d'installation du serveur <span 
+style="font-weight: bold;">ftp</span> sous fedora</span></a></span><div 
+class="clear"></div></li>               
+    </ul>
+    <div class="showMore"><a href="#" class="block ftNone" 
+onclick="if($('similishowhide').className=='hide'){ 
+$('similishowhide').className='show';$('similiShowHideLbl').innerHTML=minus;}
+ else{ 
+$('similishowhide').className='hide';$('similiShowHideLbl').innerHTML=plus;}
+ return false"><span class="tick tickRight tickBlue marR10"></span><span
+ class="inlineBlock ftBlue ftBold pointer" id="similiShowHideLbl">Plus</span></a></div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+q=refk();
+if(q==''){
+q = "serveur ftp linux";
+}
+q = q.replace(/</g,' ').replace(/>/g,' ').replace(/"/g,' ').replace(/&/g,' ');
+if($('first_simili_item')&&q&&q!=' ') {
+a = $('first_simili_item');
+a.setAttribute('href','/s/'+escape(q));
+a.innerHTML = q.charAt(0).toUpperCase() + q.substr(1);
+}
+h_j(q,$('similishowhide'));
+//]]>
+</script>
+</div>
+<div class="ad_right" id="bloc_middle">
+    <script type="text/javascript">
+    <!--
+    sas_pageid='10987/81929';
+    sas_formatid=4784;
+    sas_target='';
+    SmartAdServer(sas_pageid,sas_formatid,sas_target);
+    //-->
+    </script><script id="SmartScr4784" src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/a.js"></script><object
+ classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" 
+codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"
+ id="pub_Flash3225424" width="300" height="250">  <param 
+name="allowScriptAccess" value="always"> <param name="movie" 
+value="http://akamai.smartadserver.com/diff/301/682146/300x250_csl_2010.swf">
+  <param name="flashvars" 
+value="target=_blank&amp;clicktag=http://www3.smartadserver.com/diff/301/682146/go19.asp%3F682146;81929;8867356429324048641;7100594546;S;3225424;clickvars=&amp;clickTag=http://www3.smartadserver.com/diff/301/682146/go19.asp%3F682146;81929;8867356429324048641;7100594546;S;3225424;clickvars=&amp;clickTAG=http://www3.smartadserver.com/diff/301/682146/go19.asp%3F682146;81929;8867356429324048641;7100594546;S;3225424;clickvars=">
+  <param name="quality" value="high">  <param name="wmode" 
+value="Opaque">  <embed name="pub_Flash3225424" id="pub_Flash3225424" 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/300x250_csl_2010.swf"
+ 
+flashvars="target=_blank&amp;clicktag=http://www3.smartadserver.com/diff/301/682146/go19.asp%3F682146;81929;8867356429324048641;7100594546;S;3225424;clickvars=&amp;clickTag=http://www3.smartadserver.com/diff/301/682146/go19.asp%3F682146;81929;8867356429324048641;7100594546;S;3225424;clickvars=&amp;clickTAG=http://www3.smartadserver.com/diff/301/682146/go19.asp%3F682146;81929;8867356429324048641;7100594546;S;3225424;clickvars="
+ swliveconnect="true" quality="high" wmode="Opaque" 
+allowscriptaccess="always" type="application/x-shockwave-flash" 
+pluginspage="http://www.adobe.com/go/getflashplayer" width="300" 
+height="250">  </object> 
+
+</div>
+<div class="asideBox" id="needhelpbox">
+    <div class="boxTitle">
+        <a href="#" class="title" actid="hidelink">
+            <span class="arrowDown"></span>
+            Ils ont besoin de votre aide        </a>
+        <a href="#" class="ico option" title="Options" actid="optlink"></a>
+        <a 
+href="http://www.commentcamarche.net/rss/rss_forum_sans_reponses.php3" 
+class="ico newRss" title="Flux RSS"></a>
+    </div>
+    <div id="nh_options" class="options" style="display: none;"></div>
+    <div class="content" id="nh_content"><ul>
+    <li>
+        <h3><a 
+href="http://www.commentcamarche.net/forum/affich-17318022-microsoft-office-enterprise-2007">Microsoft
+ office enterprise 2007</a></h3>
+        <a 
+href="http://www.commentcamarche.net/forum/logiciels-pilotes-1" 
+class="linkH">Logiciels/Pilotes</a>
+        <span class="postInfos">
+            à 03:12        </span>
+    </li>
+    <li>
+        <h3><a 
+href="http://www.commentcamarche.net/forum/affich-17318019-windows-7-64bit-oui-mais-non">Windows
+ 7 64bit... oui mais non?</a></h3>
+        <a href="http://www.commentcamarche.net/forum/windows-11" 
+class="linkH">Windows</a>
+        <span class="postInfos">
+            à 03:10        </span>
+    </li>
+    <li>
+        <h3><a 
+href="http://www.commentcamarche.net/forum/affich-17318018-super-mario-bross-wii">Super
+ Mario Bross wii</a></h3>
+        <a href="http://www.commentcamarche.net/forum/jeux-video-19" 
+class="linkH">Jeux vidéo</a>
+        <span class="postInfos">
+            à 03:09        </span>
+    </li>
+    <li>
+        <h3><a 
+href="http://www.commentcamarche.net/forum/affich-17318012-acces-a-mon-compte">Accès
+ à mon compte</a></h3>
+        <a href="http://www.commentcamarche.net/forum/internet-10" 
+class="linkH">Internet</a>
+        <span class="postInfos">
+            à 03:06        </span>
+    </li>
+</ul>
+<a href="http://www.commentcamarche.net/forum/pending" title="Tous les 
+messages sans réponse" class="buttonAsideBox">
+    Tous les messages sans réponse<span>&nbsp;</span>
+</a>
+
+<div class="clear"></div>
+<!-- Mode : content -->
+</div>
+</div>
+<script type="text/javascript">
+<!--
+ccmboxes.boxes.needhelp = new ccmboxes.box(
+    'needhelpbox',
+    {options: 'nh_options', content: 'nh_content'},
+    {url: '/xhr/needhelp.php', reload: true}
+);
+//-->
+</script>
+<div class="bloc_09" style="margin-bottom: 10px;">
+    <a target="_blank" rel="nofollow" 
+href="http://www3.smartadserver.com/call/cliccommand/3181736/%5Btimestamp%5D?">
+        <img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/supinfo.gif" 
+alt="supinfo">
+    </a>
+    <img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/timestamp.gif" 
+alt="" width="1" border="0" height="1">
+</div><div class="ad_right" id="bloc_sponsor">
+    <script type="text/javascript">
+    sas_pageid='10987/81929';
+    sas_formatid=4787;
+    sas_target='';
+    SmartAdServer(sas_pageid,sas_formatid,sas_target);
+    </script><script id="SmartScr4787" src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/a_003.js"></script><a
+ target="_blank" 
+href="http://www3.smartadserver.com/diff/301/657798/go6.asp?657798;81929;8867356429324048641;7100594546;S;3173300;clickvars="><img
+ id="img3173300" 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/Hotmail%2520300x100.jpg"
+ alt="" width="300" border="0" height="100"></a>
+
+</div><div class="asideBox slider" id="interviewbox">
+    <div class="boxTitle">
+        <a href="#" class="title" actid="hidelink">
+            <span class="arrowDown"></span>
+            Les interviews exclusives        </a>
+    </div>
+    <div id="itv_content">
+        <div class="content " num="0">
+            <div class="news">
+                <a class="img" style="background: 
+url(&quot;http://static.commentcamarche.net/www.commentcamarche.net/actualites/images/5851760t.jpg&quot;)
+ no-repeat scroll 50% 50% transparent;" 
+href="http://www.commentcamarche.net/news/5851760-virginie-hermel-ratp-les-services-mobiles-ont-valorise-notre-image">
+                    <img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent.gif"
+ alt="Virginie Hermel, RATP ">
+                </a>
+                <a 
+href="http://www.commentcamarche.net/news/5851760-virginie-hermel-ratp-les-services-mobiles-ont-valorise-notre-image"
+ class="linkG">Virginie Hermel, RATP </a>
+                <h3><a 
+href="http://www.commentcamarche.net/news/5851760-virginie-hermel-ratp-les-services-mobiles-ont-valorise-notre-image">
+ «&nbsp;Les services mobiles ont valorisé notre image&nbsp;»</a></h3>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="content hide" num="1">
+            <div class="news">
+                <a class="img" style="background: 
+url(&quot;http://static.commentcamarche.net/www.commentcamarche.net/actualites/images/5851656t.jpg&quot;)
+ no-repeat scroll 50% 50% transparent;" 
+href="http://www.commentcamarche.net/news/5851656-antoine-de-noyer-cwt-france-la-dematerialisation-est-entree-dans-les-moeurs">
+                    <img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent.gif"
+ alt="Antoine de Noyer, CWT France ">
+                </a>
+                <a 
+href="http://www.commentcamarche.net/news/5851656-antoine-de-noyer-cwt-france-la-dematerialisation-est-entree-dans-les-moeurs"
+ class="linkG">Antoine de Noyer, CWT France </a>
+                <h3><a 
+href="http://www.commentcamarche.net/news/5851656-antoine-de-noyer-cwt-france-la-dematerialisation-est-entree-dans-les-moeurs">
+ &#8220;la dématérialisation est entrée dans les moeurs&#8221;</a></h3>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="content hide" num="2">
+            <div class="news">
+                <a class="img" style="background: 
+url(&quot;http://static.commentcamarche.net/www.commentcamarche.net/actualites/images/5851645t.jpg&quot;)
+ no-repeat scroll 50% 50% transparent;" 
+href="http://www.commentcamarche.net/news/5851645-sebastien-furic-sucouf-com-chez-les-pros-la-negociation-est-entree-dans-les-m-urs">
+                    <img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent.gif"
+ alt="Sébastien Furic, Sucouf.com ">
+                </a>
+                <a 
+href="http://www.commentcamarche.net/news/5851645-sebastien-furic-sucouf-com-chez-les-pros-la-negociation-est-entree-dans-les-m-urs"
+ class="linkG">Sébastien Furic, Sucouf.com </a>
+                <h3><a 
+href="http://www.commentcamarche.net/news/5851645-sebastien-furic-sucouf-com-chez-les-pros-la-negociation-est-entree-dans-les-m-urs">
+ « Chez les pros, la négociation est entrée dans les m&#339;urs »</a></h3>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="content hide" num="3">
+            <div class="news">
+                <a class="img" style="background: 
+url(&quot;http://static.commentcamarche.net/www.commentcamarche.net/actualites/images/5851547t.jpg&quot;)
+ no-repeat scroll 50% 50% transparent;" 
+href="http://www.commentcamarche.net/news/5851547-tristan-nitot-mozilla-avec-firefox-mobile-naviguer-sur-le-web-moderne">
+                    <img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent.gif"
+ alt="Tristan Nitot, Mozilla ">
+                </a>
+                <a 
+href="http://www.commentcamarche.net/news/5851547-tristan-nitot-mozilla-avec-firefox-mobile-naviguer-sur-le-web-moderne"
+ class="linkG">Tristan Nitot, Mozilla </a>
+                <h3><a 
+href="http://www.commentcamarche.net/news/5851547-tristan-nitot-mozilla-avec-firefox-mobile-naviguer-sur-le-web-moderne">
+ «&nbsp;Avec Firefox Mobile, naviguer sur le web moderne&nbsp;»</a></h3>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="content hide" num="4">
+            <div class="news">
+                <a class="img" style="background: 
+url(&quot;http://static.commentcamarche.net/www.commentcamarche.net/actualites/images/5851471t.jpg&quot;)
+ no-repeat scroll 50% 50% transparent;" 
+href="http://www.commentcamarche.net/news/5851471-christophe-babarro-altergaz-j-opterai-pour-le-vote-electronique">
+                    <img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent.gif"
+ alt="Christophe Babarro, Altergaz ">
+                </a>
+                <a 
+href="http://www.commentcamarche.net/news/5851471-christophe-babarro-altergaz-j-opterai-pour-le-vote-electronique"
+ class="linkG">Christophe Babarro, Altergaz </a>
+                <h3><a 
+href="http://www.commentcamarche.net/news/5851471-christophe-babarro-altergaz-j-opterai-pour-le-vote-electronique">
+ « J&#8217;opterai pour le vote électronique ! »</a></h3>
+                <div class="clear"></div>
+            </div>
+        </div>
+
+        <a href="http://www.commentcamarche.net/news/interviews-7-actus"
+ class="buttonAsideBox">
+            Toutes les interviews<span>&nbsp;</span>
+        </a>
+        <div class="clear"></div>
+        <div class="boxTitle">
+            <div class="iconSlide" id="itvomo">
+                <span class="selected" num="0" actid="slide"></span><span
+ num="1" actid="slide"></span><span num="2" actid="slide"></span><span 
+num="3" actid="slide"></span><span num="4" actid="slide"></span>        
+    </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+<!--
+ccmboxes.boxes.interview = new ccmboxes.box(
+    'interviewbox',
+    {content: 'itv_content'},
+    {with_omo: 'itvomo'}
+);
+//-->
+</script>
+<!-- www.commentcamarche.net --><!-- BOX PARTENAIRES -->
+
+<div class="asideBox slider">
+    <div class="boxTitle">
+        Nos offres partenaires
+    </div>        
+
+    <!-- SIMPLEO -->
+    <div num="0" class="content" style="padding-top: 10px; 
+padding-right: 0pt;">
+        <a class="img" 
+href="http://www3.smartadserver.com/call/cliccommand/3235855/%5Btimestamp%5D?"
+ target="_blank" style="padding: 0pt; width: 110px; height: 50px; 
+background: 
+url(&quot;http://static.commentcamarche.net/www.commentcamarche.net/_skin/_common/img/regie/simpleo.gif&quot;)
+ no-repeat scroll 50% 50% transparent;">
+            <img alt="Des prix jamais vus! Forfaits mobile 4h à 
+19,99&#8364;/mois et sans engagement!" 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent.gif">
+        </a>
+        <a 
+href="http://www3.smartadserver.com/call/cliccommand/3235855/%5Btimestamp%5D?"
+ target="_blank" style="float: left; padding-top: 5px; width: 160px;"><strong>Des
+ prix jamais vus! Forfaits mobile 4h à 19,99&#8364;/mois et sans engagement!</strong></a>
+        <div class="clear"></div>
+    </div>
+
+    <!-- VISTA PRINT -->
+    <div num="0" class="content">
+        <a class="img" 
+href="http://www3.smartadserver.com/call/cliccommand/3246290/%5Btimestamp%5D?"
+ target="_blank" style="padding: 0pt; width: 110px; height: 50px; 
+background: 
+url(&quot;http://static.commentcamarche.net/www.commentcamarche.net/_skin/_common/img/regie/vistaPrint.gif&quot;)
+ no-repeat scroll 0% 0% transparent;">
+            <img alt="250 cartes de visites gratuites + 2 bonus offerts"
+ 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent.gif">
+        </a>
+        <a 
+href="http://www3.smartadserver.com/call/cliccommand/3246290/%5Btimestamp%5D?"
+ target="_blank" style="float: left; padding-top: 10px; width: 150px;"><strong>250
+ cartes de visites gratuites + 2 bonus offerts</strong></a>
+        <div class="clear"></div>
+    </div>
+
+    <!-- ORANGE -->
+    <div num="0" class="content">
+        <a class="img" 
+href="http://www3.smartadserver.com/call/cliccommand/3207669/%5Btimestamp%5D?"
+ target="_blank" style="padding: 0pt; width: 110px; height: 50px; 
+background: 
+url(&quot;http://static.commentcamarche.net/www.commentcamarche.net/_skin/_common/img/regie/orange2.jpg?1&quot;)
+ no-repeat scroll 0% 0% transparent;">
+            <img alt="90&#8364; remboursés sur votre abonnement Internet !" 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent.gif">
+        </a>
+        <a 
+href="http://www3.smartadserver.com/call/cliccommand/3207669/%5Btimestamp%5D?"
+ target="_blank" style="float: left; padding-top: 10px; width: 150px;"><strong>90&#8364;
+ remboursés sur votre abonnement Internet !</strong></a>
+        <div class="clear"></div>
+    </div>
+
+    <!-- HOTMAIL -->
+    <div num="0" class="content">
+        <a class="img" 
+href="http://www3.smartadserver.com/call/cliccommand/3173555/%5Btimestamp%5D?"
+ target="_blank" style="padding: 0pt; width: 110px; height: 50px; 
+background: 
+url(&quot;http://static.commentcamarche.net/www.commentcamarche.net/_skin/_common/img/regie/hotmail.jpg?1&quot;)
+ no-repeat scroll 0% 0% transparent;">
+            <img alt="Une messagerie plus sûre. Créez un compte Hotmail"
+ 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent.gif">
+        </a>
+        <a 
+href="http://www3.smartadserver.com/call/cliccommand/3173555/%5Btimestamp%5D?"
+ target="_blank" style="float: left; padding-top: 3px; width: 150px;"><strong>Une
+ messagerie plus sûre. Créez un compte Hotmail</strong></a>
+        <div class="clear"></div>
+    </div>
+
+    <!-- COFIDIS 
+    <div num="0" class="content">
+        <a class="img" href="http://www3.smartadserver.com/call/cliccommand/3202029/[timestamp]?" target="_blank" style=" padding:0; width:110px; height:50px; background: transparent url(http://static.commentcamarche.net/www.commentcamarche.net/_skin/_common/img/regie/cofidis.jpg) no-repeat">
+            <img alt="Besoin d'argent ? Solution cr&eacute;dit ici !" src="http://www.commentcamarche.net/img/pixeltransparent.gif" />
+        </a>
+        <a href="http://www3.smartadserver.com/call/cliccommand/3202029/[timestamp]?" target="_blank" style="float:left; padding-top:10px; width:150px"><strong>Besoin d'argent ? Solution cr&eacute;dit ici !</strong></a>
+        <div class="clear"></div>
+    </div>-->
+    
+    <!-- ING 
+    <div num="0" class="content">
+        <a class="img" href="http://www3.smartadserver.com/call/cliccommand/3221592/[timestamp]?" target="_blank" style=" padding:0; width:110px; height:50px; background: transparent url(http://static.commentcamarche.net/www.commentcamarche.net/_skin/_common/img/regie/ing.gif) no-repeat">
+            <img alt="ING Direct 3,5% sur votre livret d'&eacute;pargne" src="http://www.commentcamarche.net/img/pixeltransparent.gif" />
+        </a>
+        <a href="http://www3.smartadserver.com/call/cliccommand/3221592/[timestamp]?" target="_blank" style="float:left; padding-top:3px; width:150px"><strong>ING Direct <br />3,5% sur votre livret d'&eacute;pargne</strong></a>
+        <div class="clear"></div>
+    </div>-->
+
+    <!-- SUPINFO -->
+    <div num="0" class="content">
+        <a class="img" 
+href="http://www3.smartadserver.com/call/cliccommand/3224259/%5Btimestamp%5D?"
+ target="_blank" style="padding: 0pt; width: 110px; height: 50px; 
+background: 
+url(&quot;http://static.commentcamarche.net/www.commentcamarche.net/_skin/_common/img/regie/supinfo.jpg&quot;)
+ no-repeat scroll 0% 0% transparent;">
+            <img alt="Le choix de l'informatique à l'international" 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent.gif">
+        </a>
+        <a 
+href="http://www3.smartadserver.com/call/cliccommand/3224259/%5Btimestamp%5D?"
+ target="_blank" style="float: left; padding-top: 10px; width: 150px;"><strong>Le
+ choix de l'informatique à l'international</strong></a>
+        <div class="clear"></div>
+    </div>
+
+    <!-- SAGE -->
+    <div num="0" class="content" style="padding-bottom: 10px;">
+        <a class="img" 
+href="http://www3.smartadserver.com/call/cliccommand/3211427/%5Btimestamp%5D?"
+ target="_blank" style="padding: 0pt; width: 110px; height: 50px; 
+background: 
+url(&quot;http://static.commentcamarche.net/www.commentcamarche.net/_skin/_common/img/regie/sage.jpg&quot;)
+ no-repeat scroll 0% 0% transparent;">
+            <img alt="La référence des logiciels de gestion pour les 
+PME" 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent.gif">
+        </a>
+        <a 
+href="http://www3.smartadserver.com/call/cliccommand/3211427/%5Btimestamp%5D?"
+ target="_blank" style="float: left; padding-top: 10px; width: 150px;"><strong>La
+ référence des logiciels de gestion pour les PME</strong></a>
+        <div class="clear"></div>
+    </div>
+</div>
+<div class="asideBox slider" id="booksbox">
+    <div class="boxTitle">
+        <a href="#" class="title" actid="hidelink">
+            <span class="arrowDown"></span>
+            Collection CommentÇaMarche.net        </a>
+    </div>
+    <div id="book_content">
+        <div class="content " num="0">
+            <div class="news">
+                <a class="img" style="background: 
+url(&quot;http://static.commentcamarche.net/www.commentcamarche.net/livre/images/9782100521623tiny.jpg?20090911&quot;)
+ no-repeat scroll 50% 50% transparent;" 
+href="http://www.commentcamarche.net/livre/ccm.php3?livre=9782100521623#r9782100521623"
+ title="&nbsp;: Comprendre les menaces pour mieux s&#8217;en protéger">
+                    <img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent.gif"
+ alt="Tout sur la sécurité informatique (2e édition)">
+                </a>
+                <a 
+href="http://www.commentcamarche.net/livre/ccm.php3?livre=9782100521623#r9782100521623"
+ class="linkG">J-F Pillou / Jean-Philippe Bay</a>
+                <h3><a 
+href="http://www.commentcamarche.net/livre/ccm.php3?livre=9782100521623#r9782100521623">Tout
+ sur la sécurité informatique (2e édition)&nbsp;: Comprendre les menaces
+ pour mieux s&#8217;en protéger</a></h3>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="content hide" num="1">
+            <div class="news">
+                <a class="img" style="background: 
+url(&quot;http://static.commentcamarche.net/www.commentcamarche.net/livre/images/9782100525690tiny.jpg?20090911&quot;)
+ no-repeat scroll 50% 50% transparent;" 
+href="http://www.commentcamarche.net/livre/ccm.php3?livre=9782100525690#r9782100525690"
+ title="">
+                    <img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent.gif"
+ alt="Tout sur les réseaux sans fil">
+                </a>
+                <a 
+href="http://www.commentcamarche.net/livre/ccm.php3?livre=9782100525690#r9782100525690"
+ class="linkG">Fabrice Lemainque</a>
+                <h3><a 
+href="http://www.commentcamarche.net/livre/ccm.php3?livre=9782100525690#r9782100525690">Tout
+ sur les réseaux sans fil</a></h3>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="content hide" num="2">
+            <div class="news">
+                <a class="img" style="background: 
+url(&quot;http://static.commentcamarche.net/www.commentcamarche.net/livre/images/9782100522859tiny.jpg?20090911&quot;)
+ no-repeat scroll 50% 50% transparent;" 
+href="http://www.commentcamarche.net/livre/ccm.php3?livre=9782100522859#r9782100522859"
+ title="">
+                    <img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent.gif"
+ alt="Tout sur les e-outils pour les TPE - PME">
+                </a>
+                <a 
+href="http://www.commentcamarche.net/livre/ccm.php3?livre=9782100522859#r9782100522859"
+ class="linkG">Jean-Philippe Élie</a>
+                <h3><a 
+href="http://www.commentcamarche.net/livre/ccm.php3?livre=9782100522859#r9782100522859">Tout
+ sur les e-outils pour les TPE - PME</a></h3>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="content hide" num="3">
+            <div class="news">
+                <a class="img" style="background: 
+url(&quot;http://static.commentcamarche.net/www.commentcamarche.net/livre/images/9782100519774tiny.jpg?20090911&quot;)
+ no-repeat scroll 50% 50% transparent;" 
+href="http://www.commentcamarche.net/livre/ccm.php3?livre=9782100519774#r9782100519774"
+ title="&nbsp;: Étendre les possibilités de son navigateur favori">
+                    <img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent.gif"
+ alt="Tout sur les meilleures extensions pour Firefox et IE">
+                </a>
+                <a 
+href="http://www.commentcamarche.net/livre/ccm.php3?livre=9782100519774#r9782100519774"
+ class="linkG">Jean-Marie Cocheteau</a>
+                <h3><a 
+href="http://www.commentcamarche.net/livre/ccm.php3?livre=9782100519774#r9782100519774">Tout
+ sur les meilleures extensions pour Firefox et IE&nbsp;: Étendre les 
+possibilités de son navigateur favori</a></h3>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="content hide" num="4">
+            <div class="news">
+                <a class="img" style="background: 
+url(&quot;http://static.commentcamarche.net/www.commentcamarche.net/livre/images/9782100502776tiny.jpg?20090911&quot;)
+ no-repeat scroll 50% 50% transparent;" 
+href="http://www.commentcamarche.net/livre/ccm.php3?livre=9782100502776#r9782100502776"
+ title="&nbsp;: Concevoir et sécuriser son réseau">
+                    <img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/pixeltransparent.gif"
+ alt="Tout sur les réseaux et Internet">
+                </a>
+                <a 
+href="http://www.commentcamarche.net/livre/ccm.php3?livre=9782100502776#r9782100502776"
+ class="linkG">Jean-François Pillou</a>
+                <h3><a 
+href="http://www.commentcamarche.net/livre/ccm.php3?livre=9782100502776#r9782100502776">Tout
+ sur les réseaux et Internet&nbsp;: Concevoir et sécuriser son réseau</a></h3>
+                <div class="clear"></div>
+            </div>
+        </div>
+       <a href="http://www.commentcamarche.net/livre/ccm.php3" 
+class="buttonAsideBox">
+            Plus de livres<span>&nbsp;</span>
+        </a>
+        <div class="clear"></div>
+        <div class="boxTitle">
+            <div class="iconSlide" id="bookomo">
+                <span class="selected" num="0" actid="slide"></span><span
+ num="1" actid="slide"></span><span num="2" actid="slide"></span><span 
+num="3" actid="slide"></span><span num="4" actid="slide"></span>        
+    </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+<!--
+ccmboxes.boxes.booksbox = new ccmboxes.box(
+    'booksbox',
+    {content: 'book_content'},
+    {with_omo: 'bookomo'}
+);
+//-->
+</script>
+</div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+<div id="footer">
+    <div id="bottom">
+        <ul class="noBorder">
+            <li>Kioskea Network                <ul>
+                                        <li><a 
+href="http://www.commentcamarche.net/" lang="fr">www.commentcamarche.net</a></li>
+                                                    <li><a 
+href="http://de.kioskea.net/" lang="de">de.kioskea.net</a></li>
+                                                    <li><a 
+href="http://en.kioskea.net/" lang="en">en.kioskea.net</a></li>
+                                                    <li><a 
+href="http://es.kioskea.net/" lang="es">es.kioskea.net</a></li>
+                                                    <li><a 
+href="http://it.kioskea.net/" lang="it">it.kioskea.net</a></li>
+                                                    <li><a 
+href="http://pt.kioskea.net/" lang="pt">pt.kioskea.net</a></li>
+                                
+                    <li><a 
+href="http://sante-medecine.commentcamarche.net/" lang="fr">sante-medecine.commentcamarche.net</a></li>
+                                    
+                    <li><a 
+href="http://droit-finances.commentcamarche.net/" lang="fr">droit-finances.commentcamarche.net</a></li>
+                                                        <li><a 
+href="http://salud.kioskea.net/" lang="es">salud.kioskea.net</a></li>
+                                        <li><a 
+href="http://www.supinfo.com/" rel="nofollow">SUPINFO, école 
+d'ingénieurs</a></li>
+                                    </ul>
+            </li>
+        </ul>
+        <ul class="footerBorder">
+            <li>Raccourcis                <ul>
+                    <li><a 
+href="http://www.commentcamarche.net/contents/ccmguide/cgu-conditions-generales.php3">Conditions
+ générales</a></li>
+                    <li><a 
+href="http://www.commentcamarche.net/contents/ccmguide/ccmintro.php3">A 
+propos</a></li>
+                    <li><a 
+href="http://www.commentcamarche.net/contact/">Contact</a></li>
+                    <li><a 
+href="http://www.commentcamarche.net/contents/ccmguide/ccmcharte.php3">Charte</a></li>
+                    <li><a 
+href="http://www.commentcamarche.net/telecharger/?top=50">Top 50</a></li>
+                    <li><a 
+href="http://www.commentcamarche.net/partenaires/">Partenaires</a></li>
+                                        </ul>
+            </li>
+        </ul>
+        <ul class="footerBorder">
+            <li>
+                Glossaire                <div id="glossary">
+                    <a href="http://www.commentcamarche.net/index/a">A</a>
+                    <a href="http://www.commentcamarche.net/index/b">B</a>
+                    <a href="http://www.commentcamarche.net/index/c">C</a>
+                    <a href="http://www.commentcamarche.net/index/d">D</a>
+                    <a href="http://www.commentcamarche.net/index/e">E</a>
+                    <a href="http://www.commentcamarche.net/index/f">F</a>
+                    <a href="http://www.commentcamarche.net/index/g">G</a>
+                    <a href="http://www.commentcamarche.net/index/h">H</a>
+                    <a href="http://www.commentcamarche.net/index/i">I</a>
+                    <a href="http://www.commentcamarche.net/index/j">J</a>
+                    <a href="http://www.commentcamarche.net/index/k">K</a>
+                    <a href="http://www.commentcamarche.net/index/l">L</a>
+                    <a href="http://www.commentcamarche.net/index/m">M</a>
+                    <a href="http://www.commentcamarche.net/index/n">N</a>
+                    <a href="http://www.commentcamarche.net/index/o">O</a>
+                    <a href="http://www.commentcamarche.net/index/p">P</a>
+                    <a href="http://www.commentcamarche.net/index/q">Q</a>
+                    <a href="http://www.commentcamarche.net/index/r">R</a>
+                    <a href="http://www.commentcamarche.net/index/s">S</a>
+                    <a href="http://www.commentcamarche.net/index/t">T</a>
+                    <a href="http://www.commentcamarche.net/index/u">U</a>
+                    <a href="http://www.commentcamarche.net/index/v">V</a>
+                    <a href="http://www.commentcamarche.net/index/w">W</a>
+                    <a href="http://www.commentcamarche.net/index/x">X</a>
+                    <a href="http://www.commentcamarche.net/index/y">Y</a>
+                    <a href="http://www.commentcamarche.net/index/z">Z</a>
+                    <a href="http://www.commentcamarche.net/index/0" 
+class="buttonLarge">0-9</a>
+                </div>
+            </li>
+        </ul>
+        <div class="footerBorder">
+                        <form action="/communaute/inscription.php3" 
+class="headerFooter">
+                <fieldset>
+                    <legend>Inscription gratuite</legend>
+                    <input class="search" name="email" value="email" 
+onfocus="select()" type="text">
+                    <input class="submit" value="OK" type="button">
+                </fieldset>
+            </form>
+                <div id="join_social"><a 
+href="http://www.facebook.com/commentcamarche" id="join_facebook" 
+target="_blank"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/facebook.png" 
+alt="Facebook"></a><a href="http://www.twitter.com/commentcamarche" 
+id="join_twitter" target="_blank"><img 
+src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/twitter.png" 
+alt="Twitter"></a></div></div>
+        <div class="spacer">&nbsp;</div>
+    </div>
+</div><script language="JavaScript1.1">
+sas_pageid='10987/81929';
+sas_formatid=4783;			// Format : DHTML 1x1 (Popup, Flash Transp, ...) 1x1
+sas_target='';	// Targeting
+SmartAdServer(sas_pageid,sas_formatid,sas_target);
+</script><script id="SmartScr4783" src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/a_006.js"></script><noscript>
+<a href="http://www3.smartadserver.com/call/pubjumpi/10987/81914/4783/S/[timestamp]/?">
+<img src="http://www3.smartadserver.com/call/pubi/10987/81914/4783/S/[timestamp]/?" border="0" alt="" /></a>
+</noscript><script type="text/javascript">
+<!--
+xtnv = document;
+xtsd = "http://logc15";
+xtsite = "254140";
+xtn2 = "1"; 
+xtpage = "faq::6336-installer-un-serveur-ftp-sous-ubuntu";
+xtdmc = ".commentcamarche.net";
+xtprm = "";
+//-->
+</script><script type="text/javascript" src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/xiti.js"></script><img
+ src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/hit.gif" 
+width="1" height="1"><noscript><img width="1" height="1" src="http://logc15.xiti.com/hit.xiti?s=254140&amp;p=faq%3A%3A6336-installer-un-serveur-ftp-sous-ubuntu&amp;s2=1" alt="" /></noscript><script type="text/javascript" src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/mwtag.js"></script><script type="text/javascript">
+var keyword = "/faq/6336-installer-un-serveur-ftp-sous-ubuntu";
+var extra = "fr";
+metriwebTag ("ccm", keyword, extra);
+</script><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="6336-installer-un-serveur-ftp-sous-ubuntu_fichiers/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-6560367-1");
+pageTracker._trackPageview();
+} catch(err) {}</script></body></html>

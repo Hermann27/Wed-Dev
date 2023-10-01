@@ -1,0 +1,17 @@
+_118385_amg_acamp_id=17920;
+_118385_amg_pcamp_id=44498;
+_118385_amg_location_id=36258;
+_118385_amg_creative_id=118385;
+_118385_amg_loaded=true;
+var _amg_118385_content='<!-- EC_TYPE_1 AG -->\n'+
+'<html>\n'+
+'<head><title></title></head>\n'+
+'<body leftmargin="0" topmargin="0" marginwidth="0"\n'+
+'marginheight="0">\n'+
+'<a href="http://ad.amgdgt.com/ads/?t=c&s=AAAAAQAUuYpKv3gkKRMe9HreLwGa_5vCi_x0LDEyNzA4NTg5MzA0MjQsY2xrdXJsLGh0dHA6Ly93d3cuc2lkYWN0aW9uLm9yZy9ld2JfcGFnZXMvZC9kb25uZXItZW4tbGlnbmUucGhwP2dsX2NhbXBhZ25lPUpXQURDJnV0bV9zb3VyY2U9YWRjb25pb24mdXRtX21lZGl1bT1iYW5uaWVyZSZ1dG1fY2FtcGFpZ249MDkwMzA5JnV0bV9jb250ZW50PWdpZi0zMDB4MjUwLGMsMTE4Mzg1LHBjLDQ0NDk4LGFjLDE3OTIwLG8sTjAtTjAsbCwzNjI1OAo-&j=" target="_blank">\n'+
+'<img alt="Cliquez ici !" src="http://cdn.amgdgt.com/base/creatives/39/ba/118385/300x250.gif" border="0" width="300" height="250">\n'+
+'</a>\n'+
+'<img src="http://b.scorecardresearch.com/b?c1=8&c2=6035179&c3=1&c4=44498&c5=17920&c6=&cv=1.3&cj=1&rn=1235046694" style="display:none" width="0" height="0" alt="" />\n'+
+'</body>\n'+
+'</html>';
+document.writeln(_amg_118385_content);

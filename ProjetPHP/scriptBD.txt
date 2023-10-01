@@ -1,0 +1,104 @@
+-- phpMyAdmin SQL Dump
+-- version 2.11.6
+-- http://www.phpmyadmin.net
+--
+-- Serveur: localhost
+-- Généré le : Sam 23 Mars 2013 à 02:18
+-- Version du serveur: 5.0.51
+-- Version de PHP: 5.2.6
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+
+--
+-- Base de données: `biblio`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `auth`
+--
+
+DROP TABLE IF EXISTS `auth`;
+CREATE TABLE IF NOT EXISTS `auth` (
+  `identifiant` varchar(50) NOT NULL,
+  `pass` varchar(50) NOT NULL,
+  PRIMARY KEY  (`identifiant`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `auth`
+--
+
+INSERT INTO `auth` (`identifiant`, `pass`) VALUES
+('admin', 'guyso'),
+('couakam', 'jeuner'),
+('djoumdjeu', 'hermann'),
+('njamen', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `cdes`
+--
+
+DROP TABLE IF EXISTS `cdes`;
+CREATE TABLE IF NOT EXISTS `cdes` (
+  `IdCde` tinyint(5) unsigned NOT NULL auto_increment,
+  `produits` varchar(200) NOT NULL default '''''',
+  `montantcde` float unsigned NOT NULL default '0',
+  `nomPrenomCli` varchar(100) NOT NULL default '''''',
+  `adressecli` varchar(30) NOT NULL default '''''',
+  `dateCde` datetime NOT NULL default '0000-00-00 00:00:00',
+  PRIMARY KEY  (`IdCde`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+
+--
+-- Contenu de la table `cdes`
+--
+
+INSERT INTO `cdes` (`IdCde`, `produits`, `montantcde`, `nomPrenomCli`, `adressecli`, `dateCde`) VALUES
+(1, '\0BR-PHP2', 5000, 'couakam', 'douala', '2013-03-21 23:32:16'),
+(2, '\0BR-PHP2', 5000, 'Djoumdjeu', 'logbessou', '2013-03-21 23:45:31'),
+(3, '\0BR-PHP2', 5000, 'jeu', 'jeu', '2013-03-21 23:51:21'),
+(4, '\0BR-PHP2,BR-PHP2', 9000, 'Noutcha', 'logbessou', '2013-03-21 23:54:43'),
+(5, '\0BR-PHP2', 5000, 'jeune', 'jeune', '2013-03-22 09:07:10'),
+(6, '\0BR-PHP2', 5000, 'hgghdg', 'uyruyur', '2013-03-22 09:28:05'),
+(7, '\0BR-PHP2', 5000, 'guy', 'guy', '2013-03-22 09:58:41'),
+(8, '\0BR-PHP2', 5000, 'joi', 'joi', '2013-03-22 12:07:47'),
+(9, '\0BR-PHP2', 5000, 'koi', 'koi', '2013-03-22 12:19:28'),
+(10, '\0BR-PHP2', 5000, 'loi', 'loi', '2013-03-22 12:24:35'),
+(11, '\0BR-PHP2', 5000, 'poi', 'pio', '2013-03-22 12:28:19'),
+(12, '\0BR-PHP2,BR-PHP2,BR-PHP2', 13000, 'pour', 'pour', '2013-03-22 20:41:23'),
+(13, '\0BR-PHP2,BR-PHP2,BR-PHP2,BR-PHP2', 17000, 'chef', 'douala', '2013-03-22 21:04:43'),
+(14, '\0BR-PHP2,BR-PHP2,BR-PHP2', 13000, 'blague', 'blague', '2013-03-22 23:38:36');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `livres`
+--
+
+DROP TABLE IF EXISTS `livres`;
+CREATE TABLE IF NOT EXISTS `livres` (
+  `codeLivre` int(10) unsigned NOT NULL auto_increment,
+  `REF` varchar(50) character set utf8 collate utf8_unicode_ci default NULL,
+  `ISBN` char(16) default NULL,
+  `auteur` char(30) default NULL,
+  `titre` char(60) default NULL,
+  `stock` tinyint(3) unsigned default NULL,
+  `pu` float(10,2) NOT NULL default '0.00',
+  PRIMARY KEY  (`codeLivre`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Contenu de la table `livres`
+--
+
+INSERT INTO `livres` (`codeLivre`, `REF`, `ISBN`, `auteur`, `titre`, `stock`, `pu`) VALUES
+(2, 'BR-PHP2', '978-2-300-023918', 'Luke Welling', 'PHP', 16, 4000.00),
+(3, 'DSTR25', '978-2-300-012435', 'Jean Laloi', 'Droits des Societes', 33, 3616.67),
+(4, 'POLAF', '978-2-300-034152', 'Oban Guema', 'Lettre Africaines', 64, 2850.00),
+(5, 'LEPOID', '978-2-300-087363', 'HelRiegel', 'Management des organisations', 11, 3000.00),
+(6, 'REDICT56', '978-2-300-01352', 'J.Gandouin', 'Redaction adm. en Afrique', 29, 3100.00),
+(7, 'POM251', '978-2-300-014', 'Marcel B', 'Algebre lineaire', 18, 2500.00);

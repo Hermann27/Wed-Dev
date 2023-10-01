@@ -1,0 +1,626 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html dir="ltr" xml:lang="fr" xmlns="http://www.w3.org/1999/xhtml" 
+lang="fr"><head>
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Forum Ubuntu-fr.org / [ Résolu ] Boucle sur requête MYSQL</title>
+<link rel="stylesheet" type="text/css" 
+href="viewtopic.php_fichiers/Ubuntu.css">
+<script type="text/javascript" src="viewtopic.php_fichiers/common.js"></script>
+<script type="text/javascript">
+var site_name='ubuntu';
+var menu_hidden=0;
+</script>
+<script type="text/javascript" src="viewtopic.php_fichiers/menu.js"></script>
+ 
+
+<link rel="alternate" type="application/rss+xml" title="RSS" 
+href="http://forum.ubuntu-fr.org/extern.php?action=new&amp;type=rss">
+
+
+
+</head><body>
+<!-- 242771-28 -->
+
+<div id="top">
+   <h1><a href="http://www.ubuntu-fr.org/" title="Accueil">ubuntu-fr</a></h1>
+   <p><span>Communauté francophone des utilisateurs d'Ubuntu</span></p>
+   <form action="http://www.ubuntu-fr.org/search/index.php" method="get"
+ id="search_top" onsubmit="var expire = new 
+Date();expire.setTime(expire.getTime()+(5*60*1000));document.cookie 
+='ubfr_forum_keywords='+document.getElementById('q').value+';expires='+expire.toGMTString();">
+      <fieldset>
+         <input name="q" id="q" value="Recherche rapide..." 
+onfocus="if(this.value == 'Recherche rapide...'){this.value='';}" 
+title="Saisissez les mots-clés à rechercher" type="text">
+	<script type="text/javascript"><!--
+	function readCookie(name) {
+		var nameEQ = name + "=";
+		var ca = document.cookie.split(';');
+		for(var i=0;i < ca.length;i++) {
+			var c = ca[i];
+			while (c.charAt(0)==' ') c = c.substring(1,c.length);
+			if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+		}
+		return null;
+	}
+	var kwds = readCookie('ubfr_forum_keywords');
+	if(kwds)
+		document.getElementById('q').value=kwds;
+	--></script>
+         <select name="in" id="in" title="Dans le..">
+            <option value="wiki">Documentation</option>
+            <option selected="selected" value="oneforum">Ce forum</option>
+            <option value="forum">Tous les forums</option>
+            <option value="planet">Planet</option>
+         </select>
+         <input value="28" name="forum" type="hidden">
+         <input value="ok" type="submit">
+       </fieldset>
+    </form>
+</div>
+<div id="navbar">
+   <ul>
+      <li><a href="http://www.ubuntu-fr.org/" id="navbar_www">Accueil</a></li>
+      <li><a href="http://doc.ubuntu-fr.org/" id="navbar_doc">Documentation</a></li>
+      <li id="active"><a href="http://forum.ubuntu-fr.org/" 
+id="navbar_forum">Forum</a></li>
+      <li><a href="http://planet.ubuntu-fr.org/" id="navbar_planet">Planet</a></li>
+   </ul>
+   <p>Vous êtes ici : <a href="http://www.ubuntu-fr.org/" title="Retour à
+ l'accueil">Accueil</a> » <a href="http://forum.ubuntu-fr.org/" 
+title="Forum ubuntu-fr">Forum</a>&nbsp;»&nbsp;<a 
+href="http://forum.ubuntu-fr.org/viewforum.php?id=28">Serveurs</a>&nbsp;»&nbsp;[
+ Résolu ] Boucl...</p>
+</div>
+
+<div id="punwrap">
+<div id="punviewtopic" class="pun">
+
+<div id="brdheader" class="block">
+	<div class="box">
+		<div id="brdtitle" class="inbox">
+		</div>
+		<div id="brdmenu" class="inbox">
+			<ul>
+				<li id="navextra1"><h2>Navigation</h2></li>
+				<li id="navindex"><a href="http://forum.ubuntu-fr.org/index.php">Liste
+ des forums</a></li>
+				<li id="navuserlist"><a 
+href="http://forum.ubuntu-fr.org/userlist.php">Liste des utilisateurs</a></li>
+				<li id="navrules"><a 
+href="http://forum.ubuntu-fr.org/misc.php?action=rules">Règles</a></li>
+				<li id="navsearch"><a href="http://forum.ubuntu-fr.org/search.php">Recherche</a></li>
+				<li id="navregister"><a 
+href="http://forum.ubuntu-fr.org/register.php">Inscription</a></li>
+				<li id="navlogin"><a href="http://forum.ubuntu-fr.org/login.php">Connexion</a></li>
+			</ul>
+		</div>
+		
+			<dl id="searchlinks" style="font-size: 1em;" class="conl">
+				<dt><strong>Liens de recherche</strong></dt><dd><a 
+href="http://forum.ubuntu-fr.org/search.php?action=show_24h">Messages 
+récents</a></dd>
+				<dd><a 
+href="http://forum.ubuntu-fr.org/search.php?action=show_unanswered">Sujets
+ sans réponse</a></dd>
+			</dl>
+
+		<div id="brdwelcome" class="inbox"><p id="hidemenu"><a 
+href="javascript:switchMenuVisible()" title="Masquer le menu - AccessKey
+ Z" accesskey="z"><span>Masquer le menu</span></a></p>
+			<p>Vous n'êtes pas connecté.</p>
+		</div>
+	</div>
+</div>
+
+<div id="announce" class="block">
+	<h2><span>Annonce</span></h2>
+	<div class="box">
+		<div class="inbox">
+			<div><p>
+Les Ubuntu-partys sont l'occasion pour beaucoup d'entre vous d'acquérir 
+les goodies Ubuntu-fr faits par nos petites mains avec amour.<br>
+Pour tous les autres, fini le désespoir de les manquer <img 
+src="viewtopic.php_fichiers/wink.png" alt="wink" width="15" height="15">
+ Il est désormais possible de vous procurer l'objet de votre choix grâce
+ à la <a href="http://enventelibre.org/">boutique en ligne</a>, commune à
+ <a href="http://www.framasoft.net/">Framasoft</a> et <a 
+href="http://ubuntu-fr.org/">Ubuntu-fr</a>. Vous pourrez déjà y trouver 
+mugs, t-shirts et, bien sûr, les Framakey Ubuntu-fr Remix.
+</p></div>
+		</div>
+	</div>
+</div>
+
+<div class="linkst">
+	<div class="inbox">
+		<ul><li><a href="http://forum.ubuntu-fr.org/index.php">Liste des 
+forums</a></li><li>&nbsp;»&nbsp;<a 
+href="http://forum.ubuntu-fr.org/viewforum.php?id=28">Serveurs</a></li><li>&nbsp;»&nbsp;[
+ Résolu ] Boucle sur requête MYSQL</li></ul>
+		<p style="margin-top: 1em;" class="pagelink conl"><strong>1</strong></p>
+		<p class="postlink conr">&nbsp;</p>
+		<div class="clearer"></div>
+	</div>
+</div>
+
+<div id="p1983366" class="blockpost rowodd firstpost">
+	<h2><span><span class="conr">#1&nbsp;</span><a 
+href="http://forum.ubuntu-fr.org/viewtopic.php?pid=1983366#p1983366">Le 
+07/08/2008, à 21:56</a></span></h2>
+	<div class="box">
+		<div class="inbox">
+			<div class="postleft">
+				<dl>
+					<dt><strong><a 
+href="http://forum.ubuntu-fr.org/profile.php?id=83652">flyben</a></strong></dt>
+										<dd class="postavatar"><img 
+src="viewtopic.php_fichiers/83652.jpg" alt="" width="60" height="60"></dd>
+				</dl>
+			</div>
+			<div class="postright">
+				<h3>[ Résolu ] Boucle sur requête MYSQL</h3>
+				<div class="postmsg">
+					<p>Bonjour à tous,<br><br>J'ai un petit problème pour écrire une 
+requête MYSQL, je m'explique;<br>Je suis débutant sur les systèmes Unix /
+ Linux, j'ai une Ubuntu 7.10 en version serveur, et dessus est installé 
+un serveur Web (XAMPP) avec apache, mysql, php, proftp.<br>Dans le cadre
+ d'un projet pour mon travail je souhaitais faire une requête sur MYSQL 
+avec un Bash.<br>Le but de cette requête est de récupérer toutes les 
+valeurs présentent d'une entrée donnée pour traiter chaque information 
+avec une boucle (j'espère être clair !<img 
+src="viewtopic.php_fichiers/tongue.png" alt="tongue" width="15" 
+height="15">).<br>Une requête toute simple sur MYSQL ne me pose pas trop
+ de problème, exemple de requête fonctionnelle : <br><br><em>#!/bin/bash&nbsp;
+ &nbsp;<br> <br>declare val1='3'<br>declare val2=`/opt/lampp/bin/mysql 
+-u user -D database -e "SELECT champ1 FROM table where champ2=$val1"`<br>echo
+ $val2</em><br><br>Mais maintenant pour récupérer toutes les valeurs 
+présentent dans une entrée X je n'y arrive pas.<br>En PHP j'écris ça 
+comme suit :<br><br><em>&lt;?php<br>$val1 = "n'importe quoi"<br>$sql1 = 
+mysql_query("SELECT * FROM table WHERE champ1 = $val1"); <br>while 
+($donnees1 = mysql_fetch_array($sql1)) <br>{ <br>là je traite mes 
+données; <br>}<br>et là ma boucle est terminée<br>?&gt;</em><br><br>Quelqu'un
+ aurait il une idée pour m'aider à avancer dans mon projet.</p>
+					<p class="postedit"><em>Dernière modification par flyben (Le 
+12/08/2008, à 09:22)</em></p>
+				</div>
+			</div>
+			<div class="clearer"></div>
+			<div class="postfootleft"><p>Hors ligne</p></div>
+			<div class="postfootright"><div>&nbsp;</div></div>
+		</div>
+	</div>
+</div>
+
+<div id="p1983412" class="blockpost roweven">
+	<h2><span><span class="conr">#2&nbsp;</span><a 
+href="http://forum.ubuntu-fr.org/viewtopic.php?pid=1983412#p1983412">Le 
+07/08/2008, à 22:14</a></span></h2>
+	<div class="box">
+		<div class="inbox">
+			<div class="postleft">
+				<dl>
+					<dt><strong><a 
+href="http://forum.ubuntu-fr.org/profile.php?id=10132">dexinou</a></strong></dt>
+										<dd class="postavatar"><img 
+src="viewtopic.php_fichiers/10132.png" alt="" width="48" height="47"></dd>
+				</dl>
+			</div>
+			<div class="postright">
+				<h3> Re: [ Résolu ] Boucle sur requête MYSQL</h3>
+				<div class="postmsg">
+					<p>Lance ton script via php:<br><br></p><div class="codebox"><div 
+class="incqbox"><h4>Code:</h4><div class="scrollbox" style="height: 
+16.5em;"><pre>#!/usr/bin/php
+
+$val1 = "n'importe quoi"
+$sql1 = mysql_query("SELECT * FROM table WHERE champ1 = $val1");
+while ($donnees1 = mysql_fetch_array($sql1))
+{
+là je traite mes données;
+}
+et là ma boucle est terminée</pre></div></div></div><p>En console<br>php
+ -l /chemin/vers/ton/script.php<br><br>il te suffit ensuite de rediriger
+ le tout vers la sortie html.<br>ne pas oublier le <br>mysql_free_result($sql1)
+ ; //Libère les ressources<br>et le <br>mysql_close(); //ferme la 
+connexion.</p>
+					<p class="postedit"><em>Dernière modification par dexinou (Le 
+07/08/2008, à 22:15)</em></p>
+				</div>
+				<div class="postsignature"><hr><strong><span style="color: blue;">Ubuntu
+ 9.10 64bits ext4 ® Core 2 Duo</span></strong><br><strong>Unix..... il y
+ a moins bien mais c'est plus cher.</strong><br><strong>Si t'as pas 
+compris la réponse, pose mieux ta question.</strong><br><a 
+href="http://www.generation-bsd.co.cc/"><strong>Tutoriaux Linux, apache,
+ pure-ftpd, bind, mysql, qmail...</strong></a></div>
+			</div>
+			<div class="clearer"></div>
+			<div class="postfootleft"><p>Hors ligne</p></div>
+			<div class="postfootright"><div>&nbsp;</div></div>
+		</div>
+	</div>
+</div>
+
+<div id="p1983434" class="blockpost rowodd">
+	<h2><span><span class="conr">#3&nbsp;</span><a 
+href="http://forum.ubuntu-fr.org/viewtopic.php?pid=1983434#p1983434">Le 
+07/08/2008, à 22:22</a></span></h2>
+	<div class="box">
+		<div class="inbox">
+			<div class="postleft">
+				<dl>
+					<dt><strong><a 
+href="http://forum.ubuntu-fr.org/profile.php?id=83652">flyben</a></strong></dt>
+										<dd class="postavatar"><img 
+src="viewtopic.php_fichiers/83652.jpg" alt="" width="60" height="60"></dd>
+				</dl>
+			</div>
+			<div class="postright">
+				<h3> Re: [ Résolu ] Boucle sur requête MYSQL</h3>
+				<div class="postmsg">
+					<p>Ok, merci beaucoup, je teste ça demain au boulot <img 
+src="viewtopic.php_fichiers/big_smile.png" alt="big_smile" width="15" 
+height="15">...<br>Bonne soirée.</p>
+				</div>
+			</div>
+			<div class="clearer"></div>
+			<div class="postfootleft"><p>Hors ligne</p></div>
+			<div class="postfootright"><div>&nbsp;</div></div>
+		</div>
+	</div>
+</div>
+
+<div id="p1984204" class="blockpost roweven">
+	<h2><span><span class="conr">#4&nbsp;</span><a 
+href="http://forum.ubuntu-fr.org/viewtopic.php?pid=1984204#p1984204">Le 
+08/08/2008, à 08:40</a></span></h2>
+	<div class="box">
+		<div class="inbox">
+			<div class="postleft">
+				<dl>
+					<dt><strong><a 
+href="http://forum.ubuntu-fr.org/profile.php?id=83652">flyben</a></strong></dt>
+										<dd class="postavatar"><img 
+src="viewtopic.php_fichiers/83652.jpg" alt="" width="60" height="60"></dd>
+				</dl>
+			</div>
+			<div class="postright">
+				<h3> Re: [ Résolu ] Boucle sur requête MYSQL</h3>
+				<div class="postmsg">
+					<p>Alors voilà, mon problème est le suivant;<br>Lancer le script en
+ PHP fonctionnerait, mais dans la boucle j'ai besoin de traiter mon 
+information avec la commande PING, qui ne peut pas être traitée par PHP.<br>Explication;
+ En fait mes valeurs dans les champ sont des adresses IP, le but final 
+de ce script est de faire un monitoring réseau.<br>Dans l'idée le script
+ ferait ça :<br>Je vais chercher l'adresse IP à traiter dans ma base 
+MYSQL, je la ping, si elle répond je passe à la suivante, si elle ne 
+répond pas je lance un autre script et passe à la suivante.<br><br>Donc 
+je pense qu'il va quand même falloir traiter ça avec un Bash classique.<br><br>Merci
+ de votre aide.</p>
+				</div>
+			</div>
+			<div class="clearer"></div>
+			<div class="postfootleft"><p>Hors ligne</p></div>
+			<div class="postfootright"><div>&nbsp;</div></div>
+		</div>
+	</div>
+</div>
+
+<div id="p1984495" class="blockpost rowodd">
+	<h2><span><span class="conr">#5&nbsp;</span><a 
+href="http://forum.ubuntu-fr.org/viewtopic.php?pid=1984495#p1984495">Le 
+08/08/2008, à 11:06</a></span></h2>
+	<div class="box">
+		<div class="inbox">
+			<div class="postleft">
+				<dl>
+					<dt><strong><a 
+href="http://forum.ubuntu-fr.org/profile.php?id=83547">antoine_</a></strong></dt>
+										<dd class="postavatar"></dd>
+				</dl>
+			</div>
+			<div class="postright">
+				<h3> Re: [ Résolu ] Boucle sur requête MYSQL</h3>
+				<div class="postmsg">
+					<p>Et la commande system de php ne fonctionne pas pour ton ping ?<br><br>Tu
+ peux traiter le résultat de mysql via bash mais ce sera compliqué, 
+surtout que la commande mysql rajoute une mise en forme.<br>Si tu veux 
+vraiment faire ça en bash, regarde les commandes suivantes :<br>- man 
+mysql pour voir s'il n'y a pas moyen de supprimer la mise en forme (ce 
+sera plus facile).<br>- grep et egrep pour sélectionner des lignes.<br>-
+ cut pour sélectionner des champs dans une ligne.<br>- sed et awk pour 
+faire à peu près tout. Commence par sed, qui peut suffire pour tes 
+besoins et qui est plus simple que awk.</p>
+				</div>
+			</div>
+			<div class="clearer"></div>
+			<div class="postfootleft"><p>Hors ligne</p></div>
+			<div class="postfootright"><div>&nbsp;</div></div>
+		</div>
+	</div>
+</div>
+
+<div id="p1984662" class="blockpost roweven">
+	<h2><span><span class="conr">#6&nbsp;</span><a 
+href="http://forum.ubuntu-fr.org/viewtopic.php?pid=1984662#p1984662">Le 
+08/08/2008, à 12:08</a></span></h2>
+	<div class="box">
+		<div class="inbox">
+			<div class="postleft">
+				<dl>
+					<dt><strong><a 
+href="http://forum.ubuntu-fr.org/profile.php?id=83652">flyben</a></strong></dt>
+										<dd class="postavatar"><img 
+src="viewtopic.php_fichiers/83652.jpg" alt="" width="60" height="60"></dd>
+				</dl>
+			</div>
+			<div class="postright">
+				<h3> Re: [ Résolu ] Boucle sur requête MYSQL</h3>
+				<div class="postmsg">
+					<p>Eclairage de lanterne : Si je met un ping dans ma boucle while 
+PHP, bash sera exécuter le ping et le traiter ? <br>Sinon quand 
+j'exécute ;<br><br>#!/bin/bash&nbsp; &nbsp;<br><br>declare val1='3'<br>declare
+ val2=`/opt/lampp/bin/mysql -u user -D database -e "SELECT champ1 FROM 
+table where champ2=$val1"`<br>echo $val2<br><br>Le contenu de $val2 me 
+convient parfaitement pour le traitement.<br>Mais c'est vraiment 
+l'histoire de la boucle qui me manque, parce que dans PHP il y a le 
+"while ($donnees1 = mysql_fetch_array($sql1)", et il me faudrait 
+l'équivalent en bash.<br><br>Voilà, je sais je suis un peu embêtant <img
+ src="viewtopic.php_fichiers/big_smile.png" alt="big_smile" width="15" 
+height="15"></p>
+					<p class="postedit"><em>Dernière modification par flyben (Le 
+08/08/2008, à 12:44)</em></p>
+				</div>
+			</div>
+			<div class="clearer"></div>
+			<div class="postfootleft"><p>Hors ligne</p></div>
+			<div class="postfootright"><div>&nbsp;</div></div>
+		</div>
+	</div>
+</div>
+
+<div id="p1986803" class="blockpost rowodd">
+	<h2><span><span class="conr">#7&nbsp;</span><a 
+href="http://forum.ubuntu-fr.org/viewtopic.php?pid=1986803#p1986803">Le 
+09/08/2008, à 10:55</a></span></h2>
+	<div class="box">
+		<div class="inbox">
+			<div class="postleft">
+				<dl>
+					<dt><strong><a 
+href="http://forum.ubuntu-fr.org/profile.php?id=83652">flyben</a></strong></dt>
+										<dd class="postavatar"><img 
+src="viewtopic.php_fichiers/83652.jpg" alt="" width="60" height="60"></dd>
+				</dl>
+			</div>
+			<div class="postright">
+				<h3> Re: [ Résolu ] Boucle sur requête MYSQL</h3>
+				<div class="postmsg">
+					<p>Personne n'a d'idées ?<br>Sinon quelqu'un pourrait me donner un 
+language pas trop compliqué à apprendre avec lequel je pourrais faire ce
+ type de programme.<br><br>Merci d'avance......<img 
+src="viewtopic.php_fichiers/wink.png" alt="wink" width="15" height="15"></p>
+				</div>
+			</div>
+			<div class="clearer"></div>
+			<div class="postfootleft"><p>Hors ligne</p></div>
+			<div class="postfootright"><div>&nbsp;</div></div>
+		</div>
+	</div>
+</div>
+
+<div id="p1988852" class="blockpost roweven">
+	<h2><span><span class="conr">#8&nbsp;</span><a 
+href="http://forum.ubuntu-fr.org/viewtopic.php?pid=1988852#p1988852">Le 
+10/08/2008, à 11:30</a></span></h2>
+	<div class="box">
+		<div class="inbox">
+			<div class="postleft">
+				<dl>
+					<dt><strong><a 
+href="http://forum.ubuntu-fr.org/profile.php?id=83547">antoine_</a></strong></dt>
+										<dd class="postavatar"></dd>
+				</dl>
+			</div>
+			<div class="postright">
+				<h3> Re: [ Résolu ] Boucle sur requête MYSQL</h3>
+				<div class="postmsg">
+					<p>Concernant ton ping, avec les fonctions exec() ou system(), ce 
+sera effectivement bash qui prendra en charge le ping. Pense bien sûr à 
+préciser le nombre de pings que tu veux faire. System te renverra 
+ensuite la sortie sur stdout, que tu n'as plus qu'à traiter avec PHP 
+(qui est plutôt bien doté en fonctions pour ça). En plus, je crois que 
+les lignes te sont données sous forme d'un tableau. Et derrière, traiter
+ les requêtes MySQL sera simple.</p>
+				</div>
+			</div>
+			<div class="clearer"></div>
+			<div class="postfootleft"><p>Hors ligne</p></div>
+			<div class="postfootright"><div>&nbsp;</div></div>
+		</div>
+	</div>
+</div>
+
+<div id="p1989244" class="blockpost rowodd">
+	<h2><span><span class="conr">#9&nbsp;</span><a 
+href="http://forum.ubuntu-fr.org/viewtopic.php?pid=1989244#p1989244">Le 
+10/08/2008, à 15:25</a></span></h2>
+	<div class="box">
+		<div class="inbox">
+			<div class="postleft">
+				<dl>
+					<dt><strong><a 
+href="http://forum.ubuntu-fr.org/profile.php?id=10132">dexinou</a></strong></dt>
+										<dd class="postavatar"><img 
+src="viewtopic.php_fichiers/10132.png" alt="" width="48" height="47"></dd>
+				</dl>
+			</div>
+			<div class="postright">
+				<h3> Re: [ Résolu ] Boucle sur requête MYSQL</h3>
+				<div class="postmsg">
+					<p>Dans ton script php, fait comme on ta dit plus haut, utilise les
+ fonctions de php qui sont faites pour ça:<br></p><div class="codebox"><div
+ class="incqbox"><h4>Code:</h4><div class="scrollbox" style="height: 
+18em;"><pre>$ping = shell_exec('ping -c4 hôte');
+
+if($ping) 
+{
+echo 'Ok l'hote répond'; 
+}
+else
+{
+echo 'Pas ok, l'hote ne répond pas'; 
+}</pre></div></div></div>
+					<p class="postedit"><em>Dernière modification par dexinou (Le 
+10/08/2008, à 15:27)</em></p>
+				</div>
+				<div class="postsignature"><hr><strong><span style="color: blue;">Ubuntu
+ 9.10 64bits ext4 ® Core 2 Duo</span></strong><br><strong>Unix..... il y
+ a moins bien mais c'est plus cher.</strong><br><strong>Si t'as pas 
+compris la réponse, pose mieux ta question.</strong><br><a 
+href="http://www.generation-bsd.co.cc/"><strong>Tutoriaux Linux, apache,
+ pure-ftpd, bind, mysql, qmail...</strong></a></div>
+			</div>
+			<div class="clearer"></div>
+			<div class="postfootleft"><p>Hors ligne</p></div>
+			<div class="postfootright"><div>&nbsp;</div></div>
+		</div>
+	</div>
+</div>
+
+<div id="p1992946" class="blockpost roweven">
+	<h2><span><span class="conr">#10&nbsp;</span><a 
+href="http://forum.ubuntu-fr.org/viewtopic.php?pid=1992946#p1992946">Le 
+12/08/2008, à 09:20</a></span></h2>
+	<div class="box">
+		<div class="inbox">
+			<div class="postleft">
+				<dl>
+					<dt><strong><a 
+href="http://forum.ubuntu-fr.org/profile.php?id=83652">flyben</a></strong></dt>
+										<dd class="postavatar"><img 
+src="viewtopic.php_fichiers/83652.jpg" alt="" width="60" height="60"></dd>
+				</dl>
+			</div>
+			<div class="postright">
+				<h3> Re: [ Résolu ] Boucle sur requête MYSQL</h3>
+				<div class="postmsg">
+					<p>Merci pour vos réponses mais mon but n'était pas de le faire en 
+php, php n'offre pas la rapidité voulu pour ce type de programme.<br>J'ai
+ plus de 100 site à pinguer sans compter les serveurs et imprimantes, 
+php n'est pas fait pour ça.<br>J'ai été chercher du coté de PERL et 
+c'est ce qui me fallait.<br>Il ne me reste plus qu'à bosser !!! Mais ça 
+devrait le faire.<br>En tout cas merci beaucoup de votre aide, et à 
+bientôt.</p>
+				</div>
+			</div>
+			<div class="clearer"></div>
+			<div class="postfootleft"><p>Hors ligne</p></div>
+			<div class="postfootright"><div>&nbsp;</div></div>
+		</div>
+	</div>
+</div>
+
+<div class="postlinksb">
+	<div class="inbox">
+		<p class="postlink conr">&nbsp;</p>
+		<p class="pagelink conl" style="margin-bottom: 1em; float: none;"><strong>1</strong></p>
+		<ul><li><a href="http://forum.ubuntu-fr.org/index.php">Liste des 
+forums</a></li><li>&nbsp;»&nbsp;<a 
+href="http://forum.ubuntu-fr.org/viewforum.php?id=28">Serveurs</a></li><li>&nbsp;»&nbsp;[
+ Résolu ] Boucle sur requête MYSQL</li></ul>
+		<div class="clearer"></div>
+		<p class="postlink conr" style="margin-top: -20px;"><a href="#" 
+style="">Haut de page&nbsp;↑</a></p>
+	</div>
+</div>
+
+<div id="brdfooter" class="block">
+	<h2><span>Pied de page du Forum</span></h2>
+	<div class="box">
+		<div class="inbox">
+
+			<div class="conl">
+				<form id="qjump" method="get" action="viewforum.php">
+					<div><label>Aller à
+					<br><select name="id" 
+onchange="window.location=('viewforum.php?id='+this.options[this.selectedIndex].value)">
+						<optgroup label="Débuter avec Ubuntu">
+							<option value="9">Questions et informations avant l'installation</option>
+							<option value="10">Installation d'Ubuntu</option>
+							<option value="22">LiveCD/LiveUSB</option>
+							<option value="61">Wubi: installation dans Windows</option>
+						</optgroup>
+						<optgroup label="Configuration matérielle">
+							<option value="27">Affichage et cartes graphiques</option>
+							<option value="16">Accès internet et réseaux</option>
+							<option value="79">Imprimantes et scanners</option>
+							<option value="6">Autres types de matériel</option>
+							<option value="82">WiFi</option>
+						</optgroup>
+						<optgroup label="Utilisation générale">
+							<option value="25">Installation de logiciels et changements de 
+version</option>
+							<option value="13">Bureautique et logiciels pour l'internet et le
+ réseau</option>
+							<option value="17">Lecture et configuration multimédia</option>
+							<option value="81">Création graphique, musicale et vidéo</option>
+							<option value="40">Logiciels éducatifs</option>
+							<option value="15">Jeux</option>
+							<option value="18">Autres logiciels et problèmes généraux</option>
+							<option value="5">Général</option>
+							<option value="24">Sur 64 bits</option>
+							<option value="20">Sur Mac</option>
+						</optgroup>
+						<optgroup label="Environnements et accessibilité">
+							<option value="65">Accessibilité</option>
+							<option value="37">GNOME</option>
+							<option value="66">KDE</option>
+							<option value="38">XFCE</option>
+							<option value="41">Autres environnements et personnalisations</option>
+							<option value="78">Console et terminal</option>
+							<option value="39">KDE3.5</option>
+						</optgroup>
+						<optgroup label="Utilisations avancées">
+							<option value="51">Ubuntu en entreprise</option>
+							<option value="28" selected="selected">Serveurs</option>
+							<option value="63">Virtualisation et émulation</option>
+							<option value="23">Trucs, astuces et scripts utiles</option>
+							<option value="35">Développement et programmation</option>
+							<option value="53">Version instable : Lucid Lynx 10.04</option>
+							<option value="4">Archive</option>
+						</optgroup>
+						<optgroup label="Activités autour du libre">
+							<option value="29">Événements</option>
+							<option value="69">Vos développements libres</option>
+							<option value="71">Vos sites sur le libre</option>
+							<option value="73">Revendeurs libres</option>
+							<option value="49">Lettre hebdomadaire Ubuntu</option>
+							<option value="50">Tee shirts</option>
+							<option value="52">Archives presse</option>
+						</optgroup>
+						<optgroup label="Divers">
+							<option value="42">Actualités autour du logiciel libre</option>
+							<option value="21">À propos du site - Contribution(s)</option>
+							<option value="7">Café Ubuntu</option>
+							<option value="43">Être ou ne pas être... ?</option>
+							<option value="8">L'éphémère</option>
+					</optgroup>
+					</select>
+					<input value=" Aller " accesskey="g" type="submit">
+					</label></div>
+				</form>
+			</div>
+			<p class="conr">Propulsé par <a href="http://fluxbb.org/">FluxBB</a><br>
+Style adapté par <a href="http://www.ogcreation.fr/">Ogcreation.fr</a>.</p>
+<!-- oya.ubuntu-eu.org -->
+			<div class="clearer"></div>
+		</div>
+	</div>
+</div>
+</div>
+</div>
+</body></html>

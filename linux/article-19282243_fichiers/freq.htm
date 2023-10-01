@@ -1,0 +1,451 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<script type="text/javascript"> 
+var komli_domain="pubmatic.com"
+
+var BrowserInfo = {
+        init: function() {
+                this.name = this.getBrName() || "UnKnown";
+        },
+        getBrName: function() {
+                for (var i=0;i<this.browserData.length;i++)     {
+                        var dataString = this.browserData[i].string;
+                        var dataProp = this.browserData[i].prop;
+                        if (dataString) {
+                                if (dataString.indexOf(this.browserData[i].serSubStr) != -1){
+
+                                        return this.browserData[i].identity;
+				}
+                        }
+                        else if (dataProp)
+                                return this.browserData[i].identity;
+                }
+        },
+	browserData: [
+                {       string: navigator.userAgent,
+                        serSubStr: "OmniWeb",
+                        identity: "OmniWeb"
+                },
+                {
+                        string: navigator.vendor,
+                        serSubStr: "Apple",
+                        identity: "Safari"
+                },
+                {
+                        prop: window.opera,
+                        identity: "Opera"
+                },
+                {
+                        string: navigator.vendor,
+                        serSubStr: "iCab",
+                        identity: "iCab"
+                },
+                {
+                        string: navigator.vendor,
+                        serSubStr: "KDE",
+                        identity: "Konqueror"
+                },
+                {
+                        string: navigator.userAgent,
+                        serSubStr: "Firefox",
+                        identity: "Firefox"
+                },
+                {
+                        string: navigator.vendor,
+                        serSubStr: "Camino",
+                        identity: "Camino"
+                },
+                {               // for newer Netscapes (6+)
+                        string: navigator.userAgent,
+                        serSubStr: "Netscape",
+                        identity: "Netscape"
+                },
+                {
+                        string: navigator.userAgent,
+                        serSubStr: "MSIE",
+                        identity: "Explorer"
+                },
+		{
+                        string: navigator.userAgent,
+                        serSubStr: "Gecko",
+                        identity: "Mozilla"
+                },
+                {               // for older Netscapes (4-)
+                        string: navigator.userAgent,
+                        serSubStr: "Mozilla",
+                        identity: "Netscape"
+                }
+        ]
+}
+
+
+function set_freq() {
+	
+	/*check TPCA */
+	Set_Cookie( 'KTPCACOOKIE', 'YES', 4, '/', komli_domain, '');
+
+	BrowserInfo.init();
+	if(BrowserInfo.name == "Explorer") {
+		pm_addEventListener_j(window, 'beforeunload', set_master_cookie, false);
+		pm_addEventListener_j(window, 'onbeforeunload', set_master_cookie, false);
+	} else {
+		pm_addEventListener_j(window,'unload', set_master_cookie, false);
+	}
+}
+
+var curr_time = 0;
+
+function get_curr_time() {
+
+	var cookie_list = document.cookie.split(";");
+	
+	for(i=0; i < cookie_list.length; i++) {
+		var namevalue = cookie_list[i].split("=");
+		if(namevalue.length == 2) {
+			var time_cookie =  namevalue[0].indexOf("_curtime");
+			if(time_cookie > -1) {
+				
+				curr_time = parseInt(namevalue[1]);
+				break;	
+			}
+		}	
+	}
+	
+}
+
+var cam_list = new Array();
+
+function get_campaign_cookie_data(cookie_name, cookie_value) {
+		var master_cookie_flag = 0;
+		var freq_cookie = cookie_name.indexOf("camfreq");
+		if(freq_cookie > -1) { // to get the frequency cookie
+				master_string = cookie_name.substring( freq_cookie+7,  cookie_name.length);
+				
+				var master_check =  master_string.indexOf("_");
+				if(master_check > -1 ){ // this is NOT master cookie
+					master_cookie_flag = 0;
+					
+				} else { // this is master cookie
+
+					master_cookie_flag = 1;
+				}
+		}
+		// tmp vars
+		var i = 0;
+		var j = 0;
+		var k = 0;
+		var total_nt_count = 0;
+
+		var site_found = -1;
+
+		var freq_list = new Array();
+		var cam_freq_time;
+	
+
+		cookie_freq_data = cookie_value.split(":");
+	
+
+		for(i = 0; i< cookie_freq_data.length; i++) {
+			cookie_nt_freq = cookie_freq_data[i].split("-");
+			
+			if(cookie_nt_freq.length != 2) {
+				break;
+			}
+			
+
+			cam_freq_time = cookie_nt_freq[1].split("_");
+
+			if(cam_freq_time.length == 2) {
+				if(master_cookie_flag == 1 && curr_time != 0) {
+					if(curr_time > parseInt(cam_freq_time[1]) ) {
+						//freq_list[total_nt_count++]= [ parseInt(cookie_nt_freq[0]), parseInt(cam_freq_time[0]) , parseInt(cam_freq_time[1])];
+						continue;
+					} else {
+						freq_list[total_nt_count++]= [ parseInt(cookie_nt_freq[0]), parseInt(cam_freq_time[0]) , parseInt(cam_freq_time[1])];
+					}	
+				} else {
+					freq_list[total_nt_count++]= [ parseInt(cookie_nt_freq[0]), parseInt(cam_freq_time[0]) , parseInt(cam_freq_time[1])];
+				}
+			} else {
+					freq_list[total_nt_count++]= [ parseInt(cookie_nt_freq[0]), parseInt(cookie_nt_freq[1]) , 0];
+			}
+
+		}
+		
+		//alert('Inside the cookie function'+ freq_list);	
+		var nt_matched = 0;
+		var curr_freq = 0;
+		var curr_nt = 0;
+		var ex_time = 0;
+                var old_freq = 0;
+                var old_nt = 0;
+
+
+		if(freq_list.length != 0) {
+			for(j=0 ; j< freq_list.length ; j++) {
+				curr_freq = freq_list[j][1];
+				curr_nt = freq_list[j][0];
+				ex_time = freq_list[j][2];
+				nt_matched = 0;
+
+				for(i=0; i<cam_list.length; i++ ){
+					old_freq = cam_list[i][1];
+					old_nt = cam_list[i][0];
+					old_time = cam_list[i][2];
+					//alert('old_freq:'+old_freq +'old_nt:'+old_nt+'old_time:'+old_time);
+					if(old_nt == curr_nt) {
+						cam_list[i][1] = old_freq + curr_freq;
+							if(ex_time > old_time) { 
+								cam_list[i][2] = ex_time;
+							}
+						nt_matched = 1;
+					}
+				}
+	
+				if(nt_matched != 1) {
+					cam_list[cam_list.length]=freq_list[j];
+				}
+			}
+		}	
+
+		//alert('Final Campaign list'+ cam_list);
+}
+
+
+var site_list = new Array();
+
+function get_cookie_data(cookie_name, cookie_value) {
+		var freq_cookie = cookie_name.indexOf("pubfreq_");
+		var site_id = 0;
+		if(freq_cookie > -1) { // to get the grequency cookie
+				master_string = cookie_name.substring( freq_cookie+8,  cookie_name.length);
+				
+				var master_check =  master_string.indexOf("_");
+				if(master_check > -1 ){ // this is NOT master cookie
+					
+					site_id = parseInt(master_string.substring(0,  master_check));
+				} else { // this is master cookie
+
+					site_id = parseInt( cookie_name.substring( freq_cookie+8, cookie_name.length ));
+				}
+		}
+
+		// tmp vars
+		var i = 0;
+		var j = 0;
+		var k = 0;
+
+		var site_found = -1;
+
+		var freq_list = new Array();
+
+		cookie_freq_data = cookie_value.split(":");
+		for(i = 0; i< cookie_freq_data.length; i++) {
+			cookie_nt_freq = cookie_freq_data[i].split("-");
+			
+			if(cookie_nt_freq.length != 2) {
+				break;
+			}
+			freq_list[i]= [parseInt(cookie_nt_freq[0]),parseInt(cookie_nt_freq[1])];
+		}
+
+		for(i = 0; i < site_list.length ; i++) {
+			var site_tmp = site_list[i][0];
+			if(site_tmp == parseInt(site_id)) {
+				site_found = i;
+			}
+		}
+	
+		if(freq_list.length != 0) {
+			if(site_found == -1) {
+				site_list[(site_list.length)] = [parseInt(site_id), freq_list];
+
+			} else {
+				var tmp = site_list[site_found][0];
+				var nt_list = site_list[site_found][1];
+				var nt_matched = 0;
+				var curr_freq = 0;
+				var curr_nt =0;
+				var ex_time = 0;
+				var old_freq = 0;
+				var old_nt = 0;
+
+				for(j=0 ; j< freq_list.length ; j++) {
+					curr_freq = freq_list[j][1];
+					curr_nt = freq_list[j][0];
+					ex_time = freq_list[j][2];
+					nt_matched = 0;
+
+					for(i=0; i < nt_list.length; i++ ){
+						old_freq = nt_list[i][1];
+						old_nt = nt_list[i][0];
+						if(old_nt == curr_nt) {
+							nt_list[i][1] = old_freq + curr_freq;
+							nt_matched = 1;
+						}
+					}
+
+					if(nt_matched != 1) {
+						nt_list[nt_list.length]=freq_list[j];
+					}
+				}
+	
+				site_list[site_found][1] = nt_list;
+
+			}
+		}	
+}
+
+function set_campaign_cookie() {
+	/* get the cookies of given pattern camfreq_*/
+
+	get_curr_time();
+	cookie_list = document.cookie.split(";");
+	var a = new Array();
+	var namevalue;
+
+	
+	for(i=0; i < cookie_list.length; i++) {
+		namevalue = cookie_list[i].split("=");
+		if(namevalue.length == 2) {
+			var freq_cookie =  namevalue[0].indexOf("camfreq");
+			if(freq_cookie > -1) {
+				get_campaign_cookie_data(namevalue[0], namevalue[1]);
+				Delete_Cookie(namevalue[0], "/", komli_domain )	
+			}
+		}	
+	}
+	
+	// Reset all the master cookies
+	var i = 0;
+	var j = 0;
+
+
+	//alert('CAMPAIGN LIST ::'+cam_list);
+
+	var nt_list='';
+	var tmp2 = new Array(); 
+	for(i=0; i< cam_list.length; i++) {
+		tmp2 = cam_list[i];
+
+		//alert('TMP::'+ tmp2);
+
+		if(i == 0){
+			nt_list = tmp2[0] + '-' + tmp2[1] + '_'+ tmp2[2] ;
+		} else {
+			nt_list = nt_list + ':' +tmp2[0] + '-' + tmp2[1] + '_'+ tmp2[2] ;
+		}
+	}
+	var cookie_value = nt_list;
+		
+	if(nt_list != '') {
+		Set_Cookie("camfreq", cookie_value, 4,'/',komli_domain,'');
+	}
+
+}
+
+function set_master_cookie() {
+	/* get the cookies of given pattern pubfreq_*/
+	set_campaign_cookie();
+
+	var cookie_list = document.cookie.split(";");
+	var i=0;
+	var namevalue;
+	for(i=0; i< cookie_list.length; i ++) {
+		namevalue = cookie_list[i].split("=");
+		if(namevalue.length == 2) {
+			var freq_cookie =  namevalue[0].indexOf("pubfreq_");
+			if(freq_cookie > -1) {
+				get_cookie_data(namevalue[0], namevalue[1]);
+				Delete_Cookie(namevalue[0], "/", komli_domain )	
+			}
+		}	
+	}
+	
+	// Reset all the master cookies
+	var i = 0;
+	var j = 0;
+	var tmp2= new Array();
+	for(i=0; i<site_list.length; i++) {
+	var site_id = site_list[i][0];
+		tmp2 = site_list[i][1];
+
+		nt_list ='';
+		for(j=0; j<tmp2.length ;j++  ) {
+			if(j ==0){
+				nt_list = tmp2[j][0] + '-' + tmp2[j][1] ;
+			} else {
+				nt_list = nt_list + ':' +tmp2[j][0] + '-' + tmp2[j][1] ;
+			}
+		}
+		var cookie_name = "pubfreq_"+site_id;
+		var cookie_value = nt_list;
+		
+		if(nt_list != '') {
+			Set_Cookie(cookie_name, cookie_value, 3,'/',komli_domain,'');
+		}
+	}
+}
+
+function pm_addEventListener_j(target,type,callback,captures) {
+	if (target.addEventListener) {
+		// EOMB
+		target.addEventListener(type,callback,captures);
+	} else if (target.attachEvent) {
+		// IE
+		target.attachEvent('on'+type,callback,captures);
+	} else {
+		// IE 5 Mac and some others
+		target['on'+type] = callback;
+	}
+}
+
+
+
+function Set_Cookie( name, value, expires, path, domain, secure ) 
+{
+	// set time, it's in milliseconds
+	var today = new Date();
+	today.setTime( today.getTime() );
+
+	/*
+	if the expires variable is set, make the correct 
+	expires time, the current script below will set 
+	it for x number of days, to make it for hours, 
+	delete * 24, for minutes, delete * 60 * 24
+	*/
+	if ( expires ) {
+	expires = expires * 1000 * 60 * 60 * 24;
+	}
+	var expires_date = new Date( today.getTime() + (expires) );
+
+	//document.cookie = name + "=" +value +
+	 var str= name + "=" + value  +
+	( ( expires ) ? ";expires=" + expires_date.toGMTString() : "" ) + 
+	( ( path ) ? ";path=" + path : "" ) + 
+	( ( domain ) ? ";domain=" + (domain) : "" ) +
+	( ( secure ) ? ";secure" : "" );
+
+	document.cookie = str 
+}
+
+function Delete_Cookie( name, path, domain ) {
+ document.cookie = name + "=" +( ( path ) ? ";path=" + path : "") +
+( ( domain ) ? ";domain=" + domain : "" ) +
+";expires=Thu, 01-Jan-1970 00:00:01 GMT";
+}
+
+var x ={
+       init:function() {
+		set_freq();
+	}
+};
+
+x.init();
+
+
+
+</script>
+
+</head><body></body></html>

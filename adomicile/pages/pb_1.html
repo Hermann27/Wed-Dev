@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Problèmes du demandeur</title>
+<meta name="description" content="trouvez les services à douala grâce au guide à domicile" />
+<meta name="keywords" content="guide, services, à domicile, chez vous" />
+<link href="../templatemo_style.css" rel="stylesheet" type="text/css" />
+<link href="../css/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="../stylesheet/styles.css" />
+
+<link href="../jquery.ennui.contentslider.css" rel="stylesheet" type="text/css" media="screen,projection" />
+<script language="javascript" type="text/javascript" src="../js/js.js"></script>
+<script language="javascript" type="text/javascript">
+function clearText(field)
+{
+    if (field.defaultValue == field.value) field.value = '';
+    else if (field.value == '') field.value = field.defaultValue;
+}
+</script>
+<script language="javascript" type="text/javascript" src="../scripts/mootools-1.2.1-core.js"></script>
+<script language="javascript" type="text/javascript" src="../scripts/mootools-1.2-more.js"></script>
+<script language="javascript" type="text/javascript" src="../scripts/slideitmoo-1.1.js"></script>
+<script language="javascript" type="text/javascript">
+	function charge(){
+		ajx2('probleme', 'get', 'valeur=domaine', document.getElementById('domaine'));
+		ajx2('probleme', 'getId', 'valeur=id', document.getElementById('id'));
+		
+	}
+	window.addEvents({
+		'domready': function(){
+			/* thumbnails example , div containers */
+			new SlideItMoo({
+						overallContainer: 'SlideItMoo_outer',
+						elementScrolled: 'SlideItMoo_inner',
+						thumbsContainer: 'SlideItMoo_items',		
+						itemsVisible: 5,
+						elemsSlide: 3,
+						duration: 200,
+						itemsSelector: '.SlideItMoo_element',
+						itemWidth: 140,
+						showControls:1});
+		},
+		
+	});
+	
+	
+</script>
+</head>
+<body onload="ajx('categorie','listerc','','cat',this); charge();  ">
+<div id="templatemo_wrapper">
+	<div id="templatemo_menu">
+        <ul>
+           <li><a href="index.html" class="current"><span>Accueil</span></a></li>
+            <!--<li><a href="legalite.html" target="_parent"><span>Légalité</span></a></li>-->
+            <li><a href="service.html" target="_parent" ><span>Services</span></a></li>
+            <li><a href="javascript:;" target="_parent" onclick=" ajx('page', 'open2', 'site=inscription.html', 'connect2', this);"><span>Inscription</span></a></li>
+            <li><a href="contact.html;" ><span>Contact</span></a></li>
+        </ul>    	
+    </div> <!-- end of templatemo_menu -->
+    
+    <div id="templatemo_header_bar">
+    
+            <div id="header"><div class="right"></div>
+            
+                <h1><a href="acceuil.html" target="_parent">
+                    <img src="../images/templatemo_logo.png" alt="Site Title" />
+                <span>guide des services chez-vous</span></a></h1>
+      </div>
+            
+            <div id="search_box">
+                <form action="#" method="get">
+                    <input type="text" value="Entrez un mot clés..." name="q" size="10" id="searchfield" title="searchfield" onfocus="clearText(this)" onblur="clearText(this)" />
+                    <input type="submit" name="Search" value="" alt="Search" id="searchbutton" title="Search" />
+                </form>
+            </div>
+    
+    </div> <!-- end of templatemo_header_bar -->
+    
+    <div class="cleaner"></div>
+    
+    <div id="sidebar"><div class="sidebar_top"></div><div class="sidebar_bottom"></div>
+    	
+       
+            
+        <div class="sidebar_section" id="connect">
+        
+        	 
+        	
+          <h2>Abonnés</h2>
+            
+            <form action="#" method="get">
+                <label>E-mail</label>
+                <input type="text" value="" name="username" size="10" class="input_field" title="username" />
+                <label>Mot de passe</label>
+                <input type="password" value="" name="password" class="input_field" title="password" />
+                <a href="inscription.html">Inscription</a> 
+                <input type="submit" name="login" value="Connexion" alt="Login" id="submit_btn" title="Login" />
+            </form>
+            
+			<div class="cleaner"></div>
+            
+	  </div>
+        
+        <div class="sidebar_section">
+        
+        	<h2>Catégories</h2>
+                    
+            <ul class="categories_list" id="cat">
+                
+            </ul>
+      </div>
+        
+        <div class="sidebar_section">
+        
+            <h2>Abonnez-vous</h2>
+            
+            <div class="image_wrapper"><a href="abo_1.html" target="_parent"><img src="../images/image_01.jpg" alt="product" /></a></div>            
+          <div class="discount"><span>10 000 FCFA/An</span> | <a href="javascript:;">En Savoir+</a></div>
+        
+        </div>  
+        
+    </div> <!-- end of sidebar -->
+    
+    <div id="templatmeo_content">
+    
+    	<div id="templatemo_slider">
+            
+            <div id="one" class="contentslider">
+            <div class="cs_wrapper">
+            <div class="cs_slider">
+            
+                <div class="cs_article">
+                
+                    <div class="article_content">
+                    
+                        <div class="left">
+                        <h2>Femmes de ménage</h2>
+                        <p>Vous vous sentez débordé(s) ? Pas de panique ! Organiser ou réorganiser son ménage : si ce n''est pas encore fait, faites appel à une femme de ménage :à une vrai professionnelle qui vous rendra maison belle et propre ! N'hésitez surtout pas! </p>
+                        
+                        <div class="button_02"><a href="javascript:;" target="_parent" onclick=" ajx('services', 'solliciter', 'serv1=Femmes de ménage', 'corps', this);" >Sollicitez</a></div>
+                        </div>
+                        <div class="right">
+                            <a href="javascript:;" target="_parent" onclick="ajx('services', 'detail', 'serv=Femmes de ménage', 'corps', 'this')" >
+                            <img src="../images/slider/femmes_menage.jpg" alt="Template 01" />
+                            </a>
+                        </div>
+                    
+                    </div>
+                
+                </div><!-- End cs_article -->
+            
+            <div class="cs_article">
+            
+                <div class="article_content">
+                
+                    <div class="left">
+                    <h2>Baby-sitting</h2>
+                    <p>Vous recherchez une baby sitter? Vous avez besoin de faire garder vos enfants ponctuellement pour une soirée, pendant les vacances scolaires ou régulièrement ? [...]</p>
+                    
+                    <div class="button_02"><a href="javascript:;" target="_parent" onclick=" ajx('services', 'solliciter', 'serv1=Baby-sitting', 'corps', this);" >Sollicitez</a></div>
+                    </div>
+                    <div class="right">
+                    	<a href="javascript:;" target="_parent" onclick="ajx('services', 'detail', 'serv=Baby-sitting', 'corps', 'this')">
+                    	<img src="../images/slider/baby_sitting.jpg" alt="Template 02" />
+                        </a>
+                    </div>
+                
+                </div>
+            </div><!-- End cs_article -->
+            
+            <div class="cs_article">
+            
+                <div class="article_content">
+                
+                    <div class="left">
+                    <h2>Chauffeurs</h2>
+                    <p>Pour toutes personnes , une aide à mobilité et transports paraît indispensable. Afin d'éviter l'isolement de certaines personnes, des organismes de services à la personne ont mis en place des formations destinées à qualifier des personnes dans l'aide à la mobilité [...]</p>
+                    
+                    <div class="button_02"><a href="javascript:;" target="_parent" onclick=" ajx('services', 'solliciter', 'serv1=Chauffeurs', 'corps', this);" >Sollicitez</a></div>
+                    </div>
+                    <div class="right">
+                        <a href="javascript:;" target="_parent">
+                        <img src="../images/slider/chauffeurs.jpg" alt="Template 03" />
+                        </a>
+                    </div>
+                </div>
+            </div><!-- End cs_article -->
+            
+            <div class="cs_article">
+            <div class="article_content">
+            <div class="left">
+            <h2>Bricolage</h2>
+            <p>Toute maison ou appartement à ses petits travaux de bricolage : planter un clou, accrocher un tableau, un miroir, réparer une fuite d'eau… Les services à la personne référencés sur Chez-vous.com propose des hommes toutes mains qui [...]</p>
+            
+                  <div class="button_02"><a href="javascript:;" target="_parent" onclick=" ajx('services', 'solliciter', 'serv1=Bricolage', 'corps', this);" >Sollicitez</a></div>
+      
+            </div>
+            
+                <div class="right">
+                    <a href="javascript:;" target="_parent" onclick="ajx('services', 'detail', 'serv=Baby-sitting', 'corps', 'this')>
+                    <img src="../images/slider/bricolage.jpg" alt="Template 04" />
+                    </a>
+                </div>
+            </div>
+            </div><!-- End cs_article -->
+            
+            </div><!-- End cs_slider -->
+            </div><!-- End cs_wrapper -->
+            </div><!-- End contentslider -->
+            
+            <!-- Site JavaScript -->
+            <script type="text/javascript" src="../scripts/jquery-1.3.1.min.js"></script>
+            <script type="text/javascript" src="../scripts/jquery.easing.1.3.js"></script>
+            <script type="text/javascript" src="../scripts/jquery.ennui.contentslider.js"></script>
+            <script type="text/javascript">
+                $(function() {
+                $('#one').ContentSlider({
+                width : '825px',
+                height : '200px',
+                speed : 500,
+                easing : 'easeInOutQuart'
+                });
+                });
+            </script>
+            <div class="cleaner"></div>
+        
+        </div><!-- End contentslider -->
+            
+           <!-- end of latest_content_gallery -->
+
+        <div class="content_section" id="corps">
+        
+       	  <h2>Posez votre problème</h2>
+                    
+                   <table width="0" border="0" cellspacing="2" cellpadding="2" align="left">
+<tr>
+    <td colspan="3" align="center">&nbsp;</td>
+  </tr>
+  <tr>
+  	<input name="id" id="id" value="0" type="hidden" />
+    <td align="right">Domaine: </td>
+    <td align="left">
+<div align="left" id="domaine"></div>
+</td>
+    <td align="left">&nbsp;</td>
+  </tr>
+  <tr>
+    <td align="right" valign="top">Description du Probl&egrave;me: </td>
+    <td align="left">
+      <textarea name="description" id="description" cols="45" rows="5" style="width:188px; height:50px" class="input_field"></textarea>&nbsp;*</td>
+    <td align="left">&nbsp;</td>
+  </tr>
+     
+   <tr>
+    <td align="right">&nbsp;</td>
+    <td align="left"><div class="button_01"><a href="javascript:;" onclick="ajx('client','pb_add', 'id='+document.getElementById('id').value+'&domaine='+document.getElementById('domaine').innerHTML+'&description='+document.getElementById('description').value, 'rep1',this)">Valider</a></div>
+    </td>
+    <td align="left"><div id="rep1"></div></td>
+  </tr></table>
+        
+      </div>
+      
+      <br/><br/><br/>
+	
+    
+    </div> <!-- end of templatmeo_content -->
+    
+    
+</div> <!-- end of templatemo_wrapper -->
+
+<div id="templatemo_footer_wrapper">
+
+	<div id="templatemo_footer">
+    
+    	<ul class="footer_menu">
+            <li><a href="index.html">Accueil</a></li>
+            <!--<li><a href="legalite.html" target="_parent">Mentions Légales</a></li>-->
+            <li><a href="service.html" target="_parent">Services</a></li>
+            <li><a href="inscription.html">Inscription</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        Copyright © 2012 <a href="javascript:;">A Domicile</a> | 
+         by <a href="javascript:;" target="_parent">Danielle KOM & Alexandre KOUAM</a></div> 
+	<!-- end of footer -->
+
+</div> <!-- end of footer_wrapper -->
+</body>
+</html>

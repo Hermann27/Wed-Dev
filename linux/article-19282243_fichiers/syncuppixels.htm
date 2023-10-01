@@ -1,0 +1,94 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<script type="text/javascript">
+/*
+ *      The Pixel Checker is a Generic Function which allows you to check for a particular
+ *      cookies and call to action a set of urls using the callScript method.
+ *      Author: Sumitro Chatterjee
+ *      Version: 1.0
+ */
+function pixelChecker() {
+        this.pxState = false;
+        this.pxExists = false;
+        this.pxProcessNotRunning = true;
+}
+
+pixelChecker.prototype = {
+        process: function(isActive, pxName, pxKey, pxURL1, pxURL2, pxURL3) {
+                this.pxState = isActive;
+                var test = this.checkPixel(pxName,pxKey);
+                if(test == false) {
+                        // call the Set Pixel URL and the Notification URL
+                        this.callScript(pxURL1,pxURL2,pxURL3);
+                }else if(test == true){
+                        // do nothing for now
+                        this.pxExists = true;
+                }
+        },
+        checkPixel: function(pxName,pxKey) {
+                if(!this.pxState) return null;
+                this.pxExists = false;
+                var pxCookie = this.readCookie(pxName);
+                this.pxProcessNotRunning = false;
+                if(pxCookie) {
+                        var pxRgx = new RegExp("^" + pxKey.toString() +"_|\\." + pxKey.toString() +"_");
+                        return pxRgx.test(pxCookie);
+                }
+                return false;
+        },
+        callScript: function(pxURL1, pxURL2, pxURL3) {
+                if(!this.pxState) return null;
+                // code to execute for calling the script;
+                //var src = ["<script type='text\/javascript' src=\'",
+                //                      unescape(pxURL),
+                //                      "\'><\/script>"].join(" ");
+                //document.write(src);
+                var src = ["<iframe name='pixel_frame1' width='0' height='0' frameborder='0' marginwidth='0' marginheight='0' vspace='0' hspace='0' allowtransparency='true' scrolling='no' src=\'",
+                                        unescape(pxURL1),
+                                        "\'><\/iframe>"].join(" ");
+                document.write(src);
+                var src2 = ["<iframe name='pixel_frame2' width='0' height='0' frameborder='0' marginwidth='0' marginheight='0' vspace='0' hspace='0' allowtransparency='true' scrolling='no' src=\'",
+                                        unescape(pxURL2),
+                                        "\'><\/iframe>"].join(" ");
+                document.write(src2);
+
+                var src3 = ["<iframe name='pixel_frame3' width='0' height='0' frameborder='0' marginwidth='0' marginheight='0' vspace='0' hspace='0' allowtransparency='true' scrolling='no' src=\'",
+                                        unescape(pxURL3),
+                                        "\'><\/iframe>"].join(" ");
+                document.write(src3);
+                return true;
+        },
+        readCookie: function(name) {
+                var nameEQ = name + "=";
+                var ca = document.cookie.split(';');
+                for(var i=0;i < ca.length;i++)
+                {
+                                var c = ca[i];
+                                while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+                }
+                return null;
+        },
+        setCookie: function(name,value) {
+                var _now = new Date();
+                var expires = _now.setDate(_now.getDate() + 1);
+                document.cookie=name+ "=" +escape(value)+";path=/;" + ((expires) ? "" : ";expires="+expires.toGMTString());
+        }
+};
+
+var pC = new pixelChecker();
+pC.process(true,'PUBRETARGET',79,escape("http://ib.adnxs.com/getuid?http://image2.pubmatic.com/AdServer/Pug?vcode=bz0xJnR5cGU9MSZqcz0xJmNvZGU9NzkmdGw9MTQ0MCZkcF9pZD01Nw==&vcode=bz0yJnR5cGU9MSZqcz0xJmNvZGU9NzgmdGw9MTU3NjgwMCZkcF9pZD01Nw==&piggybackCookie=uid:$UID"), escape("http://r.turn.com/server/pixel.htm"), escape("http://segment-pixel.invitemedia.com/pixel?pixelID=7&key=segment&pubmatic_callback=http%3A//image2.pubmatic.com/AdServer/Pug%3Fvcode%3Dbz0yJnR5cGU9MSZqcz0xJmNvZGU9NzgmdGwddddwMCZkcF9pZD01Nw%3D%3D%26piggybackCookie%3D"));
+
+</script></head><body><iframe name="pixel_frame1" marginwidth="0" 
+marginheight="0" vspace="0" hspace="0" allowtransparency="true" 
+src="syncuppixels_data/getuid.htm" width="0" frameborder="0" height="0" 
+scrolling="no"></iframe><iframe name="pixel_frame2" marginwidth="0" 
+marginheight="0" vspace="0" hspace="0" allowtransparency="true" 
+src="syncuppixels_data/pixel.htm" width="0" frameborder="0" height="0" 
+scrolling="no"></iframe><iframe name="pixel_frame3" marginwidth="0" 
+marginheight="0" vspace="0" hspace="0" allowtransparency="true" 
+src="syncuppixels_data/pixel_002.gif" width="0" frameborder="0" 
+height="0" scrolling="no"></iframe>
+
+</body></html>
